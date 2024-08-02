@@ -31,10 +31,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpForce = 8;
 
     [SerializeField] public MovementSettings groundSettings = new MovementSettings(10, 10, 10);
+    [SerializeField] public MovementSettings airSettings = new MovementSettings(10, 2, 2);
+    [SerializeField] public MovementSettings strafeSettings = new MovementSettings(1, 25, 25);
     
 
     private Vector3 moveInput;
     private Vector3 playerVelocity;
+    private Vector3 moveDirectionNormal;
     private CharacterController characterController;
 
     void Start()
@@ -67,8 +70,10 @@ public class PlayerMovement : MonoBehaviour
         ApplyFriction(1f);
 
         Vector3 wishDir = new Vector3(moveInput.x, 0, moveInput.z);
+        
         wishDir = transform.TransformDirection(wishDir);
         wishDir.Normalize();
+        moveDirectionNormal = wishDir;
         
         float wishSpeed = wishDir.magnitude;
         wishSpeed *= groundSettings.maxSpeed;
@@ -78,6 +83,39 @@ public class PlayerMovement : MonoBehaviour
 
     void AirMove()
     {
+        float accel;
+        
+        Vector3 wishDir = new Vector3(moveInput.x, 0, moveInput.z);
+        wishDir = transform.TransformDirection(wishDir);
+        
+        float wishSpeed = wishDir.magnitude;
+        wishSpeed *= airSettings.maxSpeed;
+
+        wishDir.Normalize();
+        moveDirectionNormal = wishDir;
+
+        float wishSpeed2 = wishSpeed;
+        if(Vector3.Dot(playerVelocity, wishDir) < 0)
+        {
+            accel = airSettings.deceleration;
+        }
+        else
+        {
+            accel = airSettings.acceleration;
+        }
+
+        if(moveInput.z == 0 && moveInput.x == 0)
+        {
+            if(wishSpeed > strafeSettings.maxSpeed)
+            {
+                wishSpeed = strafeSettings.maxSpeed;
+            }
+
+            accel = strafeSettings.acceleration;
+        }
+
+        Accelerate(wishDir, wishSpeed, accel);
+
         playerVelocity.y -= gravity * Time.deltaTime;
     }
 
