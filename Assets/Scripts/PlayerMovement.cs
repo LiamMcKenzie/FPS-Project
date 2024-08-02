@@ -9,6 +9,8 @@ using UnityEngine;
 /// <remarks>
 /// This script is based on the Quake 3 movement system translated by Isaiah Kelly.:
 /// https://github.com/IsaiahKelly/quake3-movement-for-unity
+/// 
+/// Air strafing/friction code from https://adrianb.io/2015/02/14/bunnyhop.html
 /// </remarks>
 public class PlayerMovement : MonoBehaviour
 {
@@ -30,6 +32,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float gravity = 20;
     [SerializeField] private float jumpForce = 8;
 
+
+    [SerializeField] private float m_AirControl = 0.3f;
     [SerializeField] public MovementSettings groundSettings = new MovementSettings(10, 10, 10);
     [SerializeField] public MovementSettings airSettings = new MovementSettings(10, 2, 2);
     [SerializeField] public MovementSettings strafeSettings = new MovementSettings(1, 25, 25);
@@ -67,7 +71,7 @@ public class PlayerMovement : MonoBehaviour
 
     void GroundMove()
     {
-        ApplyFriction(1f);
+        ApplyFriction();
 
         Vector3 wishDir = new Vector3(moveInput.x, 0, moveInput.z);
         
@@ -104,48 +108,37 @@ public class PlayerMovement : MonoBehaviour
             accel = airSettings.acceleration;
         }
 
-        if(moveInput.z == 0 && moveInput.x == 0)
-        {
-            if(wishSpeed > strafeSettings.maxSpeed)
-            {
-                wishSpeed = strafeSettings.maxSpeed;
-            }
+        // if(moveInput.z == 0 && moveInput.x == 0)
+        // {
+        //     if(wishSpeed > strafeSettings.maxSpeed)
+        //     {
+        //         wishSpeed = strafeSettings.maxSpeed;
+        //     }
 
-            accel = strafeSettings.acceleration;
-        }
+        //     accel = strafeSettings.acceleration;
+        // }
 
         Accelerate(wishDir, wishSpeed, accel);
 
         playerVelocity.y -= gravity * Time.deltaTime;
     }
 
-    private void ApplyFriction(float t)
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <remarks>
+    /// Inspired by the friction code from Adrian Biagioli's blog post:
+    /// https://adrianb.io/2015/02/14/bunnyhop.html
+    /// </remarks>
+    private void ApplyFriction()
     {
-        Vector3 vec = playerVelocity;
-        vec.y = 0;
-        float speed = vec.magnitude;
-        float drop = 0;
-
-        if(characterController.isGrounded)
+        float speed = playerVelocity.magnitude;
+        if (speed != 0f)
         {
-            float control = (speed < groundSettings.deceleration) ? groundSettings.deceleration : speed;
-            drop = control * friction * Time.deltaTime * t;
+            float drop = speed * friction * Time.deltaTime;
+            playerVelocity *= Mathf.Max(speed - drop, 0) / speed;
         }
-
-        float newSpeed = speed - drop;
-        friction = newSpeed;
-        if (newSpeed < 0)
-        {
-            newSpeed = 0;
-        }
-
-        if (speed > 0)
-        {
-            newSpeed /= speed;
-        }
-
-        playerVelocity.x *= newSpeed;
-        playerVelocity.z *= newSpeed;
     }
 
     /// <summary>
