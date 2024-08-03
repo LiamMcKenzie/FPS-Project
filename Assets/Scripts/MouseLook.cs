@@ -13,7 +13,6 @@ public class MouseLook : MonoBehaviour
     void Start()
     {
         playerCamera = GetComponentInChildren<Camera>();
-        Cursor.lockState = CursorLockMode.Locked;
     }
 
     void Update()
