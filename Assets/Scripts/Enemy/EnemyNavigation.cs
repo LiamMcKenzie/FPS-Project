@@ -13,11 +13,15 @@ using UnityEngine.AI;
 
 public class EnemyNavigation : MonoBehaviour
 {
-    public Transform target;
+    private Transform target;
     private NavMeshAgent agent;
 
     void Start()
     {
+        GameObject[] goals;
+        goals = GameObject.FindGameObjectsWithTag("Goal");
+        target = goals[0].transform;
+        
         agent = GetComponent<NavMeshAgent>();       
         agent.SetDestination(target.position);     
     }

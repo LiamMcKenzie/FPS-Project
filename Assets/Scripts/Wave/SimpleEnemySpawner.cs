@@ -21,6 +21,19 @@ public class SimpleEnemySpawner : MonoBehaviour
 
     [SerializeField] public List<EnemySquad> enemies = new List<EnemySquad>();
 
+    void Start()
+    {
+        for (int i = 0; i < enemies.Count; i++)
+        {
+            for (int j = 0; j < enemies[i].count; j++)
+            {
+                Spawn(enemies[i].enemyPrefab,enemies[i].spawnPosition.position);
+                
+            }
+        }
+
+    }
+
     void Spawn(GameObject prefab, Vector3 spawnPosition)
     {
         Instantiate(prefab, spawnPosition, Quaternion.identity);
