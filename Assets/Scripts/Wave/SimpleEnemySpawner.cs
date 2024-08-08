@@ -29,7 +29,7 @@ public class SimpleEnemySpawner : MonoBehaviour
             for (int j = 0; j < enemies[i].count; j++) //loops through all enemies in the squad
             {
                 GameObject enemy = Spawn(enemies[i].enemyPrefab, GetRandomPosInBounds(enemies[i].spawnArea));
-                enemy.GetComponent<EnemyNavigation2>().pathParent = enemies[i].spawnArea.transform.gameObject;
+                enemy.GetComponent<EnemyNavigation>().pathParent = enemies[i].spawnArea.transform.gameObject; //sets the path parent for the enemy to the spawn area
             }
         }
 
@@ -55,6 +55,7 @@ public class SimpleEnemySpawner : MonoBehaviour
     /// </summary>
     /// <param name="prefab"></param>
     /// <param name="spawnPosition"></param>
+    /// <returns></returns>
     GameObject Spawn(GameObject prefab, Vector3 spawnPosition)
     {
         return Instantiate(prefab, spawnPosition, Quaternion.identity);
