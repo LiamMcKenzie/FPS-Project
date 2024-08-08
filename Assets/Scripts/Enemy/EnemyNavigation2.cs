@@ -13,29 +13,59 @@ using UnityEngine.AI;
 
 public class EnemyNavigation2 : MonoBehaviour
 {
-    public BoxCollider[] checkpoints;
-    private Vector3[] targets;
+    public GameObject pathParent;
+    public List<BoxCollider> checkpoints = new List<BoxCollider>();
     public int targetIndex = 0;
     private NavMeshAgent agent;
 
     void Start()
     {
-        
-        //targets = GameObject.FindGameObjectsWithTag("Goal");
+        //Finds path game objects and picks the first one
+        GameObject[] paths = GameObject.FindGameObjectsWithTag("Path");
+        pathParent = paths[0];
+
+        LoadPathData(pathParent);
+
+        //sets the first destination
         agent = GetComponent<NavMeshAgent>();       
         agent.SetDestination(GetRandomPosInBounds(checkpoints[targetIndex]));
-        //agent.SetDestination(targets[targetIndex].transform.position);     
     }
 
     void Update()
     {
         //if the agent has reached the target, then set the next destination
-        if (agent.remainingDistance < 0.5f && targetIndex < checkpoints.Length - 1)
+        if (agent.remainingDistance < 0.5f && targetIndex < checkpoints.Count - 1)
         {
             targetIndex++;
             agent.SetDestination(GetRandomPosInBounds(checkpoints[targetIndex]));
-            //agent.SetDestination(targets[targetIndex].transform.position);
         }
+    }
+
+    /// <summary>
+    /// Finds the checkpoint children from the path parent
+    /// </summary>
+    /// <param name="pathParent"></param>
+    void LoadPathData(GameObject pathParent)
+    {
+        GameObject[] checkpointChildren = GetChildrenWithTag(pathParent, "Checkpoint");
+        foreach (var child in checkpointChildren)
+        {
+            checkpoints.Add(child.GetComponent<BoxCollider>());
+        }
+    }
+
+    //I dont think this is recursive, so it will only check the first level of children
+    GameObject[] GetChildrenWithTag(GameObject parent, string tag)
+    {
+        List<GameObject> children = new List<GameObject>();
+        foreach (Transform child in parent.transform)
+        {
+            if (child.CompareTag(tag))
+            {
+                children.Add(child.gameObject);
+            }
+        }
+        return children.ToArray();
     }
 
     /// <summary>
