@@ -21,8 +21,8 @@ public class EnemyNavigation2 : MonoBehaviour
     void Start()
     {
         //Finds path game objects and picks the first one
-        GameObject[] paths = GameObject.FindGameObjectsWithTag("Path");
-        pathParent = paths[0];
+        //GameObject[] paths = GameObject.FindGameObjectsWithTag("Path");
+        //pathParent = paths[0];
 
         LoadPathData(pathParent);
 
