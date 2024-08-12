@@ -4,15 +4,25 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+    public int health = 100;
+    
     void Update()
     {
-        
+        if (health <= 0)
+        {
+            Die();
+        }
+    }
+
+    public void TakeDamage(int damage)
+    {
+
+        health -= damage;
+    }
+
+    public void Die()
+    {
+        //play particle effects here
+        Destroy(gameObject);
     }
 }
