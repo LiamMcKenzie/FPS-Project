@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Pistol : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class Pistol : MonoBehaviour
             Shoot();
         }
     }
+
     public void Shoot()
     {
         try //This code is prone to errors so I used a try catch to be safe.
@@ -28,8 +30,12 @@ public class Pistol : MonoBehaviour
     public void ShootBullet()
     {
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.forward, out hit))
+        Vector3 rayOrigin = Camera.main.transform.position;
+        Vector3 rayDirection = Camera.main.transform.forward;
+
+        if (Physics.Raycast(rayOrigin, rayDirection, out hit))
         {
+            Debug.DrawRay(rayOrigin, rayDirection, Color.red, duration: 10f);
             if (hit.transform.tag == "Enemy")
             {
                 hit.transform.GetComponent<EnemyHealth>().TakeDamage(damage);
