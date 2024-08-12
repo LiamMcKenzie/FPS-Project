@@ -1953,7 +1953,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1305701377}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1971,7 +1971,7 @@ GameObject:
   - component: {fileID: 1305701381}
   - component: {fileID: 1306995749}
   - component: {fileID: 1307995877}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Mesh1_Group2_Group1_Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1989,7 +1989,7 @@ GameObject:
   - component: {fileID: 1305701383}
   - component: {fileID: 1306995751}
   - component: {fileID: 1307995879}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Mesh2_Group3_Group1_Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2837,6 +2837,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
+  fireRate: 0.2
   pistolGameObject: {fileID: 1979710294}
 --- !u!1 &1802354081
 GameObject:
@@ -3030,7 +3031,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1979710295}
   - component: {fileID: 1979710296}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Pistol
   m_TagString: Untagged
   m_Icon: {fileID: 0}

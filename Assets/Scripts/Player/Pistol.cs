@@ -1,18 +1,54 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class Pistol : MonoBehaviour
 {
     public int damage = 10;
+    public float fireRate = 0.5f;
+    private bool isShooting = false;
+    private bool bufferedShot = false;
     public GameObject pistolGameObject; //Holds the pistol game object. 
+
+    public bool fullyAutomatic = false; 
+    
     void Update()
     {
         if (Input.GetMouseButtonDown(0)) //NEEDS REFACTORING. Use different input system. also needs to be modular for different weapon types
         {
-            Shoot();
+            BufferShot();
         }
+
+        if(fullyAutomatic && Input.GetMouseButton(0)) //this might be a bad way of doing this.
+        {
+            BufferShot();
+        }
+
+        if(bufferedShot && !isShooting)
+        {
+            StartCoroutine(NewShoot());
+            bufferedShot = false;
+        }
+    }
+
+    public void BufferShot()
+    {
+        if(!isShooting)
+        {
+            StartCoroutine(NewShoot());
+        }
+        else
+        {
+            bufferedShot = true;
+        }
+    }
+
+    IEnumerator NewShoot()
+    {
+        isShooting = true;
+        Shoot();
+        yield return new WaitForSeconds(fireRate);
+        isShooting = false;
     }
 
     public void Shoot()
@@ -27,6 +63,7 @@ public class Pistol : MonoBehaviour
         }
         ShootBullet();
     }
+
     public void ShootBullet()
     {
         RaycastHit hit;
