@@ -27,6 +27,7 @@ public class DamageNumber : MonoBehaviour
         randomRotation = Random.Range(-45f, 45f);
 
         transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, randomRotation);
+        objectPosition = targetObject.position + offset;
     }
 
     private void Update()
@@ -45,7 +46,7 @@ public class DamageNumber : MonoBehaviour
 
 
 
-        objectPosition = targetObject.position + offset;
+        
         Vector3 rotateOffset = Quaternion.Euler(0, 0, randomRotation) * new Vector3(0, 2, 0);
 
         Vector3 lerpedPosition = Vector3.Lerp(objectPosition + rotateOffset, objectPosition, transition);
