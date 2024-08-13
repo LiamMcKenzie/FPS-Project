@@ -18,6 +18,7 @@ public class EnemyHealth : MonoBehaviour
     {
 
         health -= damage;
+        DamageNumberSpawner.Instance.SpawnDamageNumber(this.gameObject, damage);
     }
 
     public void Die()
