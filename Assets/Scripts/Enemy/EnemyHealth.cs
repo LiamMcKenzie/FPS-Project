@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     public int health = 100;
+    public GameObject deathEffect;
     
     void Update()
     {
@@ -26,5 +27,6 @@ public class EnemyHealth : MonoBehaviour
         //play particle effects here
         //Destroy(gameObject);
         gameObject.SetActive(false);
+        GameObject deathParticle = Instantiate(deathEffect, transform.position, Quaternion.identity);
     }
 }
