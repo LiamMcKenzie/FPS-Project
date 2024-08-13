@@ -17,13 +17,14 @@ public class EnemyHealth : MonoBehaviour
     public void TakeDamage(int damage)
     {
 
-        health -= damage;
         DamageNumberSpawner.Instance.SpawnDamageNumber(this.gameObject, damage);
+        health -= damage;
     }
 
     public void Die()
     {
         //play particle effects here
-        Destroy(gameObject);
+        //Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }

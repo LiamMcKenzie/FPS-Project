@@ -54,6 +54,8 @@ MonoBehaviour:
   canvas: {fileID: 0}
   screenPosition: {x: 0, y: 0, z: 0}
   damage: 0
+  lifetime: 1
+  transition: 0
 --- !u!1 &6953047133587465322
 GameObject:
   m_ObjectHideFlags: 0
