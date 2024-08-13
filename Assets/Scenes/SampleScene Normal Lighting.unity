@@ -1758,7 +1758,7 @@ GameObject:
   - component: {fileID: 1219964556}
   - component: {fileID: 1219964555}
   m_Layer: 0
-  m_Name: DamageNumber
+  m_Name: Damage Number Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1776,7 +1776,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 602308f01de9447469596a506cdc9594, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageNumberPrefab: {fileID: 5134924514997802775, guid: 542118ff8950480419871984e361ddf3,
+  damageNumberPrefab: {fileID: 109189995480897729, guid: 9a524bd7a3267b0428315aad71b2b2ec,
     type: 3}
   canvasTransform: {fileID: 889494884}
 --- !u!4 &1219964556

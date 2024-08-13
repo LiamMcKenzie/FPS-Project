@@ -3,16 +3,24 @@ using TMPro;
 
 public class DamageNumber : MonoBehaviour
 {
-    public Transform targetObject;
-    public Canvas canvas;
+    [HideInInspector] public Transform targetObject;
+    public Vector3 offset;
+    [HideInInspector] public Canvas canvas;
     public Vector3 screenPosition;
     private TMP_Text textObject;
     [HideInInspector] public int damage;
     void Start()
     {
         canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
-        textObject = gameObject.GetComponent<TMP_Text>();
+        
+        textObject = transform.GetChild(0).GetComponent<TMP_Text>();
         textObject.text = damage.ToString();
+
+        //float randomRotation = Random.Range(-15f, 15f);
+
+        float randomRotation = Random.Range(0f, 360f);
+
+        transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, randomRotation);
     }
 
     private void Update()
@@ -23,7 +31,7 @@ public class DamageNumber : MonoBehaviour
             return;
         }
 
-        Vector3 objectPosition = targetObject.position;
+        Vector3 objectPosition = targetObject.position + offset;
 
         screenPosition = Camera.main.WorldToScreenPoint(objectPosition);
 
