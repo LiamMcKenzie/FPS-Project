@@ -20,8 +20,10 @@ public class SimpleEnemySpawner : MonoBehaviour
     }
 
     [SerializeField] public List<EnemySquad> enemies = new List<EnemySquad>();
+    [SerializeField] public List<EnemySquad> remainingEnemies = new List<EnemySquad>();
 
-    void Start()
+
+    public void SpawnEnemies()
     {
         //spawns all enemies in the list
         for (int i = 0; i < enemies.Count; i++) //loops through all "squads".
@@ -32,7 +34,6 @@ public class SimpleEnemySpawner : MonoBehaviour
                 enemy.GetComponent<EnemyNavigation>().pathParent = enemies[i].spawnArea.transform.gameObject; //sets the path parent for the enemy to the spawn area
             }
         }
-
     }
 
     /// <summary>

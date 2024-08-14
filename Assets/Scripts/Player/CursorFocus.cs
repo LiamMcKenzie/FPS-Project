@@ -15,4 +15,9 @@ public class CursorFocus : MonoBehaviour
             Cursor.visible = true;
         }
     }
+
+    void Update()
+    {
+        
+    }
 }

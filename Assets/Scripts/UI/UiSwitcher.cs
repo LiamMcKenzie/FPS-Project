@@ -24,7 +24,7 @@ public class UiSwitcher : MonoBehaviour
     {
         foreach (var uiobject in UiObjects)
         {
-            uiobject.gameObject.SetActive(GameManager.instance.gameState == uiobject.state);
+            uiobject.gameObject.SetActive(GameManager.instance.GetGameState() == uiobject.state);
         }
     }
 }

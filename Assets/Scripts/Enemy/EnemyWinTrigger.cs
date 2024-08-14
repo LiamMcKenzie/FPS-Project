@@ -8,7 +8,8 @@ public class EnemyWinTrigger : MonoBehaviour
     {
         if (other.CompareTag("Enemy")) // && GameManager.instance.gameState == GameManager.GameState.GamePlay
         {
-            GameManager.instance.gameState = GameState.GameOver; //sets gamestate to gameover
+
+            GameManager.instance.UpdateGameState(GameState.GameOver); //sets gamestate to gameover
         }
     }
 }
