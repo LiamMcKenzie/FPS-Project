@@ -7,12 +7,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public GameState gameState;
 
-    public enum GameState
-    {
-        Setup,
-        GamePlay,
-        GameOver
-    }
+    
 
     void Awake()
     {

@@ -1972,6 +1972,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 340b79771bf6c30498c9b9461f0294f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UiObjects:
+  - gameObject: {fileID: 459209096}
+    state: 0
+  - gameObject: {fileID: 1690546758}
+    state: 2
+  - gameObject: {fileID: 294005760}
+    state: 1
 --- !u!1 &926654447
 GameObject:
   m_ObjectHideFlags: 0
