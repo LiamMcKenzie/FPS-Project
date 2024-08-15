@@ -2,22 +2,26 @@ using UnityEngine;
 
 public class CursorFocus : MonoBehaviour
 {
-    private void OnApplicationFocus(bool hasFocus)
-    {
-        if (hasFocus)
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-        }
-        else
-        {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-        }
-    }
-
     void Update()
     {
-        
+        // switch (GameManager.GetGameState())
+        // {
+        //     case GameState.GamePlay:
+        //         Cursor.lockState = CursorLockMode.Locked;
+        //         Cursor.visible = false;
+        //         break;
+
+
+        //     case GameState.GameOver:
+        //     case GameState.Setup:
+        //         Cursor.lockState = CursorLockMode.None;
+        //         Cursor.visible = true;
+        //         break;
+            
+        //     default:
+        //         Cursor.lockState = CursorLockMode.None;
+        //         Cursor.visible = true;
+        //         break;
+        // }
     }
 }
