@@ -17,6 +17,14 @@ public class MouseLook : MonoBehaviour
 
     void Update()
     {
+        if(GameManager.instance.CanControlPlayer()) //only able to look if player has control.
+        {
+            Look();
+        }
+    }
+
+    void Look()
+    {
         float mouseX = Input.GetAxis("Mouse X");
         float mouseY = Input.GetAxis("Mouse Y");
         

@@ -12,6 +12,7 @@ public enum GameState
 public class GameStateManager : MonoBehaviour
 {
     private GameState gameState;
+    private bool canControlPlayer;
 
     public void SetGameState(GameState newState)
     {
@@ -21,5 +22,13 @@ public class GameStateManager : MonoBehaviour
     public GameState ReturnState()
     {
         return gameState;
+    }
+
+    
+
+    public bool ReturnPlayerControl()
+    {   
+        canControlPlayer = (GameManager.instance.GetGameState() == GameState.GamePlay);
+        return canControlPlayer;
     }
 }

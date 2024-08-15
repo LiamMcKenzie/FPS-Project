@@ -17,6 +17,14 @@ public class WeaponSway : MonoBehaviour
 
     void Update()
     {
+        if(GameManager.instance.CanControlPlayer()) //only moves weapon if player has control
+        {
+            Sway();
+        }
+    }
+
+    void Sway()
+    {
         float movementX = -Input.GetAxis("Mouse X") * amount;
         float movementY = -Input.GetAxis("Mouse Y") * amount;
         movementX = Mathf.Clamp(movementX, -maxAmount, maxAmount);

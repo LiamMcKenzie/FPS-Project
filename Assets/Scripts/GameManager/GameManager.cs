@@ -33,4 +33,10 @@ public class GameManager : MonoBehaviour
     {
         gameStateManager.SetGameState(newState);
     }
+
+    public bool CanControlPlayer()
+    {
+        return gameStateManager.ReturnPlayerControl();
+    }
+
 }
