@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameStateManager gameStateManager;
     [SerializeField] private SimpleEnemySpawner enemySpawner;
     
+    [SerializeField] private Restart restart;
+    
     void Awake()
     {
         if (instance == null)
@@ -37,6 +39,11 @@ public class GameManager : MonoBehaviour
     public bool CanControlPlayer()
     {
         return gameStateManager.ReturnPlayerControl();
+    }
+
+    public void RestartWave()
+    {
+        restart.ReloadScene();
     }
 
 }
