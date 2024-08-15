@@ -46,4 +46,14 @@ public class GameManager : MonoBehaviour
         restart.ReloadScene();
     }
 
+    public List<GameObject> GetEnemyList()
+    {
+        return enemySpawner.ReturnSpawnedEnemies();
+    }
+
+    //used to add or remove enemies
+    public void RemoveEnemyFromList(GameObject enemy)
+    {
+        
+    }
 }

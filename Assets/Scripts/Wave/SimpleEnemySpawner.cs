@@ -20,8 +20,8 @@ public class SimpleEnemySpawner : MonoBehaviour
     }
 
     [SerializeField] public List<EnemySquad> enemies = new List<EnemySquad>();
-    [SerializeField] public List<EnemySquad> remainingEnemies = new List<EnemySquad>();
 
+    [SerializeField] public List<GameObject> spawnedEnemies = new List<GameObject>();
 
     public void SpawnEnemies()
     {
@@ -31,6 +31,7 @@ public class SimpleEnemySpawner : MonoBehaviour
             for (int j = 0; j < enemies[i].count; j++) //loops through all enemies in the squad
             {
                 GameObject enemy = Spawn(enemies[i].enemyPrefab, GetRandomPosInBounds(enemies[i].spawnArea));
+                spawnedEnemies.Add(enemy);
                 enemy.GetComponent<EnemyNavigation>().pathParent = enemies[i].spawnArea.transform.gameObject; //sets the path parent for the enemy to the spawn area
             }
         }
@@ -60,5 +61,20 @@ public class SimpleEnemySpawner : MonoBehaviour
     GameObject Spawn(GameObject prefab, Vector3 spawnPosition)
     {
         return Instantiate(prefab, spawnPosition, Quaternion.identity);
+    }
+
+    public List<GameObject> ReturnSpawnedEnemies()
+    {
+        return spawnedEnemies;
+    }
+
+    public void RemoveEnemyFromList(GameObject enemy)
+    {
+        if(spawnedEnemies.Contains(enemy))
+        {
+            spawnedEnemies.Remove(enemy);
+        }else{
+            Debug.LogWarning("Tried to remove enemy from spawnedEnemies list, but enemy was not found in list");
+        }
     }
 }

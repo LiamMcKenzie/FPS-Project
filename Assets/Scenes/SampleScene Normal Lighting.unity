@@ -5493,7 +5493,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1860926611
 Transform:
   m_ObjectHideFlags: 0
@@ -5530,7 +5530,7 @@ MonoBehaviour:
     enemyPrefab: {fileID: 964486335791562985, guid: c348238c279abba47822a255009b8fb3,
       type: 3}
     spawnArea: {fileID: 1452242580}
-  remainingEnemies: []
+  spawnedEnemies: []
 --- !u!1 &1861162726
 GameObject:
   m_ObjectHideFlags: 0
