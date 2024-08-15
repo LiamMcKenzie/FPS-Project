@@ -54,6 +54,7 @@ public class GameManager : MonoBehaviour
     //used to add or remove enemies
     public void RemoveEnemyFromList(GameObject enemy)
     {
-        
+        enemySpawner.RemoveEnemyFromList(enemy); 
     }
+
 }

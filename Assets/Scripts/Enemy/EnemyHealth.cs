@@ -28,6 +28,7 @@ public class EnemyHealth : MonoBehaviour
         //Destroy(gameObject);
         gameObject.SetActive(false);
         GameObject deathParticle = Instantiate(deathEffect, transform.position, Quaternion.identity);
+        GameManager.instance.RemoveEnemyFromList(gameObject);
         
     }
 }

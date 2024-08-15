@@ -6,7 +6,8 @@ public enum GameState
 {
     Setup,
     GamePlay,
-    GameOver
+    GameOver,
+    GameWin
 }
 
 public class GameStateManager : MonoBehaviour
@@ -28,7 +29,7 @@ public class GameStateManager : MonoBehaviour
 
     public bool ReturnPlayerControl()
     {   
-        canControlPlayer = (GameManager.instance.GetGameState() == GameState.GamePlay);
+        canControlPlayer = GameManager.instance.GetGameState() == GameState.GamePlay;
         return canControlPlayer;
     }
 }

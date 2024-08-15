@@ -19,6 +19,7 @@ public class CursorFocus : MonoBehaviour
             //Cursor Visible. Defaults to visible
             case GameState.GameOver:
             case GameState.Setup:
+            case GameState.GameWin:
             
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
