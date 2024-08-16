@@ -5490,7 +5490,7 @@ GameObject:
   - component: {fileID: 1724884867}
   - component: {fileID: 1724884869}
   - component: {fileID: 1724884870}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5612,10 +5612,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 122038ca65bf134489056b92507b9952, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 20
   fireRate: 0.2
   pistolGameObject: {fileID: 1979710294}
-  fullyAutomatic: 0
+  fullyAutomatic: 1
 --- !u!1 &1780226472
 GameObject:
   m_ObjectHideFlags: 0
