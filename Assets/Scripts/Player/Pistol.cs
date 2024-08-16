@@ -14,14 +14,22 @@ public class Pistol : MonoBehaviour
     
     void Update()
     {
+        if(GameManager.instance.CanControlPlayer())
+        {
+            ShootInput();
+        }
+    }
+
+    void ShootInput()
+    {
         if (Input.GetMouseButtonDown(0)) //NEEDS REFACTORING. Use different input system. also needs to be modular for different weapon types
         {
             BufferShot();
         }
 
-        if(fullyAutomatic && Input.GetMouseButton(0)) //this might be a bad way of doing this.
+        if(fullyAutomatic && Input.GetMouseButton(0) && !isShooting) //this might be a bad way of doing this.
         {
-            BufferShot();
+            StartCoroutine(NewShoot()); //with automatic firing, it will always try to buffer a shot. So it skips the buffering
         }
 
         if(bufferedShot && !isShooting)

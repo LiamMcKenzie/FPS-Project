@@ -33,10 +33,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpForce = 8;
 
 
-    [SerializeField] private float m_AirControl = 0.3f;
     [SerializeField] public MovementSettings groundSettings = new MovementSettings(10, 10, 10);
     [SerializeField] public MovementSettings airSettings = new MovementSettings(10, 2, 2);
-    [SerializeField] public MovementSettings strafeSettings = new MovementSettings(1, 25, 25);
     
 
     private Vector3 moveInput;
@@ -51,15 +49,21 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
-
-        if(characterController.isGrounded)
+        if(GameManager.instance.CanControlPlayer())
         {
-            GroundMove();
-            if(Input.GetButtonDown("Jump"))
+            moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
+            if(Input.GetButtonDown("Jump") && characterController.isGrounded)
             {
                 playerVelocity.y = jumpForce;
             }
+        }else{
+            moveInput = Vector3.zero;
+        }
+
+        
+        if(characterController.isGrounded)
+        {
+            GroundMove();
         }
         else
         {

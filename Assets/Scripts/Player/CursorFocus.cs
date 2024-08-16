@@ -1,18 +1,35 @@
 using UnityEngine;
 
+/// <summary>
+/// This script either hides or displays the mouse cursor based on game state
+/// </summary>
 public class CursorFocus : MonoBehaviour
 {
-    private void OnApplicationFocus(bool hasFocus)
+    void Update()
     {
-        if (hasFocus)
+        //Switches on current gamestate.
+        switch (GameManager.instance.GetGameState())
         {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-        }
-        else
-        {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
+            //Cursor Hidden
+            case GameState.GamePlay: 
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+                break;
+
+            //Cursor Visible. Defaults to visible
+            case GameState.GameOver:
+            case GameState.Setup:
+            case GameState.GameWin:
+            
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+                break;
+
+            default: 
+                Debug.LogWarning("Missing cursor focus state. Defaulting to visible cursor");
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+                break;
         }
     }
 }
