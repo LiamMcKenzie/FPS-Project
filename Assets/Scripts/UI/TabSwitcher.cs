@@ -26,11 +26,13 @@ public class TabSwitcher : MonoBehaviour
 
     void Start()
     {
-        //loops through all tabs and adds click events to each button
+        //loops through all tabs
         foreach (var tab in tabs) 
         {
-            tab.tabButton.onClick.AddListener(() => ShowTab(tab));
+            tab.tabButton.onClick.AddListener(() => ShowTab(tab)); //adds click events to the button
         }
+
+        ShowTab(tabs[0]); //shows the first tab by default 
     }
 
     void ShowTab(UITab activeTab)
@@ -45,6 +47,5 @@ public class TabSwitcher : MonoBehaviour
         //makes the selected tab section visible and makes the tab button unclickable
         activeTab.uiSection.SetActive(true);
         activeTab.tabButton.interactable = false;
-
     }
 }

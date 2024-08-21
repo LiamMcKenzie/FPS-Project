@@ -15,7 +15,7 @@ public class DisplayModeSwitcher : MonoBehaviour
 
         LoadSettings();
     }
-
+    
     public void OnDisplayChanged(int index)
     {
         ApplyDisplayMode(index);
