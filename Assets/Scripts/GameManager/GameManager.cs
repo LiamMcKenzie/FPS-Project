@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private SimpleEnemySpawner enemySpawner;
     
     [SerializeField] private Restart restart;
+    [SerializeField] private PauseManager pauseManager;
     
     void Awake()
     {
@@ -38,7 +39,7 @@ public class GameManager : MonoBehaviour
 
     public bool CanControlPlayer()
     {
-        return gameStateManager.ReturnPlayerControl();
+        return gameStateManager.ReturnPlayerControl() && pauseManager.ReturnIsPaused() == false;
     }
 
     public void RestartWave()
@@ -55,6 +56,11 @@ public class GameManager : MonoBehaviour
     public void RemoveEnemyFromList(GameObject enemy)
     {
         enemySpawner.RemoveEnemyFromList(enemy); 
+    }
+
+    public bool IsPaused()
+    {
+        return pauseManager.ReturnIsPaused();
     }
 
 }
