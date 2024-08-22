@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
 
     public bool CanControlPlayer()
     {
-        return gameStateManager.ReturnPlayerControl();
+        return gameStateManager.ReturnPlayerControl() && pauseManager.ReturnIsPaused() == false;
     }
 
     public void RestartWave()

@@ -26,14 +26,14 @@ public class PauseManager : MonoBehaviour
     public void PauseGame()
     {
         
-        //Time.timeScale = 0; //this doesn't stop all scripts from running
+        Time.timeScale = 0; //this doesn't stop all scripts from running
         isPaused = true;
 
     }
 
     public void UnPauseGame()
     {
-        //Time.timeScale = 1; //timescale is persistent, so make sure to unpause when changing scenes. 
+        Time.timeScale = 1; //timescale is persistent, so make sure to unpause when changing scenes. 
         isPaused = false;
     }
 
