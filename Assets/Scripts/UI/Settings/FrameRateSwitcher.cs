@@ -58,6 +58,8 @@ public class FrameRateSwitcher : MonoBehaviour
                 Debug.LogError("Invalid frame rate selected!");
                 break;
         }
+
+        SaveSettings();
     }
 
     private void LoadSettings()
@@ -76,9 +78,14 @@ public class FrameRateSwitcher : MonoBehaviour
         ApplyFrameRate(frameRateIndex);
     }
 
-    private void OnApplicationQuit()
+    private void SaveSettings()
     {
         PlayerPrefs.SetInt("FrameRate", frameRateDropdown.value);
         PlayerPrefs.Save();
+    }
+
+    private void OnApplicationQuit()
+    {
+        SaveSettings();
     }
 }

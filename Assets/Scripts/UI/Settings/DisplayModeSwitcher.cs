@@ -44,6 +44,8 @@ public class DisplayModeSwitcher : MonoBehaviour
                 Debug.LogError("Invalid display mode selected!");
                 break;
         }
+
+        SaveSettings();
     }
 
     private void LoadSettings()
@@ -62,10 +64,15 @@ public class DisplayModeSwitcher : MonoBehaviour
         ApplyDisplayMode(displayModeIndex);
     }
 
-    private void OnApplicationQuit()
+    private void SaveSettings()
     {
         PlayerPrefs.SetInt("DisplayMode", displayDropdown.value);
         PlayerPrefs.Save();
+    }
+
+    private void OnApplicationQuit()
+    {
+        SaveSettings();
     }
 
 

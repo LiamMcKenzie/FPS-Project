@@ -68,6 +68,7 @@ public class ResolutionSwitcher : MonoBehaviour
     {
         Resolution selectedResolution = resolutions[index];
         Screen.SetResolution(selectedResolution.width, selectedResolution.height, Screen.fullScreen);
+        SaveSettings();
     }
 
     private void LoadSettings()
@@ -85,9 +86,14 @@ public class ResolutionSwitcher : MonoBehaviour
         ApplyResolution(resolutionIndex);    
     }
 
-    public void OnApplicationQuit()
+    private void SaveSettings()
     {
         PlayerPrefs.SetInt("Resolution", resolutionDropdown.value);
         PlayerPrefs.Save();
+    }
+
+    public void OnApplicationQuit()
+    {
+       SaveSettings();
     }
 }

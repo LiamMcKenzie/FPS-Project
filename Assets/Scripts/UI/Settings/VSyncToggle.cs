@@ -29,6 +29,8 @@ public class VSyncToggle : MonoBehaviour
         {
             QualitySettings.vSyncCount = 0;
         }
+
+        SaveSettings();
     }
 
     private void LoadSettings()
@@ -46,9 +48,14 @@ public class VSyncToggle : MonoBehaviour
         ApplyVSync(vsyncEnabled);
     }
 
-    private void OnApplicationQuit()
+    private void SaveSettings()
     {
         PlayerPrefs.SetInt("Vsync", vsyncToggle.isOn ? 1 : 0); //converts bool to 0 or 1. true == 1
         PlayerPrefs.Save();
+    }
+
+    private void OnApplicationQuit()
+    {
+        SaveSettings();
     }
 }
