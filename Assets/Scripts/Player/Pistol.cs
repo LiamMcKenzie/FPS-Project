@@ -2,6 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 
+/// </summary>
+/// 
+/// <remarks>
+/// Bullet tracer code from: https://www.youtube.com/watch?v=cI3E7_f74MA
+/// </remarks>
 public class Pistol : MonoBehaviour
 {
     public int damage = 10;
@@ -11,6 +18,10 @@ public class Pistol : MonoBehaviour
     public GameObject pistolGameObject; //Holds the pistol game object. 
 
     public bool fullyAutomatic = false; 
+    public float randomSpread = 0.1f; 
+    public Transform bulletSpawnPoint; //point on the gun where the particle should start from (barrel of gun)
+
+    [SerializeField] private TrailRenderer trailRenderer;
     
     void Update()
     {
@@ -76,15 +87,50 @@ public class Pistol : MonoBehaviour
     {
         RaycastHit hit;
         Vector3 rayOrigin = Camera.main.transform.position;
+
+
         Vector3 rayDirection = Camera.main.transform.forward;
+
+        rayDirection.x += Random.Range(-randomSpread, randomSpread);
+        rayDirection.y += Random.Range(-randomSpread, randomSpread);
 
         if (Physics.Raycast(rayOrigin, rayDirection, out hit))
         {
+            TrailRenderer trail = Instantiate(trailRenderer, bulletSpawnPoint.position, Quaternion.identity);
+            StartCoroutine(SpawnTrail(trail, hit.point));
+            Debug.Log(hit.transform.name);
+
             Debug.DrawRay(rayOrigin, rayDirection, Color.red, duration: 10f);
             if (hit.transform.tag == "Enemy")
             {
                 hit.transform.GetComponent<EnemyHealth>().TakeDamage(damage);
             }
+        }else{ //if nothing was hit
+            TrailRenderer trail = Instantiate(trailRenderer, bulletSpawnPoint.position, Quaternion.identity);
+            Vector3 hitPoint = rayOrigin + (rayDirection * 1000); //if nothing was hit, the bullet will travel 1000 units forward
+            StartCoroutine(SpawnTrail(trail, hitPoint));
         }
+
+        
+    }
+
+    private IEnumerator SpawnTrail(TrailRenderer trail, Vector3 hitPoint)
+    {
+        Vector3 startPos = trail.transform.position;
+        float distance = Vector3.Distance(startPos, hitPoint);
+        float remaingDistance = distance;
+
+        float bulletSpeed = 100f;
+
+        while (remaingDistance >= 0) //while bullet is stil moving towards target
+        {
+            trail.transform.position = Vector3.MoveTowards(trail.transform.position, hitPoint, bulletSpeed * Time.deltaTime);
+
+            remaingDistance = Vector3.Distance(trail.transform.position, hitPoint); //updates the distance to the target
+             
+            yield return null;
+        }
+
+        Destroy(trail.gameObject,trail.time); //trail.time is how long it takes the trail to fade out. So it will destroy the trail after its fully faded out.
     }
 }
