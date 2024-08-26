@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using UpgradeManager; 
+
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
@@ -11,6 +13,7 @@ public class GameManager : MonoBehaviour
     
     [SerializeField] private Restart restart;
     [SerializeField] private PauseManager pauseManager;
+    [SerializeField] private UpgradeManager upgradeManager;
     
     void Awake()
     {
@@ -61,6 +64,12 @@ public class GameManager : MonoBehaviour
     public bool IsPaused()
     {
         return pauseManager.ReturnIsPaused();
+    }
+
+    //UPGRADES
+    public List<Upgrade> GetUpgrades()
+    {
+        return upgradeManager.ReturnUpgrades();
     }
 
 }
