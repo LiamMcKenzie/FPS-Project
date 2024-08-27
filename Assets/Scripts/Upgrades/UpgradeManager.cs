@@ -27,9 +27,19 @@ public class UpgradeManager : MonoBehaviour
 
     public List<Upgrade> Upgrades = new List<Upgrade>();
 
-
-
     public List<Upgrade> ReturnUpgrades(){
         return Upgrades;
+    }
+
+    public List<string> ReturnUpgradeNames() //I can't pass the entire upgrade struct so I'm passing through each value.
+    {
+        List<string> upgradeNames = new List<string>();
+
+        foreach (Upgrade upgrade in Upgrades) //loops through all upgrades
+        {
+            upgradeNames.Add(upgrade.name); //adds the upgrade name to the list
+        }
+
+        return upgradeNames;
     }
 }

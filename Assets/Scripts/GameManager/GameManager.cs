@@ -2,8 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-using UpgradeManager; 
-
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
@@ -67,9 +65,9 @@ public class GameManager : MonoBehaviour
     }
 
     //UPGRADES
-    public List<Upgrade> GetUpgrades()
+    public List<string> GetUpgradeNames()
     {
-        return upgradeManager.ReturnUpgrades();
+        return upgradeManager.ReturnUpgradeNames();
     }
 
 }

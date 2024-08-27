@@ -6380,8 +6380,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 267897410}
   m_HandleRect: {fileID: 267897409}
   m_Direction: 0
-  m_Value: 1
-  m_Size: 0.9999999
+  m_Value: 0
+  m_Size: 0.99999994
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -6779,7 +6779,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1960241460}
   m_Direction: 2
   m_Value: 1.0000062
-  m_Size: 0.7845199
+  m_Size: 0.78452
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -13455,7 +13455,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a9d67079482eb24b9f70764d0a378b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Upgrades: []
+  Upgrades:
+  - name: fire rate
+    upgradeValues:
+    - 1
+    - 2
+    - 3
+    upgradeProgress: 0
+  - name: damage
+    upgradeValues:
+    - 1
+    - 2
+    - 3
+    upgradeProgress: 0
 --- !u!4 &1386027537
 Transform:
   m_ObjectHideFlags: 0
@@ -15295,6 +15307,7 @@ MonoBehaviour:
   enemySpawner: {fileID: 1860926612}
   restart: {fileID: 551504113}
   pauseManager: {fileID: 1189375086}
+  upgradeManager: {fileID: 1386027536}
 --- !u!4 &1526919284
 Transform:
   m_ObjectHideFlags: 0
