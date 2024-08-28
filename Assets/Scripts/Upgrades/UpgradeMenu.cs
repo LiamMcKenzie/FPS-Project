@@ -12,13 +12,15 @@ public class UpgradeMenu : MonoBehaviour
     void Start()
     {
         scrollRect = gameObject.GetComponent<ScrollRect>();
-        //TODO: instantiate upgrade object from list of upgrades.
-        //TODO: create gamemanager function for getting upgrade list.
+
         foreach (string upgradeName in GameManager.instance.GetUpgradeNames())
         {
             GameObject upgrade = Instantiate(UpgradePrefab, scrollRect.content);
+            UpgradeObject upgradeObject = upgrade.GetComponent<UpgradeObject>();
+
+            upgradeObject.upgradeName = upgradeName;
             //upgrade.GetComponentInChildren<Text>().text = upgradeName;
-            upgrade.GetComponentInChildren<TMP_Text>().text = upgradeName;
+            
         }
     }
 
