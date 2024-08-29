@@ -14011,7 +14011,6 @@ MonoBehaviour:
     - 150
     - 200
     - 250
-    upgradeProgress: 0
     upgradeSection: 0
   - name: Move Speed
     upgradeValues:
@@ -14019,7 +14018,6 @@ MonoBehaviour:
     - 12.5
     - 15
     - 17.5
-    upgradeProgress: 0
     upgradeSection: 0
   - name: Jump Height
     upgradeValues:
@@ -14027,34 +14025,30 @@ MonoBehaviour:
     - 10
     - 13
     - 16
-    upgradeProgress: 0
     upgradeSection: 0
   - name: Fire Rate
     upgradeValues:
     - 1
     - 2
     - 3
-    upgradeProgress: 0
     upgradeSection: 1
   - name: Damage
     upgradeValues:
     - 1
     - 2
     - 3
-    upgradeProgress: 0
     upgradeSection: 1
   - name: Automatic
     upgradeValues:
     - 0
     - 1
-    upgradeProgress: 0
     upgradeSection: 1
   - name: Piercing
     upgradeValues:
     - 0
     - 1
-    upgradeProgress: 0
     upgradeSection: 1
+  upgradeProgress: 
 --- !u!4 &1386027537
 Transform:
   m_ObjectHideFlags: 0

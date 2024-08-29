@@ -89,9 +89,14 @@ public class GameManager : MonoBehaviour
     {
         return upgradeManager.ReturnUpgradeProgress(index);
     }
-    public List<float> GetUpgradeValues(int index)
+    public List<float> GetUpgradeValues(int index) //keep in mind this uses index, so speed value is currently at index 1, but if i add more upgrades it will need to be adjusted.
     {
         return upgradeManager.ReturnUpgradeValues(index);
+    }
+
+    public float GetUpgradeValue(int index) //gets the current value for a specific upgrade
+    {
+        return GetUpgradeValues(index)[GetUpgradeProgress(index)];
     }
 
     public int GetUpgradePoints()
