@@ -63,10 +63,11 @@ public class UpgradeObject : MonoBehaviour
 
     public void BuyUpgrade()
     {
-        if(currentTicks < maxTicks)
+        if(currentTicks < maxTicks && GameManager.instance.GetUpgradePoints() > 0)
         {
             upgradeTicks[currentTicks].GetComponent<RawImage>().color = Color.cyan; //sets the tick image color
             currentTicks++;
+            GameManager.instance.DecreaseUpgradePoints();
         }
 
     }
