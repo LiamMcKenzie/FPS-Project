@@ -25,6 +25,8 @@ public class Pistol : MonoBehaviour
     
     void Update()
     {
+        fullyAutomatic = (GameManager.instance.GetUpgradeValue(5) == 1); //index 5 is currently automatic pistol, make sure this aligns
+
         if(GameManager.instance.CanControlPlayer())
         {
             ShootInput();
