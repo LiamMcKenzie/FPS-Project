@@ -7946,6 +7946,7 @@ GameObject:
   - component: {fileID: 809022439}
   - component: {fileID: 809022441}
   - component: {fileID: 809022440}
+  - component: {fileID: 809022442}
   m_Layer: 5
   m_Name: Upgrade Points
   m_TagString: Untagged
@@ -7992,7 +7993,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Points Remaining: '
+  m_text: 'Points Remaining: <b>'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 09fba9ae01bde8d49b7979b0bf23b5b2, type: 2}
   m_sharedMaterial: {fileID: -2613476036507900012, guid: 09fba9ae01bde8d49b7979b0bf23b5b2,
@@ -8070,6 +8071,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 809022438}
   m_CullTransparentMesh: 1
+--- !u!114 &809022442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 809022438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0fa089f129b03b4588a8820639bea98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &813625857
 GameObject:
   m_ObjectHideFlags: 0
@@ -13989,6 +14002,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a9d67079482eb24b9f70764d0a378b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  upgradePoints: 3
+  pointsPerWave: 3
   Upgrades:
   - name: Health
     upgradeValues:

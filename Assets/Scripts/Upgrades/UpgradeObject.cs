@@ -38,20 +38,36 @@ public class UpgradeObject : MonoBehaviour
         {
             GameObject tick = new GameObject("Tick" + i); //create new game object
             tick.AddComponent<RawImage>(); //add sprite renderer
+            tick.GetComponent<RawImage>().color = Color.gray;
             tick.transform.SetParent(tickParent); //adds new tick image to the parent
 
             tick.transform.localScale = new Vector3(1, 1, 1); //sets scale to 1 (otherwise it spawns at a weird size)
-
-        }
-        foreach (Transform child in tickParent) //gets all the children and adds to list
-        {
-            upgradeTicks.Add(child.gameObject);
+            upgradeTicks.Add(tick);
         }
 
         //Upgrade Text
         textObject = gameObject.GetComponentInChildren<TMP_Text>();
         textObject.text = upgradeName;
+    }
 
-        
+    void Update()
+    {
+        if(currentTicks == maxTicks)
+        {
+            foreach (var tick in upgradeTicks)
+            {
+                tick.GetComponent<RawImage>().color = Color.yellow;
+            }
+        }
+    }
+
+    public void BuyUpgrade()
+    {
+        if(currentTicks < maxTicks)
+        {
+            upgradeTicks[currentTicks].GetComponent<RawImage>().color = Color.cyan; //sets the tick image color
+            currentTicks++;
+        }
+
     }
 }

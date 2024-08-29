@@ -11,7 +11,8 @@ public enum UpgradeSection
 
 public class UpgradeManager : MonoBehaviour
 {
-   
+   public int upgradePoints = 0;
+   public int pointsPerWave = 3;
 
     [System.Serializable]
     public struct Upgrade
@@ -30,6 +31,16 @@ public class UpgradeManager : MonoBehaviour
     }
 
     public List<Upgrade> Upgrades = new List<Upgrade>();
+
+    public void ResetUpgradePoints()
+    {
+        upgradePoints = pointsPerWave;
+    }
+
+    public int GetUpgradePoints()
+    {
+        return upgradePoints;
+    }
 
     /// <summary>
     /// This function checks the index value to make sure its within range, if its not in range it picks the nearest value.

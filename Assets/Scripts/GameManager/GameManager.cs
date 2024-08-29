@@ -94,4 +94,9 @@ public class GameManager : MonoBehaviour
         return upgradeManager.ReturnUpgradeValues(index);
     }
 
+    public int GetUpgradePoints()
+    {
+        return upgradeManager.GetUpgradePoints();
+    }
+
 }
