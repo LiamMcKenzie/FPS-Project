@@ -56,15 +56,29 @@ public class UpgradeManager : MonoBehaviour
         return Upgrades.Count;
     }
 
+    public int ReturnUpgradeLevels(int index) //gets the amount of upgrade levels, used for displaying upgrade ticks. subtracts 1 because the first value is the default.
+    {
+        return Upgrades[GetIndexWithinRange(index)].upgradeValues.Count - 1;
+    }
+
     //I can't pass the entire upgrade struct so I'm passing through each value.
     public string ReturnUpgradeName(int index) 
     {
         return Upgrades[GetIndexWithinRange(index)].name;
     }
 
-    
     public UpgradeSection ReturnUpgradeSection(int index) 
     {
         return Upgrades[GetIndexWithinRange(index)].upgradeSection;
+    }
+
+    public int ReturnUpgradeProgress(int index) 
+    {
+        return Upgrades[GetIndexWithinRange(index)].upgradeProgress;
+    }
+
+    public List<float> ReturnUpgradeValues(int index) 
+    {
+        return Upgrades[GetIndexWithinRange(index)].upgradeValues;
     }
 }

@@ -13894,11 +13894,13 @@ MonoBehaviour:
     upgradeSection: 1
   - name: Automatic
     upgradeValues:
+    - 0
     - 1
     upgradeProgress: 0
     upgradeSection: 1
   - name: Piercing
     upgradeValues:
+    - 0
     - 1
     upgradeProgress: 0
     upgradeSection: 1
@@ -18337,7 +18339,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Upgrades (WIP)
+  m_text: Upgrades
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 09fba9ae01bde8d49b7979b0bf23b5b2, type: 2}
   m_sharedMaterial: {fileID: -2613476036507900012, guid: 09fba9ae01bde8d49b7979b0bf23b5b2,

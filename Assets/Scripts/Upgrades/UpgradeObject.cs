@@ -51,11 +51,7 @@ public class UpgradeObject : MonoBehaviour
         //Upgrade Text
         textObject = gameObject.GetComponentInChildren<TMP_Text>();
         textObject.text = upgradeName;
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
         
     }
 }

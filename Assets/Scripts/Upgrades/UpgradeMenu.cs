@@ -49,6 +49,9 @@ public class UpgradeMenu : MonoBehaviour
 
             //Assigns the correct values, these values are applied in the UpgradeObject.cs start function
             upgradeObject.upgradeName = GameManager.instance.GetUpgradeName(i);
+            upgradeObject.maxTicks = GameManager.instance.GetUpgradeLevelCount(i);
+            upgradeObject.currentTicks = GameManager.instance.GetUpgradeProgress(i);
+            
         }
 
         // foreach (string upgradeName in GameManager.instance.GetUpgradeNames())

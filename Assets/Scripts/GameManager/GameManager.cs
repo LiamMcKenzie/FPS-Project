@@ -71,6 +71,11 @@ public class GameManager : MonoBehaviour
         return upgradeManager.ReturnListSize();
     }
 
+    public int GetUpgradeLevelCount(int index)
+    {
+        return upgradeManager.ReturnUpgradeLevels(index);
+    }
+
     public string GetUpgradeName(int index)
     {
         return upgradeManager.ReturnUpgradeName(index);
@@ -78,6 +83,15 @@ public class GameManager : MonoBehaviour
     public UpgradeSection GetUpgradeSection(int index)
     {
         return upgradeManager.ReturnUpgradeSection(index);
+    }
+
+    public int GetUpgradeProgress(int index)
+    {
+        return upgradeManager.ReturnUpgradeProgress(index);
+    }
+    public List<float> GetUpgradeValues(int index)
+    {
+        return upgradeManager.ReturnUpgradeValues(index);
     }
 
 }
