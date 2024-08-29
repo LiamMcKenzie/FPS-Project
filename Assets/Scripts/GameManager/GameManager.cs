@@ -104,4 +104,9 @@ public class GameManager : MonoBehaviour
         upgradeManager.upgradePoints--;
     }
 
+    public void IncreaseUpgrade(int index)
+    {
+        upgradeManager.IncreaseProgress(index);
+    }
+
 }

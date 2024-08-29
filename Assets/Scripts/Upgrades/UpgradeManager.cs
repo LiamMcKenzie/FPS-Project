@@ -19,18 +19,25 @@ public class UpgradeManager : MonoBehaviour
     {
         public string name;
         public List<float> upgradeValues; //example fire rate = [0.5, 0.25, 0.1, 0.05]. Boolean upgrades will need to use 0 and 1
-        public int upgradeProgress;
         public UpgradeSection upgradeSection;
-        public Upgrade(string name, List<float> upgradeValues, int upgradeProgress, UpgradeSection upgradeSection)
+        public Upgrade(string name, List<float> upgradeValues, UpgradeSection upgradeSection)
         {
             this.name = name;
             this.upgradeValues = upgradeValues;
-            this.upgradeProgress = upgradeProgress;
             this.upgradeSection = upgradeSection;
         }
     }
 
     public List<Upgrade> Upgrades = new List<Upgrade>();
+    public List<int> upgradeProgress = new List<int>();
+
+    void Start()
+    {
+        for (int i = 0; i < ReturnListSize(); i++)
+        {
+            upgradeProgress.Add(0);
+        }
+    }
 
     public void ResetUpgradePoints()
     {
@@ -85,11 +92,16 @@ public class UpgradeManager : MonoBehaviour
 
     public int ReturnUpgradeProgress(int index) 
     {
-        return Upgrades[GetIndexWithinRange(index)].upgradeProgress;
+        return upgradeProgress[GetIndexWithinRange(index)];
     }
 
     public List<float> ReturnUpgradeValues(int index) 
     {
         return Upgrades[GetIndexWithinRange(index)].upgradeValues;
+    }
+
+    public void IncreaseProgress(int index)
+    {
+        upgradeProgress[index]++;
     }
 }

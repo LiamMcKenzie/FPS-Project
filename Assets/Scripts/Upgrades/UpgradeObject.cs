@@ -20,6 +20,7 @@ using TMPro;
 /// </remarks>
 public class UpgradeObject : MonoBehaviour
 {
+    public int upgradeIndex;
     public List<GameObject> upgradeTicks = new List<GameObject>();
     //private GameObject tickParent;
     public int maxTicks;
@@ -68,6 +69,7 @@ public class UpgradeObject : MonoBehaviour
             upgradeTicks[currentTicks].GetComponent<RawImage>().color = Color.cyan; //sets the tick image color
             currentTicks++;
             GameManager.instance.DecreaseUpgradePoints();
+            GameManager.instance.IncreaseUpgrade(upgradeIndex);
         }
 
     }
