@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 /// <summary>
 /// This object controls the functionality of each upgrade menu object.
@@ -23,10 +24,14 @@ public class UpgradeObject : MonoBehaviour
     //private GameObject tickParent;
     public int maxTicks;
     public int currentTicks = 0;
-    public string upgradeName;
+
+    private TMP_Text textObject;
+    [HideInInspector] public string upgradeName;
+
     // Start is called before the first frame update
     void Start()
     {
+        //Tick Images
         //This is a way of getting all the tick game objects at runtime without using the inspector.
         Transform tickParent = gameObject.transform.Find("Ticks"); //searches this object for the child named "Ticks"
         for (int i = 0; i < maxTicks; i++)
@@ -42,6 +47,10 @@ public class UpgradeObject : MonoBehaviour
         {
             upgradeTicks.Add(child.gameObject);
         }
+
+        //Upgrade Text
+        textObject = gameObject.GetComponentInChildren<TMP_Text>();
+        textObject.text = upgradeName;
     }
 
     // Update is called once per frame

@@ -65,9 +65,19 @@ public class GameManager : MonoBehaviour
     }
 
     //UPGRADES
-    public List<string> GetUpgradeNames()
+    //Gets upgrade count, and runs functions to get specific values using an ID.
+    public int GetUpgradeCount()
     {
-        return upgradeManager.ReturnUpgradeNames();
+        return upgradeManager.ReturnListSize();
+    }
+
+    public string GetUpgradeName(int index)
+    {
+        return upgradeManager.ReturnUpgradeName(index);
+    }
+    public UpgradeSection GetUpgradeSection(int index)
+    {
+        return upgradeManager.ReturnUpgradeSection(index);
     }
 
 }

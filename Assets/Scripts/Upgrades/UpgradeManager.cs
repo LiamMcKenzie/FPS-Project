@@ -2,14 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum UpgradeSection
+{
+    Player,
+    Pistol,
+    Shotgun
+}
+
 public class UpgradeManager : MonoBehaviour
 {
-    public enum UpgradeSection
-    {
-        Player,
-        Pistol,
-        Shotgun
-    }
+   
 
     [System.Serializable]
     public struct Upgrade
@@ -29,19 +31,40 @@ public class UpgradeManager : MonoBehaviour
 
     public List<Upgrade> Upgrades = new List<Upgrade>();
 
-    public List<Upgrade> ReturnUpgrades(){
-        return Upgrades;
+    /// <summary>
+    /// This function checks the index value to make sure its within range, if its not in range it picks the nearest value.
+    /// </summary>
+    /// <param name="index"></param>
+    /// <returns></returns>
+    public int GetIndexWithinRange(int index)
+    {
+        if(index > ReturnListSize()) //if desired index is over range, set to highest value
+        {
+            Debug.LogWarning("Trying to get upgrade index that is over range, setting to nearest value");
+            return ReturnListSize();
+        }else if (index < 0){ //if desired index is below 0, set to 0
+            Debug.LogWarning("Trying to get upgrade index that is less than 0, setting to 0");
+            return 0;
+        }else
+        {
+            return index; //this value is within range
+        }
     }
 
-    public List<string> ReturnUpgradeNames() //I can't pass the entire upgrade struct so I'm passing through each value.
+    public int ReturnListSize()
     {
-        List<string> upgradeNames = new List<string>();
+        return Upgrades.Count;
+    }
 
-        foreach (Upgrade upgrade in Upgrades) //loops through all upgrades
-        {
-            upgradeNames.Add(upgrade.name); //adds the upgrade name to the list
-        }
+    //I can't pass the entire upgrade struct so I'm passing through each value.
+    public string ReturnUpgradeName(int index) 
+    {
+        return Upgrades[GetIndexWithinRange(index)].name;
+    }
 
-        return upgradeNames;
+    
+    public UpgradeSection ReturnUpgradeSection(int index) 
+    {
+        return Upgrades[GetIndexWithinRange(index)].upgradeSection;
     }
 }
