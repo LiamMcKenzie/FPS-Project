@@ -33,7 +33,8 @@ public class UpgradeObject : MonoBehaviour
         {
             GameObject tick = new GameObject("Tick" + i); //create new game object
             tick.AddComponent<RawImage>(); //add sprite renderer
-            tick.transform.parent = tickParent; //adds new tick image to the parent
+            tick.transform.SetParent(tickParent); //adds new tick image to the parent
+
             tick.transform.localScale = new Vector3(1, 1, 1); //sets scale to 1 (otherwise it spawns at a weird size)
 
         }
