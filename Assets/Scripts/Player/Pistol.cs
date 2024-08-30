@@ -11,7 +11,7 @@ using UnityEngine;
 /// </remarks>
 public class Pistol : MonoBehaviour
 {
-    public int damage = 10;
+    public float damage = 10;
     public float fireRate = 0.5f;
     private bool isShooting = false;
     private bool bufferedShot = false;
@@ -22,10 +22,22 @@ public class Pistol : MonoBehaviour
     public Transform bulletSpawnPoint; //point on the gun where the particle should start from (barrel of gun)
 
     [SerializeField] private TrailRenderer trailRenderer;
+
+    public LayerMask layerMask;
     
+    void Start()
+    {
+        layerMask = LayerMask.GetMask("Enemy", "World"); //gets the layer mask for the enemy layer and world layer. Layermasks are index values
+    }
+
     void Update()
     {
-        fullyAutomatic = (GameManager.instance.GetUpgradeValue(5) == 1); //index 5 is currently automatic pistol, make sure this aligns
+        //Assigning Upgrade Values
+        //These values are index specfic, make sure to double check they align
+        damage = GameManager.instance.GetUpgradeValue(3); 
+        fireRate = GameManager.instance.GetUpgradeValue(4); 
+        randomSpread = GameManager.instance.GetUpgradeValue(5); 
+        fullyAutomatic = (GameManager.instance.GetUpgradeValue(6) == 1); 
 
         if(GameManager.instance.CanControlPlayer())
         {
@@ -95,8 +107,9 @@ public class Pistol : MonoBehaviour
 
         rayDirection.x += Random.Range(-randomSpread, randomSpread);
         rayDirection.y += Random.Range(-randomSpread, randomSpread);
+        Debug.Log(layerMask);
 
-        if (Physics.Raycast(rayOrigin, rayDirection, out hit))
+        if (Physics.Raycast(rayOrigin, rayDirection, out hit, Mathf.Infinity, layerMask)) 
         {
             TrailRenderer trail = Instantiate(trailRenderer, bulletSpawnPoint.position, Quaternion.identity);
             StartCoroutine(SpawnTrail(trail, hit.point));

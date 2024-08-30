@@ -2799,7 +2799,7 @@ GameObject:
   - component: {fileID: 179366146}
   - component: {fileID: 179366145}
   - component: {fileID: 179366144}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4690,7 +4690,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 384066284}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: World
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4770,7 +4770,7 @@ GameObject:
   - component: {fileID: 390780960}
   - component: {fileID: 390780959}
   - component: {fileID: 390780958}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4951,7 +4951,7 @@ GameObject:
   - component: {fileID: 418534992}
   - component: {fileID: 418534991}
   - component: {fileID: 418534990}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5162,7 +5162,7 @@ GameObject:
   - component: {fileID: 447755440}
   - component: {fileID: 447755439}
   - component: {fileID: 447755438}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5876,7 +5876,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 485743998}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Ramp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6484,7 +6484,7 @@ GameObject:
   - component: {fileID: 635942520}
   - component: {fileID: 635942519}
   - component: {fileID: 635942518}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6659,7 +6659,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 267897410}
   m_HandleRect: {fileID: 267897409}
   m_Direction: 0
-  m_Value: 1
+  m_Value: 0
   m_Size: 0.9999999
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -7118,7 +7118,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1960241460}
   m_Direction: 2
   m_Value: 1.0000057
-  m_Size: 0.7857142
+  m_Size: 0.78571427
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -7227,7 +7227,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 439
+    m_Bits: 951
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -9294,7 +9294,7 @@ GameObject:
   - component: {fileID: 926654451}
   - component: {fileID: 926654450}
   - component: {fileID: 926654449}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14003,7 +14003,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upgradePoints: 3
-  pointsPerWave: 3
+  pointsPerWave: 100
   Upgrades:
   - name: Health
     upgradeValues:
@@ -14015,28 +14015,41 @@ MonoBehaviour:
   - name: Move Speed
     upgradeValues:
     - 10
-    - 12.5
     - 15
-    - 17.5
+    - 20
+    - 25
     upgradeSection: 0
   - name: Jump Height
     upgradeValues:
     - 8
-    - 10
-    - 13
-    - 16
+    - 14
+    - 20
+    - 26
     upgradeSection: 0
-  - name: Fire Rate
-    upgradeValues:
-    - 1
-    - 2
-    - 3
-    upgradeSection: 1
   - name: Damage
     upgradeValues:
-    - 1
-    - 2
-    - 3
+    - 5
+    - 10
+    - 15
+    - 20
+    - 25
+    - 30
+    upgradeSection: 1
+  - name: Fire Rate
+    upgradeValues:
+    - 0.25
+    - 0.2
+    - 0.15
+    - 0.1
+    - 0.5
+    - 0.025
+    upgradeSection: 1
+  - name: Bullet Spread
+    upgradeValues:
+    - 0.15
+    - 0.1
+    - 0.05
+    - 0
     upgradeSection: 1
   - name: Automatic
     upgradeValues:
@@ -14437,7 +14450,7 @@ GameObject:
   - component: {fileID: 1431302735}
   - component: {fileID: 1431302734}
   - component: {fileID: 1431302733}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15346,7 +15359,7 @@ GameObject:
   - component: {fileID: 1489131047}
   - component: {fileID: 1489131046}
   - component: {fileID: 1489131045}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15762,7 +15775,7 @@ GameObject:
   - component: {fileID: 1524129911}
   - component: {fileID: 1524129910}
   - component: {fileID: 1524129909}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16290,7 +16303,7 @@ GameObject:
   - component: {fileID: 1590939497}
   - component: {fileID: 1590939496}
   - component: {fileID: 1590939495}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16736,7 +16749,7 @@ GameObject:
   - component: {fileID: 1613446930}
   - component: {fileID: 1613446929}
   - component: {fileID: 1613446928}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17857,7 +17870,7 @@ GameObject:
   - component: {fileID: 1724884867}
   - component: {fileID: 1724884869}
   - component: {fileID: 1724884870}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17987,6 +18000,9 @@ MonoBehaviour:
   bulletSpawnPoint: {fileID: 1030507124}
   trailRenderer: {fileID: 126221325362173700, guid: 75c9edaf975c5384c9b15df61854612d,
     type: 3}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &1750015661
 GameObject:
   m_ObjectHideFlags: 0

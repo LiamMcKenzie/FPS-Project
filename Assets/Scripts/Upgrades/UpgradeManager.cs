@@ -11,7 +11,7 @@ public enum UpgradeSection
 
 public class UpgradeManager : MonoBehaviour
 {
-   public int upgradePoints = 0;
+   [HideInInspector] public int upgradePoints = 0;
    public int pointsPerWave = 3;
 
     [System.Serializable]
@@ -37,6 +37,8 @@ public class UpgradeManager : MonoBehaviour
         {
             upgradeProgress.Add(0);
         }
+
+        ResetUpgradePoints();
     }
 
     public void ResetUpgradePoints()
