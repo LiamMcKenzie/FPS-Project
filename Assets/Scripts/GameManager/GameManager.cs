@@ -94,9 +94,18 @@ public class GameManager : MonoBehaviour
         return upgradeManager.ReturnUpgradeValues(index);
     }
 
-    public float GetUpgradeValue(int index) //gets the current value for a specific upgrade
+    /// <summary>
+    /// This function is used by various scripts to get the current value of an upgrade-able stat. such as move speed or bullet damage.
+    /// </summary>
+    /// <remarks>
+    /// USE: input upgrade name and upgrade type/section, returns the value for that upgrade.
+    /// </remarks>
+    /// <param name="name"></param>
+    /// <param name="upgradeType"></param>
+    /// <returns></returns>
+    public float GetUpgradeValue(string name, UpgradeSection upgradeType) 
     {
-        return GetUpgradeValues(index)[GetUpgradeProgress(index)];
+        return upgradeManager.ReturnUpgradeValue(name, upgradeType);
     }
 
     public int GetUpgradePoints()

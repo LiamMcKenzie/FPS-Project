@@ -33,11 +33,10 @@ public class Pistol : MonoBehaviour
     void Update()
     {
         //Assigning Upgrade Values
-        //These values are index specfic, make sure to double check they align
-        damage = GameManager.instance.GetUpgradeValue(3); 
-        fireRate = GameManager.instance.GetUpgradeValue(4); 
-        randomSpread = GameManager.instance.GetUpgradeValue(5); 
-        fullyAutomatic = (GameManager.instance.GetUpgradeValue(6) == 1); 
+        damage = GameManager.instance.GetUpgradeValue("Damage", UpgradeSection.Pistol); 
+        fireRate = GameManager.instance.GetUpgradeValue("Fire Rate", UpgradeSection.Pistol); 
+        randomSpread = GameManager.instance.GetUpgradeValue("Bullet Spread", UpgradeSection.Pistol); 
+        fullyAutomatic = GameManager.instance.GetUpgradeValue("Automatic", UpgradeSection.Pistol) == 1; 
 
         if(GameManager.instance.CanControlPlayer())
         {

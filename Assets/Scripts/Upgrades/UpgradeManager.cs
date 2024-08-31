@@ -106,4 +106,29 @@ public class UpgradeManager : MonoBehaviour
     {
         upgradeProgress[index]++;
     }
+    
+    //
+
+    public int FindUpgradeByName(string name, UpgradeSection section) //finds the index of an upgrade by name and section
+    {
+        for (int i = 0; i < Upgrades.Count; i++)
+        {
+            if (Upgrades[i].name == name && Upgrades[i].upgradeSection == section)
+            {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public float ReturnUpgradeValue(string name, UpgradeSection upgradeType) //gets the current value for a specific upgrade. Upgrade stats use this function
+    {
+        int index = FindUpgradeByName(name, upgradeType);
+        if(index == -1)
+        {
+            Debug.LogWarning($"Upgrade not found, returning 0. Upgrade name: {name}, Upgrade type: {upgradeType}");
+            return 0;
+        }
+        return ReturnUpgradeValues(index)[ReturnUpgradeProgress(index)];
+    }
 }
