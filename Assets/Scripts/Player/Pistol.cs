@@ -124,27 +124,26 @@ public class Pistol : MonoBehaviour
             Vector3 hitPoint = rayOrigin + (rayDirection * 1000); //if nothing was hit, the bullet will travel 1000 units forward
             StartCoroutine(SpawnTrail(trail, hitPoint));
         }
-
-        
     }
 
     private IEnumerator SpawnTrail(TrailRenderer trail, Vector3 hitPoint)
     {
+        Destroy(trail.gameObject, 1f); //destroys the trail after 1 second
+
         Vector3 startPos = trail.transform.position;
         float distance = Vector3.Distance(startPos, hitPoint);
         float remaingDistance = distance;
 
-        float bulletSpeed = 100f;
+        float bulletSpeed = 300f;
+        
 
-        while (remaingDistance >= 0) //while bullet is stil moving towards target
+        while (remaingDistance >= 0 && trail != null) //while bullet is stil moving towards target
         {
             trail.transform.position = Vector3.MoveTowards(trail.transform.position, hitPoint, bulletSpeed * Time.deltaTime);
 
             remaingDistance = Vector3.Distance(trail.transform.position, hitPoint); //updates the distance to the target
-             
+            
             yield return null;
         }
-
-        Destroy(trail.gameObject,trail.time); //trail.time is how long it takes the trail to fade out. So it will destroy the trail after its fully faded out.
     }
 }
