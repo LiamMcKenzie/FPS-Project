@@ -49,12 +49,16 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        jumpForce = GameManager.instance.GetUpgradeValue("Jump Height", UpgradeSection.Player); 
+        groundSettings.maxSpeed = GameManager.instance.GetUpgradeValue("Move Speed", UpgradeSection.Player); //acceleration and deceleration aren't effected by upgrades
+        airSettings.maxSpeed = GameManager.instance.GetUpgradeValue("Move Speed", UpgradeSection.Player); //air max speed and ground max speed are the same value
+
         if(GameManager.instance.CanControlPlayer())
         {
             moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
             if(Input.GetButtonDown("Jump") && characterController.isGrounded)
             {
-                playerVelocity.y = jumpForce;
+                playerVelocity.y = jumpForce; 
             }
         }else{
             moveInput = Vector3.zero;
@@ -84,6 +88,7 @@ public class PlayerMovement : MonoBehaviour
         moveDirectionNormal = wishDir;
         
         float wishSpeed = wishDir.magnitude;
+
         wishSpeed *= groundSettings.maxSpeed;
 
         Accelerate(wishDir, wishSpeed, groundSettings.acceleration);

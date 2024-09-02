@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-    public int health = 100;
+    public float health = 100;
     public GameObject deathEffect;
     
     void Update()
@@ -15,7 +15,7 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
 
         DamageNumberSpawner.Instance.SpawnDamageNumber(this.gameObject, damage);

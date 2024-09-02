@@ -8,7 +8,7 @@ public class DamageNumber : MonoBehaviour
     [HideInInspector] public Canvas canvas;
     public Vector3 screenPosition;
     private TMP_Text textObject;
-    [HideInInspector] public int damage;
+    [HideInInspector] public float damage;
 
     private Vector3 objectPosition;
 

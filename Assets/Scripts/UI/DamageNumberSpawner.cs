@@ -18,7 +18,7 @@ public class DamageNumberSpawner : MonoBehaviour
         Instance = this;
     }
 
-    public void SpawnDamageNumber(GameObject enemyParent, int damage)
+    public void SpawnDamageNumber(GameObject enemyParent, float damage)
     {
         GameObject damageNumber = Instantiate(damageNumberPrefab, enemyParent.transform.position, Quaternion.identity, canvasTransform);
 
