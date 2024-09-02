@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// 
+/// This script handles the shooting functionality for the pistol. 
+/// TODO: refactor this script to allow different weapon types. The code is already designed with future weapons in mind, but it will need to be moved to new scripts.
 /// </summary>
 /// 
 /// <remarks>
@@ -40,12 +41,16 @@ public class Pistol : MonoBehaviour
         fullyAutomatic = GameManager.instance.GetUpgradeValue("Automatic", UpgradeSection.Pistol) == 1; 
         bulletPiercing = GameManager.instance.GetUpgradeValue("Piercing", UpgradeSection.Pistol) == 1;
 
+        //Only allows shooting input while the player has control.
         if(GameManager.instance.CanControlPlayer())
         {
             ShootInput();
         }
     }
 
+    /// <summary>
+    /// Handles shooting input, buffering is handled here as well.
+    /// </summary>
     void ShootInput()
     {
         if (Input.GetMouseButtonDown(0)) //NEEDS REFACTORING. Use different input system. also needs to be modular for different weapon types
@@ -85,6 +90,10 @@ public class Pistol : MonoBehaviour
         isShooting = false;
     }
 
+    /// <summary>
+    /// Plays shoot animation and calls ShootBullet();
+    /// NOTE: A shotgun can be added by calling ShootBullet() in a for loop.
+    /// </summary>
     public void Shoot()
     {
         try //This code is prone to errors so I used a try catch to be safe.
@@ -98,8 +107,19 @@ public class Pistol : MonoBehaviour
         ShootBullet();
     }
 
+    /// <summary>
+    /// Sorts an array of raycast hits by distance from the camera. Used for piercing bullets.
+    /// </summary>
+    /// <remarks>
+    /// This script was written using ChatGPT, since I've not used Array.Sort before.
+    /// </remarks>
+    /// <param name="hits"></param>
+    /// <returns></returns>
     public RaycastHit[] SortRaycastHits(RaycastHit[] hits) 
     {
+        //Acording to this stackoverflow post, Array.sort uses an insertion sort for small arrays (our array is relatively small)
+        //https://stackoverflow.com/questions/1854604/which-sorting-algorithm-is-used-by-nets-array-sort-method
+
         System.Array.Sort(hits, (hit1, hit2) =>
         {
             float distance1 = Vector3.Distance(Camera.main.transform.position, hit1.point);
@@ -110,86 +130,55 @@ public class Pistol : MonoBehaviour
         return hits;
     }
 
+    /// <summary>
+    /// Shoots a single bullet raycast, applies damage, and spawns a bullet trail
+    /// </summary>
     public void ShootBullet()
     {
+        //Ray Position and Direction
         Vector3 rayOrigin = Camera.main.transform.position;
         Vector3 rayDirection = Camera.main.transform.forward;
 
         rayDirection.x += Random.Range(-randomSpread, randomSpread);
         rayDirection.y += Random.Range(-randomSpread, randomSpread);
+
 
         //Sends out a raycastAll, which returns all objects hit by a raycast. The hits are unsorted by default.
         RaycastHit[] hits;
         hits = SortRaycastHits(Physics.RaycastAll(rayOrigin, rayDirection, Mathf.Infinity, layerMask)); //sorts the hits by distance
-        
-        Debug.Log("Shoot");
+
+
+        //Looping through all raycast hits, and either dealing damage or stopping loop
         for (int i = 0; i < hits.Length; i++)
         {
-            Debug.Log(Vector3.Distance(Camera.main.transform.position, hits[i].point));
-        }
+            RaycastHit hit = hits[i];
 
-    }   
-
-    
-
-    public void ShootBulletOLD()
-    {
-        Vector3 rayOrigin = Camera.main.transform.position;
-        Vector3 rayDirection = Camera.main.transform.forward;
-
-        rayDirection.x += Random.Range(-randomSpread, randomSpread);
-        rayDirection.y += Random.Range(-randomSpread, randomSpread);
-
-        RaycastHit[] hits;
-        hits = Physics.RaycastAll(rayOrigin, rayDirection, Mathf.Infinity, layerMask);
-
-        Debug.Log("Shoot");
-
-        //Bullet Raycast
-        //NOTE: raycast all has a range from n to 1. n is the closest hit and 1 is the furthest hit. (n is number of hits)
-        //TODO: piercing also allows shooting through walls, switch for loop to count down, and break if an enemy isn't hit.
-        for (int i = 0; i < hits.Length; i++) //the highest value is the closest hit
-        {
-
-
-
-            RaycastHit hit = hits[i - 1];
-
-            //Debug.Log($"{hits.Length} - {i} - {hit.transform.name} - {hit.transform.tag}");
-
-            if (hit.transform.tag != "Enemy") //if the raycast has hit a wall, stop the bullet. (Otherwise player can shoot through walls)
+            if (hit.transform.tag == "Enemy") //if the raycast has hit an enemy, deal damage
             {
-
-                Debug.Log($"Hit Wall, {hit.transform.name}");
-                break;
-            }
-
-            if(hit.transform.tag == "Enemy")
-            {
-                Debug.Log($"{hits.Length} - {i} - {hit.transform.name} - {hit.transform.tag}");
                 hit.transform.GetComponent<EnemyHealth>().TakeDamage(damage);
+            }else //if the raycast didn't hit an enemy, it means it hit a wall. so break the loop
+            {
+                break;
             }
 
-            if(bulletPiercing == false) //if this doesn't have piercing, stop the bullet. This checks after at the end, so the first bullet will always shoot
+            if(bulletPiercing == false) //if player doesn't have bullet piercing stop the loop.
             {
                 break;
             }
         }
+
 
         //Spawn Bullet Trail
         Vector3 hitPoint = rayOrigin + (rayDirection * 1000); //if nothing was hit, the bullet will travel 1000 units forward
 
-        if(hits.Length > 0)
+        if(hits.Length > 0) //if the raycast hit something, set the hitpoint to the furthest hit.
         {
-            hitPoint = hits[0].point;
+            hitPoint = hits[hits.Length - 1].point; //if 5 objects were hit, hits.length will be 5. but the highest index would be 4. 
         }
 
         TrailRenderer trail = Instantiate(trailRenderer, bulletSpawnPoint.position, Quaternion.identity);
         StartCoroutine(SpawnTrail(trail, hitPoint));
-    }
-
-
-   
+    }   
 
     private IEnumerator SpawnTrail(TrailRenderer trail, Vector3 hitPoint)
     {
