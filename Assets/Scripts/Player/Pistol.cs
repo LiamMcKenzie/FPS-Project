@@ -18,6 +18,7 @@ public class Pistol : MonoBehaviour
     public GameObject pistolGameObject; //Holds the pistol game object. 
 
     public bool fullyAutomatic = false; 
+    public bool bulletPiercing = false; 
     public float randomSpread = 0.1f; 
     public Transform bulletSpawnPoint; //point on the gun where the particle should start from (barrel of gun)
 
@@ -37,6 +38,7 @@ public class Pistol : MonoBehaviour
         fireRate = GameManager.instance.GetUpgradeValue("Fire Rate", UpgradeSection.Pistol); 
         randomSpread = GameManager.instance.GetUpgradeValue("Bullet Spread", UpgradeSection.Pistol); 
         fullyAutomatic = GameManager.instance.GetUpgradeValue("Automatic", UpgradeSection.Pistol) == 1; 
+        bulletPiercing = GameManager.instance.GetUpgradeValue("Piercing", UpgradeSection.Pistol) == 1;
 
         if(GameManager.instance.CanControlPlayer())
         {
@@ -98,32 +100,51 @@ public class Pistol : MonoBehaviour
 
     public void ShootBullet()
     {
-        RaycastHit hit;
         Vector3 rayOrigin = Camera.main.transform.position;
-
-
         Vector3 rayDirection = Camera.main.transform.forward;
 
         rayDirection.x += Random.Range(-randomSpread, randomSpread);
         rayDirection.y += Random.Range(-randomSpread, randomSpread);
-        Debug.Log(layerMask);
 
-        if (Physics.Raycast(rayOrigin, rayDirection, out hit, Mathf.Infinity, layerMask)) 
+        RaycastHit[] hits;
+        hits = Physics.RaycastAll(rayOrigin, rayDirection, Mathf.Infinity, layerMask);
+
+
+        //Bullet Raycast
+        //NOTE: raycast all has a range from n to 1. n is the closest hit and 1 is the furthest hit. (n is number of hits)
+        //TODO: piercing also allows shooting through walls, switch for loop to count down, and break if an enemy isn't hit.
+        for (int i = 0; i < hits.Length; i++) //the highest value is the closest hit
         {
-            TrailRenderer trail = Instantiate(trailRenderer, bulletSpawnPoint.position, Quaternion.identity);
-            StartCoroutine(SpawnTrail(trail, hit.point));
-            Debug.Log(hit.transform.name);
+            // if(bulletPiercing == false)
+            // {
+            //     break;
+            // }
 
-            Debug.DrawRay(rayOrigin, rayDirection, Color.red, duration: 10f);
-            if (hit.transform.tag == "Enemy")
+            RaycastHit hit = hits[i];
+
+            if(i + 1 == hits.Length || bulletPiercing == true) //get the closest hit, index starts at 0 but hits.length starts at 1. 
             {
-                hit.transform.GetComponent<EnemyHealth>().TakeDamage(damage);
+                if (hit.transform.tag == "Enemy")
+                {
+                    hit.transform.GetComponent<EnemyHealth>().TakeDamage(damage);
+                }
             }
-        }else{ //if nothing was hit
-            TrailRenderer trail = Instantiate(trailRenderer, bulletSpawnPoint.position, Quaternion.identity);
-            Vector3 hitPoint = rayOrigin + (rayDirection * 1000); //if nothing was hit, the bullet will travel 1000 units forward
-            StartCoroutine(SpawnTrail(trail, hitPoint));
+            
+            Debug.Log($"{hits.Length} - {i + 1}, {hits[i].transform.name}");
+
+            
         }
+
+        //Spawn Bullet Trail
+        Vector3 hitPoint = rayOrigin + (rayDirection * 1000); //if nothing was hit, the bullet will travel 1000 units forward
+
+        if(hits.Length > 0)
+        {
+            hitPoint = hits[0].point;
+        }
+
+        TrailRenderer trail = Instantiate(trailRenderer, bulletSpawnPoint.position, Quaternion.identity);
+        StartCoroutine(SpawnTrail(trail, hitPoint));
     }
 
     private IEnumerator SpawnTrail(TrailRenderer trail, Vector3 hitPoint)
