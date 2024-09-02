@@ -98,7 +98,41 @@ public class Pistol : MonoBehaviour
         ShootBullet();
     }
 
+    public RaycastHit[] SortRaycastHits(RaycastHit[] hits) 
+    {
+        System.Array.Sort(hits, (hit1, hit2) =>
+        {
+            float distance1 = Vector3.Distance(Camera.main.transform.position, hit1.point);
+            float distance2 = Vector3.Distance(Camera.main.transform.position, hit2.point);
+            return distance1.CompareTo(distance2);
+        });
+
+        return hits;
+    }
+
     public void ShootBullet()
+    {
+        Vector3 rayOrigin = Camera.main.transform.position;
+        Vector3 rayDirection = Camera.main.transform.forward;
+
+        rayDirection.x += Random.Range(-randomSpread, randomSpread);
+        rayDirection.y += Random.Range(-randomSpread, randomSpread);
+
+        //Sends out a raycastAll, which returns all objects hit by a raycast. The hits are unsorted by default.
+        RaycastHit[] hits;
+        hits = SortRaycastHits(Physics.RaycastAll(rayOrigin, rayDirection, Mathf.Infinity, layerMask)); //sorts the hits by distance
+        
+        Debug.Log("Shoot");
+        for (int i = 0; i < hits.Length; i++)
+        {
+            Debug.Log(Vector3.Distance(Camera.main.transform.position, hits[i].point));
+        }
+
+    }   
+
+    
+
+    public void ShootBulletOLD()
     {
         Vector3 rayOrigin = Camera.main.transform.position;
         Vector3 rayDirection = Camera.main.transform.forward;
@@ -109,30 +143,37 @@ public class Pistol : MonoBehaviour
         RaycastHit[] hits;
         hits = Physics.RaycastAll(rayOrigin, rayDirection, Mathf.Infinity, layerMask);
 
+        Debug.Log("Shoot");
 
         //Bullet Raycast
         //NOTE: raycast all has a range from n to 1. n is the closest hit and 1 is the furthest hit. (n is number of hits)
         //TODO: piercing also allows shooting through walls, switch for loop to count down, and break if an enemy isn't hit.
         for (int i = 0; i < hits.Length; i++) //the highest value is the closest hit
         {
-            // if(bulletPiercing == false)
-            // {
-            //     break;
-            // }
 
-            RaycastHit hit = hits[i];
 
-            if(i + 1 == hits.Length || bulletPiercing == true) //get the closest hit, index starts at 0 but hits.length starts at 1. 
+
+            RaycastHit hit = hits[i - 1];
+
+            //Debug.Log($"{hits.Length} - {i} - {hit.transform.name} - {hit.transform.tag}");
+
+            if (hit.transform.tag != "Enemy") //if the raycast has hit a wall, stop the bullet. (Otherwise player can shoot through walls)
             {
-                if (hit.transform.tag == "Enemy")
-                {
-                    hit.transform.GetComponent<EnemyHealth>().TakeDamage(damage);
-                }
-            }
-            
-            Debug.Log($"{hits.Length} - {i + 1}, {hits[i].transform.name}");
 
-            
+                Debug.Log($"Hit Wall, {hit.transform.name}");
+                break;
+            }
+
+            if(hit.transform.tag == "Enemy")
+            {
+                Debug.Log($"{hits.Length} - {i} - {hit.transform.name} - {hit.transform.tag}");
+                hit.transform.GetComponent<EnemyHealth>().TakeDamage(damage);
+            }
+
+            if(bulletPiercing == false) //if this doesn't have piercing, stop the bullet. This checks after at the end, so the first bullet will always shoot
+            {
+                break;
+            }
         }
 
         //Spawn Bullet Trail
@@ -146,6 +187,9 @@ public class Pistol : MonoBehaviour
         TrailRenderer trail = Instantiate(trailRenderer, bulletSpawnPoint.position, Quaternion.identity);
         StartCoroutine(SpawnTrail(trail, hitPoint));
     }
+
+
+   
 
     private IEnumerator SpawnTrail(TrailRenderer trail, Vector3 hitPoint)
     {
