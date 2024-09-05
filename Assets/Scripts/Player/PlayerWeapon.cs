@@ -25,8 +25,6 @@ public class PlayerWeapon : MonoBehaviour
     private bool isShooting = false;
     private bool bufferedShot = false;
 
-
-
     public WeaponType currentWeapon = WeaponType.Pistol; //defaults to the pistol
 
     public TrailRenderer trailRenderer; 
@@ -79,8 +77,6 @@ public class PlayerWeapon : MonoBehaviour
         ResetShotCooldown();
     }
 
-
-    
     //=====GENERIC SHOOTING FUNCTIONS=====
 
     /// <summary>

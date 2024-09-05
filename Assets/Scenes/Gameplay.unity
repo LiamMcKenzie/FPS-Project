@@ -273,7 +273,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -0.0008671215}
-  m_SizeDelta: {x: 0, y: 700}
+  m_SizeDelta: {x: 0, y: 850}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &7768951
 MonoBehaviour:
@@ -7117,8 +7117,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1960241461}
   m_HandleRect: {fileID: 1960241460}
   m_Direction: 2
-  m_Value: 1.0000057
-  m_Size: 0.78571427
+  m_Value: 1.0000029
+  m_Size: 0.64705884
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -14061,6 +14061,26 @@ MonoBehaviour:
     - 0
     - 1
     upgradeSection: 1
+  - name: Damage
+    upgradeValues:
+    - 0
+    - 1
+    upgradeSection: 2
+  - name: Fire Rate
+    upgradeValues:
+    - 0
+    - 1
+    upgradeSection: 2
+  - name: Bullet Spread
+    upgradeValues:
+    - 0
+    - 1
+    upgradeSection: 2
+  - name: Pellets Per Shot
+    upgradeValues:
+    - 0
+    - 1
+    upgradeSection: 2
   upgradeProgress: 
 --- !u!4 &1386027537
 Transform:
