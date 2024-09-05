@@ -12,16 +12,25 @@ public enum WeaponType
 
 public class PlayerWeapon : MonoBehaviour
 {
-    public float fireRate = 0.5f; //NOTE: this needs to be refactored when I add other weapons, as each weapon will have its own fire rate
-    public float randomSpread = 0.1f; //NOTE: same as above, needs to be refactored
+    //TODO: the following variables need to be refactored to be modular for different weapon types
+    public float damage = 20;
+    public float fireRate = 0.5f; 
+    public float randomSpread = 0.1f; 
+
+    public bool bulletPiercing = false; 
+    public Transform bulletSpawnPoint; //point on the gun where the particle should start from (barrel of gun)
     
+    //Shot cooldown variables
     private float shotCooldown; //used for fire rate
     private bool isShooting = false;
     private bool bufferedShot = false;
 
+
+
     public WeaponType currentWeapon = WeaponType.Pistol; //defaults to the pistol
 
-    [HideInInspector]public LayerMask layerMask; //layer mask for raycasting
+    public TrailRenderer trailRenderer; 
+    [HideInInspector] public LayerMask layerMask; //layer mask for raycasting
 
     void Start()
     {
@@ -210,7 +219,7 @@ public class PlayerWeapon : MonoBehaviour
     public void ShootBullet()
     {
         //assign ray position and direction
-        Vector3 rayOrigin = Camera.main,transform.position;
+        Vector3 rayOrigin = Camera.main.transform.position;
         Vector3 rayDirection = Camera.main.transform.forward;
 
         //adds shot randomization, needs to be refactored to fetch the appropriate weapon's spread value
@@ -249,7 +258,7 @@ public class PlayerWeapon : MonoBehaviour
             hitPoint = hits[hits.Length - 1].point; //if 5 objects were hit, hits.length will be 5. but the highest index would be 4. 
         }
 
-        StartCoroutine(SpawnTrail(trail, hitPoint)); 
+        StartCoroutine(SpawnTrail(hitPoint)); 
     }
 
     /// <summary>

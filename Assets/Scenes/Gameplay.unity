@@ -17992,8 +17992,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a129865e91b8fd04c9bf419d9c163156, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 20
   fireRate: 0.5
+  randomSpread: 0.1
+  bulletPiercing: 0
+  bulletSpawnPoint: {fileID: 1030507124}
   currentWeapon: 0
+  trailRenderer: {fileID: 126221325362173700, guid: 75c9edaf975c5384c9b15df61854612d,
+    type: 3}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &1750015661
 GameObject:
   m_ObjectHideFlags: 0
