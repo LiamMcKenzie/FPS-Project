@@ -18023,6 +18023,7 @@ MonoBehaviour:
   randomSpread: 0.1
   bulletPiercing: 0
   fullyAutomatic: 0
+  pelletsPerShot: 0
   bulletSpawnPoint: {fileID: 1030507124}
   currentWeapon: 0
   trailRenderer: {fileID: 126221325362173700, guid: 75c9edaf975c5384c9b15df61854612d,

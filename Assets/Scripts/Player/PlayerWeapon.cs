@@ -20,6 +20,8 @@ public class PlayerWeapon : MonoBehaviour
     public bool bulletPiercing = false; 
     public bool fullyAutomatic = false;
 
+    public int pelletsPerShot; //used for shotgun
+
     #endregion
     public Transform bulletSpawnPoint; //point on the gun where the particle should start from (barrel of gun)
     
@@ -75,6 +77,7 @@ public class PlayerWeapon : MonoBehaviour
                 damage = GameManager.instance.GetUpgradeValue("Damage", UpgradeSection.Shotgun);
                 fireRate = GameManager.instance.GetUpgradeValue("Fire Rate", UpgradeSection.Shotgun);
                 randomSpread = GameManager.instance.GetUpgradeValue("Bullet Spread", UpgradeSection.Shotgun);
+                pelletsPerShot = (int)GameManager.instance.GetUpgradeValue("Pellets Per Shot", UpgradeSection.Shotgun);
                 break;
 
             // case WeaponType.RocketLauncher:
@@ -165,14 +168,16 @@ public class PlayerWeapon : MonoBehaviour
         {
             BufferShot();
         }
-
+        
+    
         if(bufferedShot && !isShooting) //if a shot is buffered and the player is not currently shooting, shoot
         {
             Shoot();
             bufferedShot = false;
         }
 
-        if(fullyAutomatic && Input.GetMouseButton(0) && !isShooting) //if the weapon is fully automatic
+        //if the weapon is fully automatic. 
+        if(fullyAutomatic && Input.GetMouseButton(0) && shotCooldown > 0 == false) //NOTE: The "shotcooldown > 0 == false" is the same as checking IsShooting. I had some order of operation issues with isShooting.
         {
             Shoot();
         }
@@ -211,7 +216,7 @@ public class PlayerWeapon : MonoBehaviour
                 break;
 
             case WeaponType.Shotgun:
-                for (int i = 0; i < 5; i++) //shotgun shoots 5 bullets. TODO: use a variable for the number of bullets
+                for (int i = 0; i < pelletsPerShot; i++) //shotgun shoots 5 bullets. TODO: use a variable for the number of bullets
                 {
                     ShootBullet();
                 }
