@@ -14063,23 +14063,29 @@ MonoBehaviour:
     upgradeSection: 1
   - name: Damage
     upgradeValues:
-    - 0
-    - 1
+    - 5
+    - 7.5
+    - 10
     upgradeSection: 2
   - name: Fire Rate
     upgradeValues:
-    - 0
+    - 1.5
     - 1
+    - 0.5
     upgradeSection: 2
   - name: Bullet Spread
     upgradeValues:
-    - 0
-    - 1
+    - 0.2
+    - 0.15
+    - 0.1
+    - 0.05
     upgradeSection: 2
   - name: Pellets Per Shot
     upgradeValues:
-    - 0
-    - 1
+    - 5
+    - 7
+    - 9
+    - 11
     upgradeSection: 2
   upgradeProgress: 
 --- !u!4 &1386027537
@@ -18016,6 +18022,7 @@ MonoBehaviour:
   fireRate: 0.5
   randomSpread: 0.1
   bulletPiercing: 0
+  fullyAutomatic: 0
   bulletSpawnPoint: {fileID: 1030507124}
   currentWeapon: 0
   trailRenderer: {fileID: 126221325362173700, guid: 75c9edaf975c5384c9b15df61854612d,

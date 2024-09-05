@@ -12,12 +12,15 @@ public enum WeaponType
 
 public class PlayerWeapon : MonoBehaviour
 {
+    #region Upgrade Variables
     //TODO: the following variables need to be refactored to be modular for different weapon types
     public float damage = 20;
     public float fireRate = 0.5f; 
     public float randomSpread = 0.1f; 
-
     public bool bulletPiercing = false; 
+    public bool fullyAutomatic = false;
+
+    #endregion
     public Transform bulletSpawnPoint; //point on the gun where the particle should start from (barrel of gun)
     
     //Shot cooldown variables
@@ -38,7 +41,7 @@ public class PlayerWeapon : MonoBehaviour
     void Update()
     {
         //TODO: assign upgradable values. (this could be a seperate function)
-
+        AssignUpgradeValues();
 
         //only allow input when the player has control
         if (GameManager.instance.CanControlPlayer())
@@ -47,6 +50,41 @@ public class PlayerWeapon : MonoBehaviour
             WeaponSwitchInput();
 
             HandleShotCooldown(); //the shot cooldown only decreases when the player has control
+        }
+    }
+
+    /// <summary>
+    /// Weapon stats are assigned based on the current weapon and upgrade level.
+    /// </summary>
+    void AssignUpgradeValues()
+    {
+        //I'm not sure what the best way of doing this is, I tried to think of a dynamic way of having variables for weapon stats.
+        //shared values will be overwritten by the value for the current weapon.
+        //values that aren't shared will always exist but won't be used when not in use. 
+        switch (currentWeapon)
+        {
+            case WeaponType.Pistol:
+                damage = GameManager.instance.GetUpgradeValue("Damage", UpgradeSection.Pistol);
+                fireRate = GameManager.instance.GetUpgradeValue("Fire Rate", UpgradeSection.Pistol);
+                randomSpread = GameManager.instance.GetUpgradeValue("Bullet Spread", UpgradeSection.Pistol);
+                bulletPiercing = GameManager.instance.GetUpgradeValue("Piercing", UpgradeSection.Pistol) == 1;
+                fullyAutomatic = GameManager.instance.GetUpgradeValue("Automatic", UpgradeSection.Pistol) == 1;
+                break;
+
+            case WeaponType.Shotgun:
+                damage = GameManager.instance.GetUpgradeValue("Damage", UpgradeSection.Shotgun);
+                fireRate = GameManager.instance.GetUpgradeValue("Fire Rate", UpgradeSection.Shotgun);
+                randomSpread = GameManager.instance.GetUpgradeValue("Bullet Spread", UpgradeSection.Shotgun);
+                break;
+
+            // case WeaponType.RocketLauncher:
+            //     damage = GameManager.instance.GetUpgradeValue("Damage", UpgradeSection.RocketLauncher);
+            //     fireRate = GameManager.instance.GetUpgradeValue("Fire Rate", UpgradeSection.RocketLauncher);
+            //     break;
+
+            default:
+
+                break;
         }
     }
 
@@ -65,14 +103,18 @@ public class PlayerWeapon : MonoBehaviour
         {
             SwitchWeapon(WeaponType.Shotgun);
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            SwitchWeapon(WeaponType.RocketLauncher);
-        }
+        // else if (Input.GetKeyDown(KeyCode.Alpha3))
+        // {
+        //     SwitchWeapon(WeaponType.RocketLauncher);
+        // }
     }
 
     public void SwitchWeapon(WeaponType weapon)
     {
+        if (currentWeapon == weapon) //if the player is already using the weapon they are trying to switch to, return
+        {
+            return;
+        }
         currentWeapon = weapon;
         ResetShotCooldown();
     }
@@ -124,11 +166,15 @@ public class PlayerWeapon : MonoBehaviour
             BufferShot();
         }
 
-    
         if(bufferedShot && !isShooting) //if a shot is buffered and the player is not currently shooting, shoot
         {
             Shoot();
             bufferedShot = false;
+        }
+
+        if(fullyAutomatic && Input.GetMouseButton(0) && !isShooting) //if the weapon is fully automatic
+        {
+            Shoot();
         }
     }
 
@@ -158,7 +204,6 @@ public class PlayerWeapon : MonoBehaviour
         
         //TODO: play animation here
 
-        //TODO: Switch case for different weapons and what function to shoot.
         switch (currentWeapon)
         {
             case WeaponType.Pistol: 
