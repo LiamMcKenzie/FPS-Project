@@ -28,7 +28,11 @@ public class PlayerWeapon : MonoBehaviour
     //Shot cooldown variables
     private float shotCooldown; //used for fire rate
     private bool isShooting = false;
+    private bool isSwitching = false;
     private bool bufferedShot = false;
+
+    public float switchSpeed = 0.5f;
+    private float switchCooldown = 0;
 
     public WeaponType currentWeapon = WeaponType.Pistol; //defaults to the pistol
 
@@ -60,6 +64,7 @@ public class PlayerWeapon : MonoBehaviour
             WeaponSwitchInput();
 
             HandleShotCooldown(); //the shot cooldown only decreases when the player has control
+            SwitchWeaponCooldown();
         }
     }
 
@@ -152,6 +157,7 @@ public class PlayerWeapon : MonoBehaviour
         }
 
         weaponAnimator.SetTrigger("Switch"); //play the switch animation
+        switchCooldown = switchSpeed; //set the switch cooldown
         
     }
 
@@ -170,6 +176,22 @@ public class PlayerWeapon : MonoBehaviour
         {
             isShooting = false;
             shotCooldown = 0; //just in case
+        }
+    }
+
+    /// <summary>
+    /// Weapon switch cooldown, used to prevent the player from switching weapons too quickly
+    /// </summary>
+    void SwitchWeaponCooldown()
+    {
+        if(switchCooldown > 0)
+        {
+            isSwitching = true;
+            switchCooldown -= Time.deltaTime;
+        }else
+        {
+            isSwitching = false;
+            switchCooldown = 0; 
         }
     }
 
@@ -203,14 +225,14 @@ public class PlayerWeapon : MonoBehaviour
         }
         
     
-        if(bufferedShot && !isShooting) //if a shot is buffered and the player is not currently shooting, shoot
+        if(bufferedShot && !isShooting && !isSwitching) //if a shot is buffered and the player is not currently shooting, shoot
         {
             Shoot();
             bufferedShot = false;
         }
 
         //if the weapon is fully automatic. 
-        if(fullyAutomatic && Input.GetMouseButton(0) && shotCooldown > 0 == false) //NOTE: The "shotcooldown > 0 == false" is the same as checking IsShooting. I had some order of operation issues with isShooting.
+        if(fullyAutomatic && Input.GetMouseButton(0) && shotCooldown > 0 == false && switchCooldown > 0 == false) //NOTE: The "shotcooldown > 0 == false" is the same as checking IsShooting. I had some order of operation issues with isShooting.
         {
             Shoot();
         }
@@ -222,7 +244,7 @@ public class PlayerWeapon : MonoBehaviour
     /// </summary>
     public void BufferShot()
     {
-        if (!isShooting)
+        if (!isShooting && !isSwitching) //if the player is not shooting or switching weapons, shoot. otherwise buffer the shot
         {
             Shoot();
         }
