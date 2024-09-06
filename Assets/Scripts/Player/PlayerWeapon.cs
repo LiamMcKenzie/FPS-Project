@@ -32,16 +32,24 @@ public class PlayerWeapon : MonoBehaviour
 
     public WeaponType currentWeapon = WeaponType.Pistol; //defaults to the pistol
 
-    public TrailRenderer trailRenderer; 
+    public TrailRenderer trailRenderer;
+
+    public GameObject ShotgunObject; 
+    public GameObject PistolObject;
+    private Animator weaponAnimator;
+    //public GameObject RocketLauncherObject;
     [HideInInspector] public LayerMask layerMask; //layer mask for raycasting
+
 
     void Start()
     {
+        SwitchWeapon(WeaponType.Pistol); //sets the default weapon
         layerMask = LayerMask.GetMask("Enemy", "World"); //gets the layer mask for the enemy layer and world layer.
     }
 
     void Update()
     {
+
         //TODO: assign upgradable values. (this could be a seperate function)
         AssignUpgradeValues();
 
@@ -114,12 +122,37 @@ public class PlayerWeapon : MonoBehaviour
 
     public void SwitchWeapon(WeaponType weapon)
     {
-        if (currentWeapon == weapon) //if the player is already using the weapon they are trying to switch to, return
+        if (currentWeapon != weapon) //if the player is switching to a new weapon, reset the cooldown
         {
-            return;
+            ResetShotCooldown();
         }
         currentWeapon = weapon;
-        ResetShotCooldown();
+
+        PistolObject.SetActive(false);
+        ShotgunObject.SetActive(false);
+        //RocketLauncherObject.SetActive(false);
+        switch (currentWeapon)
+        {
+            case WeaponType.Pistol:
+                PistolObject.SetActive(true);
+                bulletSpawnPoint = PistolObject.transform.Find("Barrel Point");
+                weaponAnimator = PistolObject.GetComponent<Animator>();
+                break;
+            case WeaponType.Shotgun:
+                ShotgunObject.SetActive(true);
+                bulletSpawnPoint = ShotgunObject.transform.Find("Barrel Point");
+                weaponAnimator = ShotgunObject.GetComponent<Animator>();
+                break;
+            case WeaponType.RocketLauncher:
+                //RocketLauncherObject.SetActive(true);
+                //bulletSpawnPoint = RocketLauncherObject.transform.Find("Barrel Point");
+                break;
+            default:
+                break;
+        }
+
+        weaponAnimator.SetTrigger("Switch"); //play the switch animation
+        
     }
 
     //=====GENERIC SHOOTING FUNCTIONS=====
@@ -208,6 +241,7 @@ public class PlayerWeapon : MonoBehaviour
         AddShotCooldown(fireRate);
         
         //TODO: play animation here
+        weaponAnimator.SetTrigger("Shoot");
 
         switch (currentWeapon)
         {

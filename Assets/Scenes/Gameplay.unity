@@ -5807,7 +5807,7 @@ Transform:
   m_GameObject: {fileID: 482172886}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.4, y: -0.25, z: 0.75}
+  m_LocalPosition: {x: 0.4, y: -0.25, z: 0.55}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5862,7 +5862,7 @@ GameObject:
   - component: {fileID: 482001910}
   - component: {fileID: 482172887}
   m_Layer: 6
-  m_Name: Shotgun
+  m_Name: Shotgun Object
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6682,7 +6682,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 267897409}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.9999999
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -7139,7 +7139,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1960241461}
   m_HandleRect: {fileID: 1960241460}
   m_Direction: 2
-  m_Value: 1.0000029
+  m_Value: 1.0000031
   m_Size: 0.64705884
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -10892,7 +10892,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1092374842}
   m_Layer: 6
-  m_Name: GameObject
+  m_Name: Barrel Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10907,7 +10907,7 @@ Transform:
   m_GameObject: {fileID: 1092374841}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.068, z: 0.506}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -18114,6 +18114,8 @@ MonoBehaviour:
   currentWeapon: 0
   trailRenderer: {fileID: 126221325362173700, guid: 75c9edaf975c5384c9b15df61854612d,
     type: 3}
+  ShotgunObject: {fileID: 482172886}
+  PistolObject: {fileID: 1979710294}
   layerMask:
     serializedVersion: 2
     m_Bits: 0
@@ -20396,7 +20398,7 @@ GameObject:
   - component: {fileID: 1979710295}
   - component: {fileID: 1979710296}
   m_Layer: 6
-  m_Name: Pistol
+  m_Name: Pistol Object
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
