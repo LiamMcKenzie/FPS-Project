@@ -7139,7 +7139,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1960241461}
   m_HandleRect: {fileID: 1960241460}
   m_Direction: 2
-  m_Value: 1.0000031
+  m_Value: 1.0000029
   m_Size: 0.64705884
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -14150,8 +14150,8 @@ MonoBehaviour:
   - name: Damage
     upgradeValues:
     - 5
-    - 7.5
-    - 10
+    - 7
+    - 9
     upgradeSection: 2
   - name: Fire Rate
     upgradeValues:
