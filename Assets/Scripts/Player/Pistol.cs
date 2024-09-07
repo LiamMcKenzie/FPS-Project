@@ -12,8 +12,8 @@ using UnityEngine;
 /// </remarks>
 public class Pistol : MonoBehaviour
 {
-    public float damage = 10;
-    public float fireRate = 0.5f;
+    public float damage = 20;
+    public float fireRate = 0.05f;
     private bool isShooting = false;
     private bool bufferedShot = false;
     public GameObject pistolGameObject; //Holds the pistol game object. 
@@ -23,9 +23,9 @@ public class Pistol : MonoBehaviour
     public float randomSpread = 0.1f; 
     public Transform bulletSpawnPoint; //point on the gun where the particle should start from (barrel of gun)
 
-    [SerializeField] private TrailRenderer trailRenderer;
+    [SerializeField] private TrailRenderer trailRenderer; //the trail prefab
 
-    public LayerMask layerMask;
+    [HideInInspector]public LayerMask layerMask;
     
     void Start()
     {
