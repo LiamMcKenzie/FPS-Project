@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Restart restart;
     [SerializeField] private PauseManager pauseManager;
     [SerializeField] private UpgradeManager upgradeManager;
+
+    [SerializeField] private EnemyStatManager enemyStatManager;
     
     void Awake()
     {
@@ -123,4 +125,17 @@ public class GameManager : MonoBehaviour
         upgradeManager.IncreaseProgress(index);
     }
 
+    //ENEMY STATS
+
+
+    /// <summary>
+    /// This function is used to get a specific stat value for a type of enemy 
+    /// </summary>
+    /// <param name="name"></param>
+    /// <param name="enemyType"></param>
+    /// <returns></returns>
+    public float GetEnemyStat(string name, EnemyType enemyType)
+    {
+        return enemyStatManager.ReturnSpecificValue(name, enemyType);
+    }
 }

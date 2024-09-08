@@ -7139,7 +7139,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1960241461}
   m_HandleRect: {fileID: 1960241460}
   m_Direction: 2
-  m_Value: 1.0000029
+  m_Value: 1.0000031
   m_Size: 0.64705884
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -17984,7 +17984,7 @@ GameObject:
   - component: {fileID: 1724884870}
   m_Layer: 7
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
