@@ -4,10 +4,10 @@ using UnityEngine;
 
 public enum EnemyType
 {
-    Standard,
-    Swarm,
+    Ranged,
+    Melee,
     Boss,
-    Speedy
+    Fast
 }
 
 public class EnemyStatManager : MonoBehaviour

@@ -17,6 +17,7 @@ public class EnemyNavigation : MonoBehaviour
     private List<BoxCollider> checkpoints = new List<BoxCollider>();
     private int targetIndex = 0;
     private NavMeshAgent agent;
+    public EnemyType enemyType;
 
     void Start()
     {
@@ -25,6 +26,8 @@ public class EnemyNavigation : MonoBehaviour
         //sets the first destination
         agent = GetComponent<NavMeshAgent>();       
         agent.SetDestination(GetRandomPosInBounds(checkpoints[targetIndex]));
+
+        agent.speed = GameManager.instance.GetEnemyStat("MoveSpeed", enemyType);
     }
 
     void Update()
