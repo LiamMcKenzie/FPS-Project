@@ -47,7 +47,10 @@ public class PlayerWeapon : MonoBehaviour
 
     void Start()
     {
-        SwitchWeapon(WeaponType.Pistol); //sets the default weapon
+        //SwitchWeapon(WeaponType.Pistol); //sets the default weapon
+        PistolObject.SetActive(true);
+        bulletSpawnPoint = PistolObject.transform.Find("Barrel Point");
+        weaponAnimator = PistolObject.GetComponent<Animator>();
         layerMask = LayerMask.GetMask("Enemy", "World"); //gets the layer mask for the enemy layer and world layer.
     }
 
@@ -127,10 +130,11 @@ public class PlayerWeapon : MonoBehaviour
 
     public void SwitchWeapon(WeaponType weapon)
     {
-        if (currentWeapon != weapon) //if the player is switching to a new weapon, reset the cooldown
+        if (currentWeapon == weapon) //if the player is trying to switch to the same weapon, return
         {
-            ResetShotCooldown();
+            return;
         }
+        ResetShotCooldown();
         currentWeapon = weapon;
 
         PistolObject.SetActive(false);
