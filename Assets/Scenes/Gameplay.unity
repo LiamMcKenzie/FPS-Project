@@ -17983,6 +17983,7 @@ GameObject:
   - component: {fileID: 1724884867}
   - component: {fileID: 1724884869}
   - component: {fileID: 1724884870}
+  - component: {fileID: 1724884871}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -18121,6 +18122,19 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 0
+--- !u!114 &1724884871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1724884861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9f00a307016017439e0d6a00667b690, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
 --- !u!1 &1750015661
 GameObject:
   m_ObjectHideFlags: 0
@@ -19802,11 +19816,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemies:
-  - count: 3
+  - count: 0
     enemyPrefab: {fileID: 964486335791562985, guid: c348238c279abba47822a255009b8fb3,
       type: 3}
     spawnArea: {fileID: 1287164040}
-  - count: 3
+  - count: 1
     enemyPrefab: {fileID: 964486335791562985, guid: c348238c279abba47822a255009b8fb3,
       type: 3}
     spawnArea: {fileID: 1452242580}

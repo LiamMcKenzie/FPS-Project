@@ -13,9 +13,10 @@ public class EnemyAttack : MonoBehaviour
 
     private float shotCooldown = 0f;
     private bool canAttack = false;
+    public GameObject projectile;
     void Start()
     {
-        layerMask = LayerMask.GetMask("World");
+        layerMask = LayerMask.GetMask("World", "Player");
         player = GameObject.FindGameObjectWithTag("Player");
         AssignEnemyStats();
     }
@@ -54,8 +55,22 @@ public class EnemyAttack : MonoBehaviour
         return false;
     }
 
+    void AttackCooldown()
+    {
+        if (shotCooldown > 0)
+        {
+            canAttack = false;
+            shotCooldown -= Time.deltaTime;
+        }else
+        {
+            canAttack = true;
+            shotCooldown = 0;
+        }
+    }
+
     void Attack()
     {
+        shotCooldown = attackSpeed;
         switch (enemyType)
         {
             case EnemyType.Melee:
@@ -63,7 +78,7 @@ public class EnemyAttack : MonoBehaviour
                 break;
 
             case EnemyType.Ranged:
-
+                RangedAttack();
                 break;
 
             case EnemyType.Fast:
@@ -79,16 +94,12 @@ public class EnemyAttack : MonoBehaviour
         }
     }
 
-    void AttackCooldown()
+    void RangedAttack()
     {
-        if (shotCooldown > 0)
-        {
-            canAttack = false;
-            shotCooldown -= Time.deltaTime;
-        }else
-        {
-            canAttack = true;
-            shotCooldown = 0;
-        }
+        GameObject enemyAttack = Instantiate(projectile, transform.position, transform.rotation); 
+        enemyAttack.GetComponent<DamagePlayer>().damage = damage;
+        Destroy(enemyAttack, 5f);
+        
     }
+   
 }

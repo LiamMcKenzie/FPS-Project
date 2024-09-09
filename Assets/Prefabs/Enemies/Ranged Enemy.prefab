@@ -195,6 +195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathParent: {fileID: 0}
+  enemyType: 0
 --- !u!114 &6627130159934911344
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,6 +209,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyType: 0
+  projectile: {fileID: 6907349986736630688, guid: 230a7ab4d07d7794cb5e80df7b06faca,
+    type: 3}
 --- !u!54 &-4308227598836259154
 Rigidbody:
   m_ObjectHideFlags: 0
