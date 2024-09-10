@@ -96,7 +96,11 @@ public class EnemyAttack : MonoBehaviour
 
     void RangedAttack()
     {
-        GameObject enemyAttack = Instantiate(projectile, transform.position, transform.rotation); 
+        Vector3 spawnPosition = transform.position + new Vector3(0f, 1f, 0f);
+        Vector3 direction = player.transform.position - spawnPosition;
+        Quaternion rotation = Quaternion.LookRotation(direction);
+
+        GameObject enemyAttack = Instantiate(projectile, spawnPosition, rotation); 
         enemyAttack.GetComponent<DamagePlayer>().damage = damage;
         Destroy(enemyAttack, 5f);
         

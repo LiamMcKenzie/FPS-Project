@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private UpgradeManager upgradeManager;
 
     [SerializeField] private EnemyStatManager enemyStatManager;
+    [SerializeField] private PlayerHealth playerHealth;
     
     void Awake()
     {
@@ -137,5 +138,11 @@ public class GameManager : MonoBehaviour
     public float GetEnemyStat(string name, EnemyType enemyType)
     {
         return enemyStatManager.ReturnSpecificValue(name, enemyType);
+    }
+
+    //PLAYER HEALTH
+    public float GetPlayerHealth()
+    {
+        return playerHealth.ReturnHealth();
     }
 }

@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 742867496185996678}
   - component: {fileID: 5202406289542097721}
   - component: {fileID: 4719408012140381617}
+  - component: {fileID: 8273459648368845008}
   m_Layer: 0
   m_Name: Projectile
   m_TagString: Untagged
@@ -154,6 +155,19 @@ MonoBehaviour:
   damage: 0
   deathEffect: {fileID: 8595460629861946533, guid: a5036400b82099b48a291084f4e96f5f,
     type: 3}
+--- !u!114 &8273459648368845008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6907349986736630688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59a9b7cbfea92524e825867a8a975a74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 20
 --- !u!1 &9143346534104832363
 GameObject:
   m_ObjectHideFlags: 0

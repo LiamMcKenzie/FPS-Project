@@ -24,4 +24,9 @@ public class PlayerHealth : MonoBehaviour
         Debug.Log("Player died");
         GameManager.instance.UpdateGameState(GameState.GameOver); //sets gamestate to gameover
     }
+
+    public float ReturnHealth()
+    {
+        return health;
+    }
 }
