@@ -5,37 +5,43 @@ using UnityEngine;
 public class SimpleEnemySpawner : MonoBehaviour
 {
 
-    [System.Serializable]
-    public struct EnemySquad
-    {
-        public int count;
-        public GameObject enemyPrefab;
-        public BoxCollider spawnArea;
-        public EnemySquad(int count, GameObject enemyPrefab, BoxCollider spawnArea)
-        {
-            this.count = count;
-            this.enemyPrefab = enemyPrefab;
-            this.spawnArea = spawnArea;
-        }
-    }
-
-    [SerializeField] public List<EnemySquad> enemies = new List<EnemySquad>();
-
+    public List<Wave> waves = new List<Wave>();
     [SerializeField] public List<GameObject> spawnedEnemies = new List<GameObject>();
+    
+    [Header("Spawn Areas")]
+    public BoxCollider rightSpawnArea;
+    public BoxCollider leftSpawnArea;
 
-    public void SpawnEnemies()
+    /// <summary>
+    /// Start spawning enemies for the current wave
+    /// </summary>
+    public void SpawnEnemies(int waveIndex)
     {
         //spawns all enemies in the list
-        for (int i = 0; i < enemies.Count; i++) //loops through all "squads".
+        for (int i = 0; i < waves[waveIndex].enemies.Count; i++) //loops through all "squads".
         {
-            for (int j = 0; j < enemies[i].count; j++) //loops through all enemies in the squad
+            for (int j = 0; j < waves[waveIndex].enemies[i].count; j++) //loops through all enemies in the squad
             {
-                GameObject enemy = Spawn(enemies[i].enemyPrefab, GetRandomPosInBounds(enemies[i].spawnArea));
+                GameObject enemy = Spawn(waves[waveIndex].enemies[i].enemyPrefab, GetRandomPosInBounds(GetSpawnPosition(waves[waveIndex].enemies[i].spawnArea)));
                 spawnedEnemies.Add(enemy);
-                enemy.GetComponent<EnemyNavigation>().pathParent = enemies[i].spawnArea.transform.gameObject; //sets the path parent for the enemy to the spawn area
+                enemy.GetComponent<EnemyNavigation>().pathParent = GetSpawnPosition(waves[waveIndex].enemies[i].spawnArea).gameObject; //sets the path parent for the enemy to the spawn area
             }
         }
     }
+
+    // public void SpawnEnemies()
+    // {
+    //     //spawns all enemies in the list
+    //     for (int i = 0; i < enemies.Count; i++) //loops through all "squads".
+    //     {
+    //         for (int j = 0; j < enemies[i].count; j++) //loops through all enemies in the squad
+    //         {
+    //             GameObject enemy = Spawn(enemies[i].enemyPrefab, GetRandomPosInBounds(enemies[i].spawnArea));
+    //             spawnedEnemies.Add(enemy);
+    //             enemy.GetComponent<EnemyNavigation>().pathParent = enemies[i].spawnArea.transform.gameObject; //sets the path parent for the enemy to the spawn area
+    //         }
+    //     }
+    // }
 
     /// <summary>
     /// returns a random position within the bounds of a box collider. NOTE: always spawns at the bottom of the box collider
@@ -75,6 +81,19 @@ public class SimpleEnemySpawner : MonoBehaviour
             spawnedEnemies.Remove(enemy);
         }else{
             Debug.LogWarning("Tried to remove enemy from spawnedEnemies list, but enemy was not found in list");
+        }
+    }
+
+    public BoxCollider GetSpawnPosition(SpawnArea spawnArea)
+    {
+        switch (spawnArea)
+        {
+            case SpawnArea.Left:
+                return leftSpawnArea;
+            case SpawnArea.Right:
+                return rightSpawnArea;
+            default:
+                return null;
         }
     }
 }

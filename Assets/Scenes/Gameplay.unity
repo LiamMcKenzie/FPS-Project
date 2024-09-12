@@ -7213,7 +7213,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1960241461}
   m_HandleRect: {fileID: 1960241460}
   m_Direction: 2
-  m_Value: 1.0000031
+  m_Value: 1.0000029
   m_Size: 0.64705884
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -12821,7 +12821,7 @@ GameObject:
   - component: {fileID: 1287164039}
   - component: {fileID: 1287164040}
   m_Layer: 0
-  m_Name: Top Path
+  m_Name: left Path
   m_TagString: Path
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15023,7 +15023,7 @@ GameObject:
   - component: {fileID: 1452242579}
   - component: {fileID: 1452242580}
   m_Layer: 0
-  m_Name: Bottom Path
+  m_Name: right Path
   m_TagString: Path
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19890,16 +19890,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f53bca59e9a585d49b1346f8cdbeeefb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemies:
-  - count: 5
-    enemyPrefab: {fileID: 964486335791562985, guid: c348238c279abba47822a255009b8fb3,
-      type: 3}
-    spawnArea: {fileID: 1287164040}
-  - count: 3
-    enemyPrefab: {fileID: 964486335791562985, guid: c348238c279abba47822a255009b8fb3,
-      type: 3}
-    spawnArea: {fileID: 1452242580}
+  waves:
+  - {fileID: 11400000, guid: 4232d607372eaa7489e39da44bbfaa17, type: 2}
   spawnedEnemies: []
+  rightSpawnArea: {fileID: 1452242580}
+  leftSpawnArea: {fileID: 1287164040}
 --- !u!1 &1861162726
 GameObject:
   m_ObjectHideFlags: 0

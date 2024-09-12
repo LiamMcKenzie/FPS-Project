@@ -27,8 +27,7 @@ public class GameManager : MonoBehaviour
     public void StartWave()
     {
         UpdateGameState(GameState.GamePlay);
-        enemySpawner.SpawnEnemies(); //This needs to be changed to use remaining enemies
-
+        enemySpawner.SpawnEnemies(0); 
     }
 
     public GameState GetGameState()
