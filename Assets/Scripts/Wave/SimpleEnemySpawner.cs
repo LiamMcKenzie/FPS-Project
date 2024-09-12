@@ -5,7 +5,7 @@ using UnityEngine;
 public class SimpleEnemySpawner : MonoBehaviour
 {
 
-    public List<Wave> waves = new List<Wave>();
+    //public List<Wave> waves = new List<Wave>();
     [SerializeField] public List<GameObject> spawnedEnemies = new List<GameObject>();
     
     [Header("Spawn Areas")]
@@ -15,16 +15,16 @@ public class SimpleEnemySpawner : MonoBehaviour
     /// <summary>
     /// Start spawning enemies for the current wave
     /// </summary>
-    public void SpawnEnemies(int waveIndex)
+    public void SpawnEnemies(Wave wave)
     {
         //spawns all enemies in the list
-        for (int i = 0; i < waves[waveIndex].enemies.Count; i++) //loops through all "squads".
+        for (int i = 0; i < wave.enemies.Count; i++) //loops through all "squads".
         {
-            for (int j = 0; j < waves[waveIndex].enemies[i].count; j++) //loops through all enemies in the squad
+            for (int j = 0; j < wave.enemies[i].count; j++) //loops through all enemies in the squad
             {
-                GameObject enemy = Spawn(waves[waveIndex].enemies[i].enemyPrefab, GetRandomPosInBounds(GetSpawnPosition(waves[waveIndex].enemies[i].spawnArea)));
+                GameObject enemy = Spawn(wave.enemies[i].enemyPrefab, GetRandomPosInBounds(GetSpawnPosition(wave.enemies[i].spawnArea)));
                 spawnedEnemies.Add(enemy);
-                enemy.GetComponent<EnemyNavigation>().pathParent = GetSpawnPosition(waves[waveIndex].enemies[i].spawnArea).gameObject; //sets the path parent for the enemy to the spawn area
+                enemy.GetComponent<EnemyNavigation>().pathParent = GetSpawnPosition(wave.enemies[i].spawnArea).gameObject; //sets the path parent for the enemy to the spawn area
             }
         }
     }

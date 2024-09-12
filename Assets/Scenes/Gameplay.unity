@@ -14118,6 +14118,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa5b5415795f6334b9048d6eda351264, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentWave: 0
+  waves:
+  - {fileID: 11400000, guid: 4232d607372eaa7489e39da44bbfaa17, type: 2}
+  - {fileID: 11400000, guid: 6d33a1027bdefd440aea14a842236cf1, type: 2}
+  - {fileID: 11400000, guid: d4bcc98548d1ab84fa2f70ed47846a7b, type: 2}
+  - {fileID: 11400000, guid: 27c3eafea2505ab468adb1809ea88704, type: 2}
 --- !u!4 &1377338906
 Transform:
   m_ObjectHideFlags: 0
@@ -14163,7 +14169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upgradePoints: 3
-  pointsPerWave: 100
+  pointsPerWave: 3
   Upgrades:
   - name: Health
     upgradeValues:
@@ -16090,6 +16096,7 @@ MonoBehaviour:
   upgradeManager: {fileID: 1386027536}
   enemyStatManager: {fileID: 2093709196}
   playerHealth: {fileID: 1724884871}
+  waveManager: {fileID: 1377338905}
 --- !u!4 &1526919284
 Transform:
   m_ObjectHideFlags: 0
@@ -19890,8 +19897,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f53bca59e9a585d49b1346f8cdbeeefb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waves:
-  - {fileID: 11400000, guid: 4232d607372eaa7489e39da44bbfaa17, type: 2}
   spawnedEnemies: []
   rightSpawnArea: {fileID: 1452242580}
   leftSpawnArea: {fileID: 1287164040}

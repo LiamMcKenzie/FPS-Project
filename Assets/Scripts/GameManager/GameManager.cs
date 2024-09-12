@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private EnemyStatManager enemyStatManager;
     [SerializeField] private PlayerHealth playerHealth;
+    [SerializeField] private WaveManager waveManager;
     
     void Awake()
     {
@@ -24,10 +25,20 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void OpenUpgradeMenu()
+    {
+        UpdateGameState(GameState.Setup);
+        upgradeManager.ResetUpgradePoints();
+    }
+
     public void StartWave()
     {
         UpdateGameState(GameState.GamePlay);
-        enemySpawner.SpawnEnemies(0); 
+        enemySpawner.SpawnEnemies(waveManager.ReturnWave()); 
+    }
+    public void RestartWave()
+    {
+        restart.ReloadScene();
     }
 
     public GameState GetGameState()
@@ -45,10 +56,6 @@ public class GameManager : MonoBehaviour
         return gameStateManager.ReturnPlayerControl() && pauseManager.ReturnIsPaused() == false;
     }
 
-    public void RestartWave()
-    {
-        restart.ReloadScene();
-    }
 
     public List<GameObject> GetEnemyList()
     {

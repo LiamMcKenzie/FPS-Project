@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class WaveManager : MonoBehaviour
 {
+    public int currentWave = 0; 
+    public List<Wave> waves = new List<Wave>();
     public void WaveComplete()
     {
         //TODO: include check if this is last wave. if so set state to GameWin, else move to next wave
@@ -11,7 +13,15 @@ public class WaveManager : MonoBehaviour
         {
             if(GameManager.instance.GetEnemyList().Count == 0)
             {
-                GameManager.instance.UpdateGameState(GameState.GameWin);
+                if(IsLastWave())
+                {
+                    GameManager.instance.UpdateGameState(GameState.GameWin);
+                }
+                else
+                {
+                    currentWave++;
+                    GameManager.instance.OpenUpgradeMenu();
+                }
             }
         }
     }
@@ -22,5 +32,15 @@ public class WaveManager : MonoBehaviour
         {
             WaveComplete();
         }
+    }
+
+    public bool IsLastWave()
+    {
+        return currentWave == waves.Count - 1;
+    }
+
+    public Wave ReturnWave()
+    {
+        return waves[currentWave];
     }
 }
