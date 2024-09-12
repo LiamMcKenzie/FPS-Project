@@ -20,4 +20,12 @@ public class DamagePlayer : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    void Update()
+    {
+        if(GameManager.instance.GetGameState() != GameState.GamePlay) //deletes the projectile when the wave or game ends
+        {
+            Destroy(gameObject);
+        }
+    }
 }
