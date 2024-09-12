@@ -37,6 +37,7 @@ public class PlayerWeapon : MonoBehaviour
     public WeaponType currentWeapon = WeaponType.Pistol; //defaults to the pistol
 
     public TrailRenderer trailRenderer;
+    public GameObject bulletTrailPrefab;
 
     public GameObject ShotgunObject; 
     public GameObject PistolObject;
@@ -364,7 +365,9 @@ public class PlayerWeapon : MonoBehaviour
             hitPoint = hits[hits.Length - 1].point; //if 5 objects were hit, hits.length will be 5. but the highest index would be 4. 
         }
 
-        StartCoroutine(SpawnTrail(hitPoint)); 
+        //StartCoroutine(SpawnTrail(hitPoint)); 
+
+        Instantiate(bulletTrailPrefab, bulletSpawnPoint.position, Quaternion.LookRotation(hitPoint - bulletSpawnPoint.position));
     }
 
     /// <summary>
