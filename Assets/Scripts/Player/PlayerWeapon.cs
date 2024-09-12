@@ -36,7 +36,6 @@ public class PlayerWeapon : MonoBehaviour
 
     public WeaponType currentWeapon = WeaponType.Pistol; //defaults to the pistol
 
-    public TrailRenderer trailRenderer;
     public GameObject bulletTrailPrefab;
 
     public GameObject ShotgunObject; 
@@ -365,35 +364,7 @@ public class PlayerWeapon : MonoBehaviour
             hitPoint = hits[hits.Length - 1].point; //if 5 objects were hit, hits.length will be 5. but the highest index would be 4. 
         }
 
-        //StartCoroutine(SpawnTrail(hitPoint)); 
-
+        //Spawn bullet trail, rotation is set to direction between bullet spawnpoint and hit point. 
         Instantiate(bulletTrailPrefab, bulletSpawnPoint.position, Quaternion.LookRotation(hitPoint - bulletSpawnPoint.position));
-    }
-
-    /// <summary>
-    /// Spawns a bullet trail that moves towards the hitpoint
-    /// </summary>
-    /// <param name="hitPoint"></param>
-    /// <returns></returns>
-    private IEnumerator SpawnTrail(Vector3 hitPoint)
-    {
-        TrailRenderer trail = Instantiate(trailRenderer, bulletSpawnPoint.position, Quaternion.identity);
-        Destroy(trail.gameObject, 1f); //destroys the trail after 1 second
-
-        Vector3 startPos = trail.transform.position;
-        float distance = Vector3.Distance(startPos, hitPoint);
-        float remaingDistance = distance;
-
-        float bulletSpeed = 300f;
-        
-
-        while (remaingDistance >= 0 && trail != null) //while bullet is stil moving towards target
-        {
-            trail.transform.position = Vector3.MoveTowards(trail.transform.position, hitPoint, bulletSpeed * Time.deltaTime);
-
-            remaingDistance = Vector3.Distance(trail.transform.position, hitPoint); //updates the distance to the target
-            
-            yield return null;
-        }
     }
 }
