@@ -236,7 +236,7 @@ public class PlayerWeapon : MonoBehaviour
         }
 
         //if the weapon is fully automatic. 
-        if(fullyAutomatic && Input.GetMouseButton(0) && shotCooldown > 0 == false && switchCooldown > 0 == false) //NOTE: The "shotcooldown > 0 == false" is the same as checking IsShooting. I had some order of operation issues with isShooting.
+        if(currentWeapon == WeaponType.Pistol && fullyAutomatic && Input.GetMouseButton(0) && shotCooldown > 0 == false && switchCooldown > 0 == false) //NOTE: The "shotcooldown > 0 == false" is the same as checking IsShooting. I had some order of operation issues with isShooting.
         {
             Shoot();
         }

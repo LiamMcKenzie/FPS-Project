@@ -18190,8 +18190,6 @@ MonoBehaviour:
   bulletSpawnPoint: {fileID: 1030507124}
   switchSpeed: 0.5
   currentWeapon: 0
-  trailRenderer: {fileID: 126221325362173700, guid: 75c9edaf975c5384c9b15df61854612d,
-    type: 3}
   bulletTrailPrefab: {fileID: 4355656009956735360, guid: 368736f02e1cab543900d9ac85481a47,
     type: 3}
   ShotgunObject: {fileID: 482172886}
@@ -19893,11 +19891,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemies:
-  - count: 0
+  - count: 5
     enemyPrefab: {fileID: 964486335791562985, guid: c348238c279abba47822a255009b8fb3,
       type: 3}
     spawnArea: {fileID: 1287164040}
-  - count: 1
+  - count: 3
     enemyPrefab: {fileID: 964486335791562985, guid: c348238c279abba47822a255009b8fb3,
       type: 3}
     spawnArea: {fileID: 1452242580}
@@ -22301,74 +22299,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2134660917}
   m_CullTransparentMesh: 1
---- !u!1001 &981743086126057826
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2808477881825528868, guid: 368736f02e1cab543900d9ac85481a47,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -3.51
-      objectReference: {fileID: 0}
-    - target: {fileID: 2808477881825528868, guid: 368736f02e1cab543900d9ac85481a47,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2808477881825528868, guid: 368736f02e1cab543900d9ac85481a47,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -23.59
-      objectReference: {fileID: 0}
-    - target: {fileID: 2808477881825528868, guid: 368736f02e1cab543900d9ac85481a47,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2808477881825528868, guid: 368736f02e1cab543900d9ac85481a47,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2808477881825528868, guid: 368736f02e1cab543900d9ac85481a47,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2808477881825528868, guid: 368736f02e1cab543900d9ac85481a47,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2808477881825528868, guid: 368736f02e1cab543900d9ac85481a47,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2808477881825528868, guid: 368736f02e1cab543900d9ac85481a47,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2808477881825528868, guid: 368736f02e1cab543900d9ac85481a47,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4355656009956735360, guid: 368736f02e1cab543900d9ac85481a47,
-        type: 3}
-      propertyPath: m_Name
-      value: New Bullet Trail
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 368736f02e1cab543900d9ac85481a47, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -22392,4 +22322,3 @@ SceneRoots:
   - {fileID: 1377338906}
   - {fileID: 999533460}
   - {fileID: 142143824}
-  - {fileID: 981743086126057826}
