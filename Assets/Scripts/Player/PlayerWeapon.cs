@@ -36,7 +36,7 @@ public class PlayerWeapon : MonoBehaviour
 
     public WeaponType currentWeapon = WeaponType.Pistol; //defaults to the pistol
 
-    public TrailRenderer trailRenderer;
+    public GameObject bulletTrailPrefab;
 
     public GameObject ShotgunObject; 
     public GameObject PistolObject;
@@ -47,7 +47,10 @@ public class PlayerWeapon : MonoBehaviour
 
     void Start()
     {
-        SwitchWeapon(WeaponType.Pistol); //sets the default weapon
+        //SwitchWeapon(WeaponType.Pistol); //sets the default weapon
+        PistolObject.SetActive(true);
+        bulletSpawnPoint = PistolObject.transform.Find("Barrel Point");
+        weaponAnimator = PistolObject.GetComponent<Animator>();
         layerMask = LayerMask.GetMask("Enemy", "World"); //gets the layer mask for the enemy layer and world layer.
     }
 
@@ -127,10 +130,11 @@ public class PlayerWeapon : MonoBehaviour
 
     public void SwitchWeapon(WeaponType weapon)
     {
-        if (currentWeapon != weapon) //if the player is switching to a new weapon, reset the cooldown
+        if (currentWeapon == weapon) //if the player is trying to switch to the same weapon, return
         {
-            ResetShotCooldown();
+            return;
         }
+        ResetShotCooldown();
         currentWeapon = weapon;
 
         PistolObject.SetActive(false);
@@ -232,7 +236,7 @@ public class PlayerWeapon : MonoBehaviour
         }
 
         //if the weapon is fully automatic. 
-        if(fullyAutomatic && Input.GetMouseButton(0) && shotCooldown > 0 == false && switchCooldown > 0 == false) //NOTE: The "shotcooldown > 0 == false" is the same as checking IsShooting. I had some order of operation issues with isShooting.
+        if(currentWeapon == WeaponType.Pistol && fullyAutomatic && Input.GetMouseButton(0) && shotCooldown > 0 == false && switchCooldown > 0 == false) //NOTE: The "shotcooldown > 0 == false" is the same as checking IsShooting. I had some order of operation issues with isShooting.
         {
             Shoot();
         }
@@ -360,33 +364,7 @@ public class PlayerWeapon : MonoBehaviour
             hitPoint = hits[hits.Length - 1].point; //if 5 objects were hit, hits.length will be 5. but the highest index would be 4. 
         }
 
-        StartCoroutine(SpawnTrail(hitPoint)); 
-    }
-
-    /// <summary>
-    /// Spawns a bullet trail that moves towards the hitpoint
-    /// </summary>
-    /// <param name="hitPoint"></param>
-    /// <returns></returns>
-    private IEnumerator SpawnTrail(Vector3 hitPoint)
-    {
-        TrailRenderer trail = Instantiate(trailRenderer, bulletSpawnPoint.position, Quaternion.identity);
-        Destroy(trail.gameObject, 1f); //destroys the trail after 1 second
-
-        Vector3 startPos = trail.transform.position;
-        float distance = Vector3.Distance(startPos, hitPoint);
-        float remaingDistance = distance;
-
-        float bulletSpeed = 300f;
-        
-
-        while (remaingDistance >= 0 && trail != null) //while bullet is stil moving towards target
-        {
-            trail.transform.position = Vector3.MoveTowards(trail.transform.position, hitPoint, bulletSpeed * Time.deltaTime);
-
-            remaingDistance = Vector3.Distance(trail.transform.position, hitPoint); //updates the distance to the target
-            
-            yield return null;
-        }
+        //Spawn bullet trail, rotation is set to direction between bullet spawnpoint and hit point. 
+        Instantiate(bulletTrailPrefab, bulletSpawnPoint.position, Quaternion.LookRotation(hitPoint - bulletSpawnPoint.position));
     }
 }

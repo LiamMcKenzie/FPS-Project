@@ -5,8 +5,14 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     public float health = 100;
+    public EnemyType enemyType;
     public GameObject deathEffect;
-    
+
+    void Start()
+    {
+        health = GameManager.instance.GetEnemyStat("Health", enemyType);   
+    }
+
     void Update()
     {
         if (health <= 0)

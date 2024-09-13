@@ -12,6 +12,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Restart restart;
     [SerializeField] private PauseManager pauseManager;
     [SerializeField] private UpgradeManager upgradeManager;
+
+    [SerializeField] private EnemyStatManager enemyStatManager;
+    [SerializeField] private PlayerHealth playerHealth;
+    [SerializeField] private WaveManager waveManager;
     
     void Awake()
     {
@@ -21,11 +25,20 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void OpenUpgradeMenu()
+    {
+        UpdateGameState(GameState.Setup);
+        upgradeManager.ResetUpgradePoints();
+    }
+
     public void StartWave()
     {
         UpdateGameState(GameState.GamePlay);
-        enemySpawner.SpawnEnemies(); //This needs to be changed to use remaining enemies
-
+        enemySpawner.SpawnEnemies(waveManager.ReturnWave()); 
+    }
+    public void RestartWave()
+    {
+        restart.ReloadScene();
     }
 
     public GameState GetGameState()
@@ -43,10 +56,6 @@ public class GameManager : MonoBehaviour
         return gameStateManager.ReturnPlayerControl() && pauseManager.ReturnIsPaused() == false;
     }
 
-    public void RestartWave()
-    {
-        restart.ReloadScene();
-    }
 
     public List<GameObject> GetEnemyList()
     {
@@ -123,4 +132,23 @@ public class GameManager : MonoBehaviour
         upgradeManager.IncreaseProgress(index);
     }
 
+    //ENEMY STATS
+
+
+    /// <summary>
+    /// This function is used to get a specific stat value for a type of enemy 
+    /// </summary>
+    /// <param name="name"></param>
+    /// <param name="enemyType"></param>
+    /// <returns></returns>
+    public float GetEnemyStat(string name, EnemyType enemyType)
+    {
+        return enemyStatManager.ReturnSpecificValue(name, enemyType);
+    }
+
+    //PLAYER HEALTH
+    public float GetPlayerHealth()
+    {
+        return playerHealth.ReturnHealth();
+    }
 }
