@@ -14371,9 +14371,6 @@ MonoBehaviour:
     - 5
     - 10
     - 15
-    - 20
-    - 25
-    - 30
     upgradeSection: 1
   - name: Fire Rate
     upgradeValues:
@@ -14386,9 +14383,8 @@ MonoBehaviour:
     upgradeSection: 1
   - name: Bullet Spread
     upgradeValues:
-    - 0.075
-    - 0.05
     - 0.025
+    - 0.0125
     - 0
     upgradeSection: 1
   - name: Automatic
@@ -14409,16 +14405,13 @@ MonoBehaviour:
     upgradeSection: 2
   - name: Fire Rate
     upgradeValues:
-    - 1.5
     - 1
     - 0.5
     upgradeSection: 2
   - name: Bullet Spread
     upgradeValues:
-    - 0.2
-    - 0.15
-    - 0.1
     - 0.05
+    - 0.025
     upgradeSection: 2
   - name: Pellets Per Shot
     upgradeValues:
