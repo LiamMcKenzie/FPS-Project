@@ -30,6 +30,8 @@ public class PlayerWeapon : MonoBehaviour
     private bool isShooting = false;
     private bool isSwitching = false;
     private bool bufferedShot = false;
+    private float bufferTimer = 0f;
+    private float bufferAmount = 0.25f;
 
     public float switchSpeed = 0.5f;
     private float switchCooldown = 0;
@@ -68,6 +70,7 @@ public class PlayerWeapon : MonoBehaviour
 
             HandleShotCooldown(); //the shot cooldown only decreases when the player has control
             SwitchWeaponCooldown();
+            HandleBufferCooldown();
         }
     }
 
@@ -174,7 +177,6 @@ public class PlayerWeapon : MonoBehaviour
     {
         if(shotCooldown > 0)
         {
-            isShooting = true;
             shotCooldown -= Time.deltaTime;
         }else
         {
@@ -225,18 +227,20 @@ public class PlayerWeapon : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0)) //buffers a shot when pressing the left mouse button
         {
+
             BufferShot();
         }
         
     
-        if(bufferedShot && !isShooting && !isSwitching) //if a shot is buffered and the player is not currently shooting, shoot
+        if(bufferTimer > 0 && !isShooting && !isSwitching) //if a shot is buffered and the player is not currently shooting, shoot
         {
             Shoot();
             bufferedShot = false;
         }
 
+
         //if the weapon is fully automatic. 
-        if(currentWeapon == WeaponType.Pistol && fullyAutomatic && Input.GetMouseButton(0) && shotCooldown > 0 == false && switchCooldown > 0 == false) //NOTE: The "shotcooldown > 0 == false" is the same as checking IsShooting. I had some order of operation issues with isShooting.
+        if(currentWeapon == WeaponType.Pistol && fullyAutomatic && Input.GetMouseButton(0) && !isShooting && !isSwitching) //NOTE: The "shotcooldown > 0 == false" is the same as checking IsShooting. I had some order of operation issues with isShooting.
         {
             Shoot();
         }
@@ -254,7 +258,18 @@ public class PlayerWeapon : MonoBehaviour
         }
         else
         {
-            bufferedShot = true;
+            bufferTimer = bufferAmount;
+        }
+    }
+
+    void HandleBufferCooldown()
+    {
+        if(bufferTimer < 0)
+        {
+            bufferTimer = 0;
+        }else
+        {
+            bufferTimer -= Time.deltaTime;
         }
     }
 
@@ -265,6 +280,7 @@ public class PlayerWeapon : MonoBehaviour
     public void Shoot()
     {
         AddShotCooldown(fireRate);
+        isShooting = true;
         
         //TODO: play animation here
         weaponAnimator.SetTrigger("Shoot");
