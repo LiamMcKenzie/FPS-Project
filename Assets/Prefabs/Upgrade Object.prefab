@@ -247,7 +247,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.531715, g: 0.965, b: 0.64417064, a: 1}
     m_PressedColor: {r: 0.25355247, g: 0.631, b: 0.35151595, a: 1}
     m_SelectedColor: {r: 0.53333336, g: 0.9647059, b: 0.6431373, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.65, g: 0.65, b: 0.65, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0
   m_SpriteState:
@@ -367,7 +367,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4c76fc9ad398bb46b15423688640f30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  upgradeIndex: 0
   upgradeTicks: []
+  buyButton: {fileID: 0}
   maxTicks: 3
   currentTicks: 0
   upgradeName: 

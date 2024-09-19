@@ -22,6 +22,7 @@ public class UpgradeObject : MonoBehaviour
 {
     public int upgradeIndex;
     public List<GameObject> upgradeTicks = new List<GameObject>();
+    public Button buyButton;
     //private GameObject tickParent;
     public int maxTicks;
     public int currentTicks = 0;
@@ -34,6 +35,9 @@ public class UpgradeObject : MonoBehaviour
     {
         //Tick Images
         //This is a way of getting all the tick game objects at runtime without using the inspector.
+
+        buyButton = gameObject.GetComponentInChildren<Button>();
+
         Transform tickParent = gameObject.transform.Find("Ticks"); //searches this object for the child named "Ticks"
         for (int i = 0; i < maxTicks; i++)
         {
@@ -60,6 +64,8 @@ public class UpgradeObject : MonoBehaviour
                 tick.GetComponent<RawImage>().color = Color.yellow;
             }
         }
+
+        buyButton.interactable = GameManager.instance.GetUpgradePoints() > 0; //buy button is only interactable if there are more than 0 upgrade points
     }
 
     public void BuyUpgrade()
