@@ -14861,7 +14861,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa5b5415795f6334b9048d6eda351264, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentWave: 3
+  currentWave: 0
   waves:
   - {fileID: 11400000, guid: 4232d607372eaa7489e39da44bbfaa17, type: 2}
   - {fileID: 11400000, guid: 6d33a1027bdefd440aea14a842236cf1, type: 2}

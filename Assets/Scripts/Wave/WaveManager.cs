@@ -20,6 +20,7 @@ public class WaveManager : MonoBehaviour
                 else
                 {
                     currentWave++;
+                    CompletedWaveCount.waveCount++;
                     GameManager.instance.OpenUpgradeMenu();
                 }
             }

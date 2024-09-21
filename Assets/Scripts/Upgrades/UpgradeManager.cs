@@ -63,6 +63,8 @@ public class UpgradeManager : MonoBehaviour
         return upgradePoints;
     }
 
+    
+
     /// <summary>
     /// This function checks the index value to make sure its within range, if its not in range it picks the nearest value.
     /// </summary>
