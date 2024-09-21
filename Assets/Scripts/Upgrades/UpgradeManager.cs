@@ -33,17 +33,29 @@ public class UpgradeManager : MonoBehaviour
 
     void Start()
     {
+        ClearUpgradeProgress();
+
+        ResetUpgradePoints();
+    }
+
+    public void ClearUpgradeProgress()
+    {
+        upgradeProgress.Clear();
         for (int i = 0; i < ReturnListSize(); i++)
         {
             upgradeProgress.Add(0);
         }
-
-        ResetUpgradePoints();
     }
 
     public void ResetUpgradePoints()
     {
         upgradePoints = pointsPerWave;
+    }
+
+    public void RefundUpgradePoints(int waveNumber)
+    {
+        upgradePoints = waveNumber * pointsPerWave;
+        ClearUpgradeProgress();
     }
 
     public int GetUpgradePoints()

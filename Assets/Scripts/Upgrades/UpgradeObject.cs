@@ -57,13 +57,28 @@ public class UpgradeObject : MonoBehaviour
 
     void Update()
     {
+        currentTicks = GameManager.instance.GetUpgradeProgress(upgradeIndex); //gets the current tick count
+        
         if(currentTicks == maxTicks)
         {
             foreach (var tick in upgradeTicks)
             {
                 tick.GetComponent<RawImage>().color = Color.yellow;
             }
+        }else
+        {
+            for (int i = 0; i < maxTicks; i++) //sets all ticks to gray
+            {
+                upgradeTicks[i].GetComponent<RawImage>().color = Color.gray;
+            }
+
+            for (int i = 0; i < currentTicks; i++) //sets only the ticks up to the current tick count to cyan
+            {
+                upgradeTicks[i].GetComponent<RawImage>().color = Color.cyan;
+            }
         }
+
+
 
         buyButton.interactable = GameManager.instance.GetUpgradePoints() > 0; //buy button is only interactable if there are more than 0 upgrade points
     }
@@ -72,8 +87,8 @@ public class UpgradeObject : MonoBehaviour
     {
         if(currentTicks < maxTicks && GameManager.instance.GetUpgradePoints() > 0)
         {
-            upgradeTicks[currentTicks].GetComponent<RawImage>().color = Color.cyan; //sets the tick image color
-            currentTicks++;
+            //upgradeTicks[currentTicks].GetComponent<RawImage>().color = Color.cyan; //sets the tick image color
+            //currentTicks++;
             GameManager.instance.DecreaseUpgradePoints();
             GameManager.instance.IncreaseUpgrade(upgradeIndex);
         }

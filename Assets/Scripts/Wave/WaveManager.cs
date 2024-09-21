@@ -43,4 +43,14 @@ public class WaveManager : MonoBehaviour
     {
         return waves[currentWave];
     }
+
+    public int ReturnWaveNumber()
+    {
+        return currentWave + 1; //(wave 1 is actually wave 0), I want to return a human readable number
+    }
+
+    public int ReturnWaveCount()
+    {
+        return waves.Count + 1;
+    }
 }

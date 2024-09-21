@@ -36,9 +36,20 @@ public class GameManager : MonoBehaviour
         UpdateGameState(GameState.GamePlay);
         enemySpawner.SpawnEnemies(waveManager.ReturnWave()); 
     }
+
     public void RestartWave()
     {
         restart.ReloadScene();
+    }
+
+    public void RefundUpgradePoints()
+    {
+        upgradeManager.RefundUpgradePoints(waveManager.ReturnWaveNumber());
+    }
+
+    public string GetWaveCountText()
+    {
+        return $"{waveManager.ReturnWaveNumber()} / {waveManager.ReturnWaveCount()}";
     }
 
     public GameState GetGameState()
