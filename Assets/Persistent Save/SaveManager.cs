@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 
 public class SaveManager : MonoBehaviour
 {
+    public static SaveManager instance;
     public int waveCount;
     
     public int displayModeIndex;
@@ -14,8 +15,31 @@ public class SaveManager : MonoBehaviour
 
     void Start()
     {
-        SaveToFile();
+        if (instance == null)
+        {
+            instance = this;
+        }else
+        {
+            Destroy(gameObject);
+        }
+        //SaveToFile();
+        
+
+        LoadFromFile();
+
     }
+
+    public void DefaultSettings()
+    {
+        waveCount = 0;
+        displayModeIndex = 0;
+        fpsDisplay = false;
+        fpsCap = 60;
+        resolutionIndex = 0;
+        vsync = false;
+    }
+
+   
 
     public void SaveToFile()
     {
@@ -32,4 +56,31 @@ public class SaveManager : MonoBehaviour
 
         Debug.Log("Settings saved to " + path);
     }
+
+    public void LoadFromFile()
+    {
+        string path = Application.dataPath + "/settings.txt";
+
+        if (File.Exists(path))
+        {
+            StreamReader reader = new StreamReader(path);
+
+            waveCount = int.Parse(reader.ReadLine().Split(':')[1].Trim());
+            displayModeIndex = int.Parse(reader.ReadLine().Split(':')[1].Trim());
+            fpsDisplay = bool.Parse(reader.ReadLine().Split(':')[1].Trim());
+            fpsCap = int.Parse(reader.ReadLine().Split(':')[1].Trim());
+            resolutionIndex = int.Parse(reader.ReadLine().Split(':')[1].Trim());
+            vsync = bool.Parse(reader.ReadLine().Split(':')[1].Trim());
+
+            reader.Close();
+            Debug.Log("Settings loaded from " + path);
+        }
+        else
+        {
+            DefaultSettings();
+            SaveToFile();
+        }
+    }
+
+    
 }
