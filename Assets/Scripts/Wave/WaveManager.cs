@@ -20,7 +20,9 @@ public class WaveManager : MonoBehaviour
                 else
                 {
                     currentWave++;
-                    CompletedWaveCount.waveCount++;
+                    //CompletedWaveCount.waveCount++;
+                    SaveManager.instance.waveCount++;
+                    SaveManager.instance.SaveToFile();
                     GameManager.instance.OpenUpgradeMenu();
                 }
             }
@@ -52,6 +54,6 @@ public class WaveManager : MonoBehaviour
 
     public int ReturnWaveCount()
     {
-        return waves.Count + 1;
+        return waves.Count;
     }
 }

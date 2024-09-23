@@ -13,7 +13,7 @@ public class SaveManager : MonoBehaviour
     public int resolutionIndex;
     public bool vsync;
 
-    void Start()
+    void Awake()
     {
         if (instance == null)
         {
@@ -79,6 +79,7 @@ public class SaveManager : MonoBehaviour
         {
             DefaultSettings();
             SaveToFile();
+            Debug.LogWarning("No save file found, default settings loaded");
         }
     }
 

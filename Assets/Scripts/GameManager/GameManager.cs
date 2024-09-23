@@ -28,7 +28,8 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         gameStateManager.SetGameState(GameState.Setup);
-        waveManager.currentWave = CompletedWaveCount.waveCount;   
+        //waveManager.currentWave = CompletedWaveCount.waveCount;   
+        waveManager.currentWave = SaveManager.instance.waveCount;
         upgradeManager.RefundUpgradePoints(waveManager.ReturnWaveNumber());
     }
 
