@@ -29,4 +29,11 @@ public class PlayerHealth : MonoBehaviour
     {
         return health;
     }
+
+    public void ResetHealth()
+    {
+        Debug.Log("Resetting health");
+        Debug.Log(GameManager.instance.GetUpgradeValue("Health", UpgradeSection.Player));
+        health = GameManager.instance.GetUpgradeValue("Health", UpgradeSection.Player);
+    }
 }

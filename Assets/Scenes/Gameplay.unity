@@ -7583,7 +7583,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 267897409}
   m_Direction: 0
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.9999999
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -8041,7 +8041,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1960241460}
   m_Direction: 2
   m_Value: 1.0000029
-  m_Size: 0.64705884
+  m_Size: 0.6470588
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -14967,16 +14967,16 @@ MonoBehaviour:
   - name: Health
     upgradeValues:
     - 100
+    - 125
     - 150
-    - 200
-    - 250
+    - 175
     upgradeSection: 0
   - name: Move Speed
     upgradeValues:
     - 10
+    - 12.5
     - 15
-    - 20
-    - 25
+    - 17.5
     upgradeSection: 0
   - name: Jump Height
     upgradeValues:
@@ -18498,7 +18498,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9f00a307016017439e0d6a00667b690, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 74
 --- !u!1 &1750015661
 GameObject:
   m_ObjectHideFlags: 0

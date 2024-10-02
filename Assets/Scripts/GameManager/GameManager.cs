@@ -43,6 +43,7 @@ public class GameManager : MonoBehaviour
     {
         UpdateGameState(GameState.GamePlay);
         enemySpawner.SpawnEnemies(waveManager.ReturnWave()); 
+        playerHealth.ResetHealth();
     }
 
     public void RestartWave()
