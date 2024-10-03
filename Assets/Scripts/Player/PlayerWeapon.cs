@@ -38,7 +38,10 @@ public class PlayerWeapon : MonoBehaviour
 
     public WeaponType currentWeapon = WeaponType.Pistol; //defaults to the pistol
 
+    private List<GameObject> activeParticles = new List<GameObject>();
+
     public GameObject bulletTrailPrefab;
+    public GameObject muzzleFlashPrefab;
 
     public GameObject ShotgunObject; 
     public GameObject PistolObject;
@@ -133,6 +136,8 @@ public class PlayerWeapon : MonoBehaviour
 
     public void SwitchWeapon(WeaponType weapon)
     {
+        activeParticles.ForEach(particle => Destroy(particle)); //destroy all active particles. (Addresses a bug that causes muzzle flashes to repeat when switching weapons)
+
         if (currentWeapon == weapon) //if the player is trying to switch to the same weapon, return
         {
             return;
@@ -284,6 +289,14 @@ public class PlayerWeapon : MonoBehaviour
         
         //TODO: play animation here
         weaponAnimator.SetTrigger("Shoot");
+        GameObject muzzleFlashEffect = Instantiate(muzzleFlashPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation); //spawn muzzle flash
+
+        muzzleFlashEffect.transform.SetParent(bulletSpawnPoint);
+
+        activeParticles.Add(muzzleFlashEffect); 
+        
+
+        Destroy(muzzleFlashEffect, 2f); 
 
         switch (currentWeapon)
         {
