@@ -10,6 +10,7 @@ public class SoundManager : MonoBehaviour
     public AudioClip buttonClick;
     public AudioClip shotgunShot;
     public AudioClip pistolShot;
+    public AudioClip hitsound;
     // Start is called before the first frame update
     void Awake()
     {
@@ -39,6 +40,10 @@ public class SoundManager : MonoBehaviour
         {
             Debug.LogError("Pistol Shot sound is not assigned in the inspector");
         }
+        if(hitsound == null)
+        {
+            Debug.LogError("Hit sound is not assigned in the inspector");
+        }
     }
 
     public void PlayButtonClick()
@@ -54,5 +59,10 @@ public class SoundManager : MonoBehaviour
     public void PlayPistolShot()
     {
         audioSource.PlayOneShot(pistolShot);
+    }
+
+    public void PlayHitSound()
+    {
+        audioSource.PlayOneShot(hitsound);
     }
 }

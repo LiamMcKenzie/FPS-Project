@@ -16401,6 +16401,7 @@ MonoBehaviour:
   buttonClick: {fileID: 8300000, guid: 2a46ed175849cf845948dea58924adca, type: 3}
   shotgunShot: {fileID: 8300000, guid: 815c31d7aa8b6114f83149fc2dc4af59, type: 3}
   pistolShot: {fileID: 8300000, guid: 33a749c6705d501438fecae9a4800d0a, type: 3}
+  hitsound: {fileID: 8300000, guid: 77732d2723199db4aae5099078bf3c8f, type: 3}
 --- !u!1 &1070387859
 GameObject:
   m_ObjectHideFlags: 0
@@ -20029,8 +20030,6 @@ MonoBehaviour:
     - 0.2
     - 0.15
     - 0.1
-    - 0.05
-    - 0.025
     upgradeSection: 1
   - name: Bullet Spread
     upgradeValues:

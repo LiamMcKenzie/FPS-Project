@@ -46,6 +46,7 @@ public class PlayerWeapon : MonoBehaviour
     public GameObject ShotgunObject; 
     public GameObject PistolObject;
     private Animator weaponAnimator;
+    private bool hitEnemy = false;
     //public GameObject RocketLauncherObject;
     [HideInInspector] public LayerMask layerMask; //layer mask for raycasting
 
@@ -297,6 +298,7 @@ public class PlayerWeapon : MonoBehaviour
         
 
         Destroy(muzzleFlashEffect, 2f); 
+        hitEnemy = false;
 
         switch (currentWeapon)
         {
@@ -322,6 +324,11 @@ public class PlayerWeapon : MonoBehaviour
             default:
 
                 break;
+        }
+
+        if(hitEnemy == true)
+        {
+            SoundManager.instance.PlayHitSound();
         }
     }
 
@@ -377,6 +384,7 @@ public class PlayerWeapon : MonoBehaviour
             if (hit.transform.tag == "Enemy") //if the raycast has hit an enemy, deal damage
             {
                 hit.transform.GetComponent<EnemyHealth>().TakeDamage(damage);
+                hitEnemy = true;
             }else //if the raycast didn't hit an enemy, it means it hit a wall. so break the loop
             {
                 break;
