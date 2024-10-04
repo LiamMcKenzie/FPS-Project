@@ -302,6 +302,7 @@ public class PlayerWeapon : MonoBehaviour
         {
             case WeaponType.Pistol: 
                 ShootBullet();
+                SoundManager.instance.PlayPistolShot();
                 break;
 
             case WeaponType.Shotgun:
@@ -309,6 +310,8 @@ public class PlayerWeapon : MonoBehaviour
                 {
                     ShootBullet();
                 }
+
+                SoundManager.instance.PlayShotgunShot();
 
                 break;
 
