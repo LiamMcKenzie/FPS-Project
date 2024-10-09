@@ -182,6 +182,8 @@ MonoBehaviour:
   enemyType: 0
   deathEffect: {fileID: 8595460629861946533, guid: a5036400b82099b48a291084f4e96f5f,
     type: 3}
+  deathSoundPrefab: {fileID: 9176839898852288611, guid: af6a493a470a9984b8e2cfd5e733c9ab,
+    type: 3}
 --- !u!114 &286345190897231266
 MonoBehaviour:
   m_ObjectHideFlags: 0

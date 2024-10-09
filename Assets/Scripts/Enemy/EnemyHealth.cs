@@ -7,6 +7,7 @@ public class EnemyHealth : MonoBehaviour
     public float health = 100;
     public EnemyType enemyType;
     public GameObject deathEffect;
+    public GameObject deathSoundPrefab;
 
     void Start()
     {
@@ -32,9 +33,11 @@ public class EnemyHealth : MonoBehaviour
     {
         //play particle effects here
         //Destroy(gameObject);
+        Instantiate(deathSoundPrefab, transform.position, Quaternion.identity);
+        
+
         gameObject.SetActive(false);
         GameObject deathParticle = Instantiate(deathEffect, transform.position, Quaternion.identity);
         GameManager.instance.RemoveEnemyFromList(gameObject);
-        
     }
 }
