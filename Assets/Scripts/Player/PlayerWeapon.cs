@@ -42,10 +42,12 @@ public class PlayerWeapon : MonoBehaviour
 
     public GameObject bulletTrailPrefab;
     public GameObject muzzleFlashPrefab;
+    public GameObject bulletImpactPrefab;
 
     public GameObject ShotgunObject; 
     public GameObject PistolObject;
     private Animator weaponAnimator;
+
     private bool hitEnemy = false;
     //public GameObject RocketLauncherObject;
     [HideInInspector] public LayerMask layerMask; //layer mask for raycasting
@@ -380,6 +382,9 @@ public class PlayerWeapon : MonoBehaviour
         for (int i = 0; i < hits.Length; i++)
         {
             RaycastHit hit = hits[i];
+
+            //Spawn bullet impact effect
+            Instantiate(bulletImpactPrefab, hit.point, Quaternion.LookRotation(hit.normal)); 
 
             if (hit.transform.tag == "Enemy") //if the raycast has hit an enemy, deal damage
             {
