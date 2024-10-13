@@ -9,7 +9,6 @@ public class DamagePlayer : MonoBehaviour
     public GameObject deathEffect;
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Hit");
         if (other.CompareTag("Player"))
         {
             other.GetComponent<PlayerHealth>().TakeDamage(damage);

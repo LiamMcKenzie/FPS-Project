@@ -21,7 +21,7 @@ public class DamageNumber : MonoBehaviour
     {
         canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
         
-        textObject = transform.GetChild(0).GetComponent<TMP_Text>();
+        textObject = transform.GetChild(1).GetComponent<TMP_Text>(); //child 0 is background, child 1 is text
         textObject.text = damage.ToString();
 
         randomRotation = Random.Range(-45f, 45f);

@@ -30,17 +30,25 @@ public class PlayerWeapon : MonoBehaviour
     private bool isShooting = false;
     private bool isSwitching = false;
     private bool bufferedShot = false;
+    private float bufferTimer = 0f;
+    private float bufferAmount = 0.25f;
 
     public float switchSpeed = 0.5f;
     private float switchCooldown = 0;
 
     public WeaponType currentWeapon = WeaponType.Pistol; //defaults to the pistol
 
+    private List<GameObject> activeParticles = new List<GameObject>();
+
     public GameObject bulletTrailPrefab;
+    public GameObject muzzleFlashPrefab;
+    public GameObject bulletImpactPrefab;
 
     public GameObject ShotgunObject; 
     public GameObject PistolObject;
     private Animator weaponAnimator;
+
+    private bool hitEnemy = false;
     //public GameObject RocketLauncherObject;
     [HideInInspector] public LayerMask layerMask; //layer mask for raycasting
 
@@ -68,6 +76,7 @@ public class PlayerWeapon : MonoBehaviour
 
             HandleShotCooldown(); //the shot cooldown only decreases when the player has control
             SwitchWeaponCooldown();
+            HandleBufferCooldown();
         }
     }
 
@@ -130,6 +139,8 @@ public class PlayerWeapon : MonoBehaviour
 
     public void SwitchWeapon(WeaponType weapon)
     {
+        activeParticles.ForEach(particle => Destroy(particle)); //destroy all active particles. (Addresses a bug that causes muzzle flashes to repeat when switching weapons)
+
         if (currentWeapon == weapon) //if the player is trying to switch to the same weapon, return
         {
             return;
@@ -174,7 +185,6 @@ public class PlayerWeapon : MonoBehaviour
     {
         if(shotCooldown > 0)
         {
-            isShooting = true;
             shotCooldown -= Time.deltaTime;
         }else
         {
@@ -225,18 +235,20 @@ public class PlayerWeapon : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0)) //buffers a shot when pressing the left mouse button
         {
+
             BufferShot();
         }
         
     
-        if(bufferedShot && !isShooting && !isSwitching) //if a shot is buffered and the player is not currently shooting, shoot
+        if(bufferTimer > 0 && !isShooting && !isSwitching) //if a shot is buffered and the player is not currently shooting, shoot
         {
             Shoot();
             bufferedShot = false;
         }
 
+
         //if the weapon is fully automatic. 
-        if(currentWeapon == WeaponType.Pistol && fullyAutomatic && Input.GetMouseButton(0) && shotCooldown > 0 == false && switchCooldown > 0 == false) //NOTE: The "shotcooldown > 0 == false" is the same as checking IsShooting. I had some order of operation issues with isShooting.
+        if(currentWeapon == WeaponType.Pistol && fullyAutomatic && Input.GetMouseButton(0) && !isShooting && !isSwitching) //NOTE: The "shotcooldown > 0 == false" is the same as checking IsShooting. I had some order of operation issues with isShooting.
         {
             Shoot();
         }
@@ -254,7 +266,18 @@ public class PlayerWeapon : MonoBehaviour
         }
         else
         {
-            bufferedShot = true;
+            bufferTimer = bufferAmount;
+        }
+    }
+
+    void HandleBufferCooldown()
+    {
+        if(bufferTimer < 0)
+        {
+            bufferTimer = 0;
+        }else
+        {
+            bufferTimer -= Time.deltaTime;
         }
     }
 
@@ -265,14 +288,25 @@ public class PlayerWeapon : MonoBehaviour
     public void Shoot()
     {
         AddShotCooldown(fireRate);
+        isShooting = true;
         
         //TODO: play animation here
         weaponAnimator.SetTrigger("Shoot");
+        GameObject muzzleFlashEffect = Instantiate(muzzleFlashPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation); //spawn muzzle flash
+
+        muzzleFlashEffect.transform.SetParent(bulletSpawnPoint);
+
+        activeParticles.Add(muzzleFlashEffect); 
+        
+
+        Destroy(muzzleFlashEffect, 2f); 
+        hitEnemy = false;
 
         switch (currentWeapon)
         {
             case WeaponType.Pistol: 
                 ShootBullet();
+                SoundManager.instance.PlayPistolShot();
                 break;
 
             case WeaponType.Shotgun:
@@ -280,6 +314,8 @@ public class PlayerWeapon : MonoBehaviour
                 {
                     ShootBullet();
                 }
+
+                SoundManager.instance.PlayShotgunShot();
 
                 break;
 
@@ -290,6 +326,11 @@ public class PlayerWeapon : MonoBehaviour
             default:
 
                 break;
+        }
+
+        if(hitEnemy == true)
+        {
+            SoundManager.instance.PlayHitSound();
         }
     }
 
@@ -342,9 +383,13 @@ public class PlayerWeapon : MonoBehaviour
         {
             RaycastHit hit = hits[i];
 
+            //Spawn bullet impact effect
+            Instantiate(bulletImpactPrefab, hit.point, Quaternion.LookRotation(hit.normal)); 
+
             if (hit.transform.tag == "Enemy") //if the raycast has hit an enemy, deal damage
             {
                 hit.transform.GetComponent<EnemyHealth>().TakeDamage(damage);
+                hitEnemy = true;
             }else //if the raycast didn't hit an enemy, it means it hit a wall. so break the loop
             {
                 break;

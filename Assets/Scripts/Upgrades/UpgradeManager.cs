@@ -33,12 +33,18 @@ public class UpgradeManager : MonoBehaviour
 
     void Start()
     {
+        ClearUpgradeProgress();
+
+        ResetUpgradePoints();
+    }
+
+    public void ClearUpgradeProgress()
+    {
+        upgradeProgress.Clear();
         for (int i = 0; i < ReturnListSize(); i++)
         {
             upgradeProgress.Add(0);
         }
-
-        ResetUpgradePoints();
     }
 
     public void ResetUpgradePoints()
@@ -46,10 +52,18 @@ public class UpgradeManager : MonoBehaviour
         upgradePoints = pointsPerWave;
     }
 
+    public void RefundUpgradePoints(int waveNumber)
+    {
+        upgradePoints = waveNumber * pointsPerWave;
+        ClearUpgradeProgress();
+    }
+
     public int GetUpgradePoints()
     {
         return upgradePoints;
     }
+
+    
 
     /// <summary>
     /// This function checks the index value to make sure its within range, if its not in range it picks the nearest value.

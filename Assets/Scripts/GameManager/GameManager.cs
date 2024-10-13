@@ -25,6 +25,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    void Start()
+    {
+        gameStateManager.SetGameState(GameState.Setup);
+        //waveManager.currentWave = CompletedWaveCount.waveCount;   
+        waveManager.currentWave = SaveManager.instance.waveCount;
+        upgradeManager.RefundUpgradePoints(waveManager.ReturnWaveNumber());
+    }
+
     public void OpenUpgradeMenu()
     {
         UpdateGameState(GameState.Setup);
@@ -35,10 +43,22 @@ public class GameManager : MonoBehaviour
     {
         UpdateGameState(GameState.GamePlay);
         enemySpawner.SpawnEnemies(waveManager.ReturnWave()); 
+        playerHealth.ResetHealth();
     }
+
     public void RestartWave()
     {
         restart.ReloadScene();
+    }
+
+    public void RefundUpgradePoints()
+    {
+        upgradeManager.RefundUpgradePoints(waveManager.ReturnWaveNumber());
+    }
+
+    public string GetWaveCountText()
+    {
+        return $"{waveManager.ReturnWaveNumber()} / {waveManager.ReturnWaveCount()}";
     }
 
     public GameState GetGameState()
@@ -151,4 +171,6 @@ public class GameManager : MonoBehaviour
     {
         return playerHealth.ReturnHealth();
     }
+
+
 }
