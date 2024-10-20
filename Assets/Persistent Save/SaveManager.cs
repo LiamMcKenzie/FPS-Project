@@ -12,6 +12,7 @@ public class SaveManager : MonoBehaviour
     public int fpsCap;
     public int resolutionIndex;
     public bool vsync;
+    public float mouseSensitivity;
 
     void Awake()
     {
@@ -37,6 +38,7 @@ public class SaveManager : MonoBehaviour
         fpsCap = 60;
         resolutionIndex = 0;
         vsync = false;
+        mouseSensitivity = 2f;
     }
 
    
@@ -52,6 +54,7 @@ public class SaveManager : MonoBehaviour
         writer.WriteLine("FPS Cap: " + fpsCap);
         writer.WriteLine("Resolution Index: " + resolutionIndex);
         writer.WriteLine("VSync: " + vsync);
+        writer.WriteLine("Mouse Sensitivity: " + mouseSensitivity);
         writer.Close();
 
         Debug.Log("Settings saved to " + path);
@@ -71,6 +74,7 @@ public class SaveManager : MonoBehaviour
             fpsCap = int.Parse(reader.ReadLine().Split(':')[1].Trim());
             resolutionIndex = int.Parse(reader.ReadLine().Split(':')[1].Trim());
             vsync = bool.Parse(reader.ReadLine().Split(':')[1].Trim());
+            mouseSensitivity = float.Parse(reader.ReadLine().Split(':')[1].Trim());
 
             reader.Close();
             Debug.Log("Settings loaded from " + path);

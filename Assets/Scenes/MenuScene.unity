@@ -452,7 +452,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &40522192
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1702,8 +1702,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 201673580}
+  - component: {fileID: 201673581}
   m_Layer: 5
-  m_Name: Audio Slider
+  m_Name: Sensitivity Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1731,6 +1732,20 @@ RectTransform:
   m_AnchoredPosition: {x: 960, y: -50}
   m_SizeDelta: {x: 1600, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &201673581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 201673579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc4f06a3f48bafb4f981dc2088825075, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minValue: 0.1
+  maxValue: 5
 --- !u!1 &205414427
 GameObject:
   m_ObjectHideFlags: 0
@@ -2101,7 +2116,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Master
+  m_text: Look Sensitivity
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2924,7 +2939,7 @@ GameObject:
   - component: {fileID: 335768054}
   - component: {fileID: 335768053}
   m_Layer: 5
-  m_Name: Master Input
+  m_Name: Look Input
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2963,7 +2978,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -3012,10 +3027,10 @@ MonoBehaviour:
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: VolumeControl, Assembly-CSharp
-        m_MethodName: AdjustSlider
-        m_Mode: 3
+      - m_Target: {fileID: 201673581}
+        m_TargetAssemblyTypeName: SensitivitySlider, Assembly-CSharp
+        m_MethodName: OnInputFieldEndEdit
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3947,7 +3962,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &416177368
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5938,9 +5953,9 @@ RectTransform:
   - {fileID: 1986062927}
   m_Father: {fileID: 196407716}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 250, y: -200}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 500, y: 85}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &674669041
@@ -6124,7 +6139,7 @@ GameObject:
   - component: {fileID: 687021167}
   - component: {fileID: 687021168}
   m_Layer: 5
-  m_Name: Master Slider
+  m_Name: Look Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6203,10 +6218,10 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: VolumeControl, Assembly-CSharp
-        m_MethodName: AdjustVolume
-        m_Mode: 3
+      - m_Target: {fileID: 201673581}
+        m_TargetAssemblyTypeName: SensitivitySlider, Assembly-CSharp
+        m_MethodName: OnSliderValueChanged
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -6445,7 +6460,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 1763555018}
+  m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &708036911
@@ -6736,10 +6751,10 @@ RectTransform:
   - {fileID: 1888938428}
   m_Father: {fileID: 1579556703}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 610, y: -50}
+  m_SizeDelta: {x: 350, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &742011002
 Animator:
@@ -7459,7 +7474,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -800, y: 200}
-  m_SizeDelta: {x: 512.3, y: 100}
+  m_SizeDelta: {x: 1000, y: 100}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &816279270
 MonoBehaviour:
@@ -7481,7 +7496,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Title
+  m_text: Untitled FPS Game
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 09fba9ae01bde8d49b7979b0bf23b5b2, type: 2}
   m_sharedMaterial: {fileID: -2613476036507900012, guid: 09fba9ae01bde8d49b7979b0bf23b5b2,
@@ -8052,7 +8067,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.5, b: 0.5, a: 1}
+  m_Color: {r: 0.5019608, g: 0.9019608, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -8869,9 +8884,9 @@ RectTransform:
   - {fileID: 1189164847}
   m_Father: {fileID: 196407716}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 250, y: -285}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 500, y: 85}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &997846404
@@ -12338,7 +12353,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1448298387}
   - component: {fileID: 1448298389}
-  - component: {fileID: 1448298388}
   m_Layer: 5
   m_Name: Button Group
   m_TagString: Untagged
@@ -12367,18 +12381,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -200}
   m_SizeDelta: {x: 900, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1448298388
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1448298386}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 426318ad9b272da43902b83ea2935537, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1448298389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13348,10 +13350,10 @@ RectTransform:
   - {fileID: 1657188487}
   m_Father: {fileID: 1579556703}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 960, y: -50}
+  m_SizeDelta: {x: 350, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1565366828
 Animator:
@@ -15075,9 +15077,9 @@ RectTransform:
   - {fileID: 1894892213}
   m_Father: {fileID: 196407716}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 250, y: -115}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 500, y: 85}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1763555020
@@ -15289,10 +15291,10 @@ RectTransform:
   - {fileID: 1238758731}
   m_Father: {fileID: 1579556703}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 1310, y: -50}
+  m_SizeDelta: {x: 350, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1778076392
 Animator:
@@ -15690,6 +15692,7 @@ MonoBehaviour:
   fpsCap: 0
   resolutionIndex: 0
   vsync: 0
+  mouseSensitivity: 0
 --- !u!4 &1818211844
 Transform:
   m_ObjectHideFlags: 0
@@ -16224,8 +16227,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4294960768
+  m_fontColor: {r: 0.5019608, g: 0.9019608, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

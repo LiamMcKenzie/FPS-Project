@@ -17,6 +17,7 @@ public class MouseLook : MonoBehaviour
 
     void Update()
     {
+        mouseSensitivity = SaveManager.instance.mouseSensitivity;
         if(GameManager.instance.CanControlPlayer()) //only able to look if player has control.
         {
             Look();
