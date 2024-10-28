@@ -2273,7 +2273,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 285ed6b87bfcc164291738f444ff9270, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponSkin: {fileID: 11400000, guid: 4f98243f11ff13240a5ed8af027fd966, type: 2}
+  weaponType: 0
+  weaponSkins: []
 --- !u!4 &240264375
 Transform:
   m_ObjectHideFlags: 0
@@ -11045,7 +11046,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCurrency: 0
   pistolSkinIndex: 0
-  shotgunSkinIndex: 0
+  shotgunSkinIndex: 1
 --- !u!4 &1152731934
 Transform:
   m_ObjectHideFlags: 0
@@ -19594,7 +19595,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 285ed6b87bfcc164291738f444ff9270, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponSkin: {fileID: 11400000, guid: ec3770cbca6acdc428e0aaac7401a4ee, type: 2}
+  weaponType: 0
+  weaponSkins: []
 --- !u!1 &6302487053097774861
 GameObject:
   m_ObjectHideFlags: 0
