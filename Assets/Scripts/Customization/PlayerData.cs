@@ -9,7 +9,7 @@ public class PlayerData : MonoBehaviour
     public int pistolSkinIndex;
     public int shotgunSkinIndex;
 
-    void Start()
+    void Awake()
     {
         instance = this;
         DontDestroyOnLoad(gameObject);
