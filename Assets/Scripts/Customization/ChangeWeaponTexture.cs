@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class ChangeWeaponTexture : MonoBehaviour
 {
-    public List<Material> newMaterials;
-    public List<Material> newMaterials2;
+    // public List<Material> newMaterials;
+    // public List<Material> newMaterials2;
+
+    public WeaponSkin weaponSkin;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,20 +25,13 @@ public class ChangeWeaponTexture : MonoBehaviour
             if (i == 0)
             {
                 // Apply each new material to the renderer
-                childRenderers[i].materials = newMaterials.ToArray();
+                childRenderers[i].materials = weaponSkin.materialGroup1.ToArray();
             }
             else
             {
                 // Apply each new material to the renderer
-                childRenderers[i].materials = newMaterials2.ToArray();
+                childRenderers[i].materials = weaponSkin.materialGroup2.ToArray();
             }
         }
-    }
-
-    // Call this method if you want to dynamically change the materials at runtime
-    public void SetNewMaterials(List<Material> materials)
-    {
-        newMaterials = materials;
-        ChangeMaterialsOfChildren();
     }
 }
