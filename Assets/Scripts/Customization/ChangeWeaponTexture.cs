@@ -12,30 +12,61 @@ public class ChangeWeaponTexture : MonoBehaviour
 
     public WeaponType weaponType;
     public List<WeaponSkin> weaponSkins = new List<WeaponSkin>();
-    private WeaponSkin weaponSkin;
+    //private WeaponSkin weaponSkin;
+    private int skinIndex;
     // Start is called before the first frame update
     void Start()
     {
-        switch (weaponType)
+
+        //GetWeaponSkin();
+
+
+        //ChangeMaterialsOfChildren();
+    }
+
+    void Update()
+    {
+        CheckIndex();
+    }
+
+    public void CheckIndex()
+    {
+        int dataIndex = 0; //initialize to 0
+
+        switch (weaponType) //sets dataindex to either pistol or shotgun skin index
         {
             case WeaponType.Pistol:
-                weaponSkin = weaponSkins[PlayerData.instance.pistolSkinIndex];
+                dataIndex = PlayerData.instance.pistolSkinIndex;
                 break;
 
             case WeaponType.Shotgun:
-                weaponSkin = weaponSkins[PlayerData.instance.shotgunSkinIndex];
+                dataIndex = PlayerData.instance.shotgunSkinIndex;
                 break;
 
             default:
-                weaponSkin = weaponSkins[PlayerData.instance.pistolSkinIndex];
                 break;
-
         }
 
-        ChangeMaterialsOfChildren();
-    }
+        //check if dataindex is out of bounds
+        if(dataIndex < 0)
+        {
+            dataIndex = 0;
+        }
+        else if(dataIndex >= weaponSkins.Count)
+        {
+            dataIndex = weaponSkins.Count - 1;
+        }
 
-    public void ChangeMaterialsOfChildren()
+
+        //check if the current skin has changed
+        if(skinIndex != dataIndex)
+        {
+            skinIndex = dataIndex;
+            ChangeMaterials();
+        }
+    } 
+
+    public void ChangeMaterials()
     {
         // Get all child renderers
         Renderer[] childRenderers = GetComponentsInChildren<Renderer>();
@@ -46,12 +77,12 @@ public class ChangeWeaponTexture : MonoBehaviour
             if (i == 0)
             {
                 // Apply each new material to the renderer
-                childRenderers[i].materials = weaponSkin.materialGroup1.ToArray();
+                childRenderers[i].materials = weaponSkins[skinIndex].materialGroup1.ToArray();
             }
             else
             {
                 // Apply each new material to the renderer
-                childRenderers[i].materials = weaponSkin.materialGroup2.ToArray();
+                childRenderers[i].materials = weaponSkins[skinIndex].materialGroup2.ToArray();
             }
         }
     }
