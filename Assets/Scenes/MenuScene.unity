@@ -2549,7 +2549,7 @@ GameObject:
   - component: {fileID: 240264375}
   - component: {fileID: 240264374}
   m_Layer: 6
-  m_Name: shotgun (1)
+  m_Name: Shotgun Preview Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2571,6 +2571,7 @@ MonoBehaviour:
   weaponSkins:
   - {fileID: 11400000, guid: 4f98243f11ff13240a5ed8af027fd966, type: 2}
   - {fileID: 11400000, guid: 4b3fe9072c236df47b6e66fe6a4716a1, type: 2}
+  - {fileID: 11400000, guid: e5510bef3e05ee24d8f67f026e9b573d, type: 2}
 --- !u!4 &240264375
 Transform:
   m_ObjectHideFlags: 0
@@ -13230,10 +13231,10 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6f06e318c92984042a9074c734738fb7, type: 2}
-  - {fileID: 2100000, guid: e86c377702aa20748ac223d70f899dc1, type: 2}
-  - {fileID: 2100000, guid: 1aa329960fc39aa4490b3a9e7e965fa8, type: 2}
-  - {fileID: 2100000, guid: 4065b5c48a33f22498535ade4014f3b0, type: 2}
+  - {fileID: 2100000, guid: f7b14c3a1ecb71e4dbbcc66635e10d72, type: 2}
+  - {fileID: 2100000, guid: 7eb9391767501184da9b838e6daade95, type: 2}
+  - {fileID: 2100000, guid: 7eb9391767501184da9b838e6daade95, type: 2}
+  - {fileID: 2100000, guid: 7eb9391767501184da9b838e6daade95, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -15957,8 +15958,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4065b5c48a33f22498535ade4014f3b0, type: 2}
-  - {fileID: 2100000, guid: a0051530ee26a80408fd114b17a7424a, type: 2}
+  - {fileID: 2100000, guid: 7eb9391767501184da9b838e6daade95, type: 2}
+  - {fileID: 2100000, guid: b4654f26bd666894bad67c4d76aa5af1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -21478,9 +21479,9 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1aa329960fc39aa4490b3a9e7e965fa8, type: 2}
-  - {fileID: 2100000, guid: 36f616b823d57714b97b12b9319c9db9, type: 2}
-  - {fileID: 2100000, guid: e86c377702aa20748ac223d70f899dc1, type: 2}
+  - {fileID: 2100000, guid: 7eb9391767501184da9b838e6daade95, type: 2}
+  - {fileID: 2100000, guid: b4654f26bd666894bad67c4d76aa5af1, type: 2}
+  - {fileID: 2100000, guid: dceb7ebdb7a8e6444a7685e87088b7f1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -21522,7 +21523,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 36f616b823d57714b97b12b9319c9db9, type: 2}
+  - {fileID: 2100000, guid: f7b14c3a1ecb71e4dbbcc66635e10d72, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -21618,7 +21619,7 @@ GameObject:
   - component: {fileID: 6302487053097743147}
   - component: {fileID: 6302487053097774860}
   m_Layer: 6
-  m_Name: pistol
+  m_Name: Pistol Preview Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21640,6 +21641,7 @@ MonoBehaviour:
   weaponSkins:
   - {fileID: 11400000, guid: fc4ea575b65f2f04388b28a626a5bc20, type: 2}
   - {fileID: 11400000, guid: ec3770cbca6acdc428e0aaac7401a4ee, type: 2}
+  - {fileID: 11400000, guid: 297ffdcb14a86284593495fa3bb00b87, type: 2}
 --- !u!1 &6302487053097774861
 GameObject:
   m_ObjectHideFlags: 0

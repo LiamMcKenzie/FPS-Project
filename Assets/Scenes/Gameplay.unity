@@ -15897,6 +15897,7 @@ MonoBehaviour:
   weaponSkins:
   - {fileID: 11400000, guid: 4f98243f11ff13240a5ed8af027fd966, type: 2}
   - {fileID: 11400000, guid: 4b3fe9072c236df47b6e66fe6a4716a1, type: 2}
+  - {fileID: 11400000, guid: e5510bef3e05ee24d8f67f026e9b573d, type: 2}
 --- !u!1 &999533459
 GameObject:
   m_ObjectHideFlags: 0
@@ -19070,6 +19071,7 @@ MonoBehaviour:
   weaponSkins:
   - {fileID: 11400000, guid: fc4ea575b65f2f04388b28a626a5bc20, type: 2}
   - {fileID: 11400000, guid: ec3770cbca6acdc428e0aaac7401a4ee, type: 2}
+  - {fileID: 11400000, guid: 297ffdcb14a86284593495fa3bb00b87, type: 2}
 --- !u!1 &1305800741
 GameObject:
   m_ObjectHideFlags: 0
