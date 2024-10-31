@@ -17,11 +17,7 @@ public class ChangeWeaponTexture : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
-        //GetWeaponSkin();
-
-
-        //ChangeMaterialsOfChildren();
+        ChangeMaterials();
     }
 
     void Update()

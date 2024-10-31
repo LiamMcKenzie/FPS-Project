@@ -8139,6 +8139,7 @@ GameObject:
   m_Component:
   - component: {fileID: 741352693}
   - component: {fileID: 741352694}
+  - component: {fileID: 741352695}
   m_Layer: 5
   m_Name: Pistol Buttons
   m_TagString: Untagged
@@ -8197,6 +8198,19 @@ MonoBehaviour:
   m_Spacing: {x: 10, y: 10}
   m_Constraint: 1
   m_ConstraintCount: 4
+--- !u!114 &741352695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 741352692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69f1d57bc5fffff4795704b1cc6678c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponType: 0
 --- !u!1 &742011000
 GameObject:
   m_ObjectHideFlags: 0
@@ -12099,8 +12113,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCurrency: 0
-  pistolSkinIndex: -1
-  shotgunSkinIndex: -1
+  pistolSkinIndex: 0
+  shotgunSkinIndex: 0
+  unlockedPistolSkins: 0000000000000000
+  unlockedShotgunSkins: 0000000000000000
 --- !u!4 &1152731934
 Transform:
   m_ObjectHideFlags: 0
@@ -18655,6 +18671,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1880275783}
   - component: {fileID: 1880275784}
+  - component: {fileID: 1880275785}
   m_Layer: 5
   m_Name: Shotgun Buttons
   m_TagString: Untagged
@@ -18713,6 +18730,19 @@ MonoBehaviour:
   m_Spacing: {x: 10, y: 10}
   m_Constraint: 1
   m_ConstraintCount: 4
+--- !u!114 &1880275785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1880275782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69f1d57bc5fffff4795704b1cc6678c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponType: 1
 --- !u!1 &1880948844
 GameObject:
   m_ObjectHideFlags: 0

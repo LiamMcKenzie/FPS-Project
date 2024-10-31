@@ -9,6 +9,9 @@ public class PlayerData : MonoBehaviour
     public int pistolSkinIndex;
     public int shotgunSkinIndex;
 
+    public List<bool> unlockedPistolSkins = new List<bool>();
+    public List<bool> unlockedShotgunSkins = new List<bool>();
+
     void Awake()
     {
         instance = this;
