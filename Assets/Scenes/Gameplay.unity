@@ -15896,13 +15896,13 @@ MonoBehaviour:
   weaponType: 1
   weaponSkins:
   - {fileID: 11400000, guid: 4f98243f11ff13240a5ed8af027fd966, type: 2}
+  - {fileID: 11400000, guid: 282a868c0184b3b42b5af3fa871b91ec, type: 2}
   - {fileID: 11400000, guid: 4b3fe9072c236df47b6e66fe6a4716a1, type: 2}
-  - {fileID: 11400000, guid: e5510bef3e05ee24d8f67f026e9b573d, type: 2}
-  - {fileID: 11400000, guid: a34a6c8cc4342c242a8052db59160a38, type: 2}
   - {fileID: 11400000, guid: 5db34eaf68ac4d74e91e29c4dbc508c8, type: 2}
   - {fileID: 11400000, guid: 0536f28ea2f23354ab1da8e3b3749036, type: 2}
+  - {fileID: 11400000, guid: e5510bef3e05ee24d8f67f026e9b573d, type: 2}
+  - {fileID: 11400000, guid: a34a6c8cc4342c242a8052db59160a38, type: 2}
   - {fileID: 11400000, guid: 0606b31d89ecb534aa4d4762f5e74e87, type: 2}
-  - {fileID: 11400000, guid: 282a868c0184b3b42b5af3fa871b91ec, type: 2}
 --- !u!1 &999533459
 GameObject:
   m_ObjectHideFlags: 0
@@ -19075,13 +19075,13 @@ MonoBehaviour:
   weaponType: 0
   weaponSkins:
   - {fileID: 11400000, guid: fc4ea575b65f2f04388b28a626a5bc20, type: 2}
+  - {fileID: 11400000, guid: 0d88deb337c1dd546905451fb67c3d0c, type: 2}
   - {fileID: 11400000, guid: ec3770cbca6acdc428e0aaac7401a4ee, type: 2}
-  - {fileID: 11400000, guid: 297ffdcb14a86284593495fa3bb00b87, type: 2}
-  - {fileID: 11400000, guid: 89f1033cce60a8b41ba8cd327ca41bec, type: 2}
   - {fileID: 11400000, guid: c1b956f7f65e76145aa7df9738eb85a5, type: 2}
   - {fileID: 11400000, guid: e24ec38f2969a2c4ba5b09079bb34a70, type: 2}
+  - {fileID: 11400000, guid: 297ffdcb14a86284593495fa3bb00b87, type: 2}
+  - {fileID: 11400000, guid: 89f1033cce60a8b41ba8cd327ca41bec, type: 2}
   - {fileID: 11400000, guid: c53da6737a10a3c42923faa2b4f61a7f, type: 2}
-  - {fileID: 11400000, guid: 0d88deb337c1dd546905451fb67c3d0c, type: 2}
 --- !u!1 &1305800741
 GameObject:
   m_ObjectHideFlags: 0
