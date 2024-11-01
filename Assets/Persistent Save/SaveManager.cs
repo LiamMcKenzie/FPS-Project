@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.IO;
-using Unity.VisualScripting;
 
 public class SaveManager : MonoBehaviour
 {
@@ -13,6 +12,7 @@ public class SaveManager : MonoBehaviour
     public int resolutionIndex;
     public bool vsync;
     public float mouseSensitivity;
+    public float volume;
 
     void Awake()
     {
@@ -25,7 +25,6 @@ public class SaveManager : MonoBehaviour
         }
         //SaveToFile();
         
-
         LoadFromFile();
 
     }
@@ -39,6 +38,7 @@ public class SaveManager : MonoBehaviour
         resolutionIndex = 0;
         vsync = false;
         mouseSensitivity = 2f;
+        volume = 0.5f;
     }
 
    
@@ -55,6 +55,7 @@ public class SaveManager : MonoBehaviour
         writer.WriteLine("Resolution Index: " + resolutionIndex);
         writer.WriteLine("VSync: " + vsync);
         writer.WriteLine("Mouse Sensitivity: " + mouseSensitivity);
+        writer.WriteLine("Volume: " + volume);
         writer.Close();
 
         Debug.Log("Settings saved to " + path);
@@ -75,6 +76,7 @@ public class SaveManager : MonoBehaviour
             resolutionIndex = int.Parse(reader.ReadLine().Split(':')[1].Trim());
             vsync = bool.Parse(reader.ReadLine().Split(':')[1].Trim());
             mouseSensitivity = float.Parse(reader.ReadLine().Split(':')[1].Trim());
+            volume = float.Parse(reader.ReadLine().Split(':')[1].Trim());
 
             reader.Close();
             Debug.Log("Settings loaded from " + path);

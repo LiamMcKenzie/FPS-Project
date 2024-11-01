@@ -48,21 +48,21 @@ public class SoundManager : MonoBehaviour
 
     public void PlayButtonClick()
     {
-        audioSource.PlayOneShot(buttonClick);
+        audioSource.PlayOneShot(buttonClick, SaveManager.instance.volume);
     }
 
     public void PlayShotgunShot()
     {
-        audioSource.PlayOneShot(shotgunShot);
+        audioSource.PlayOneShot(shotgunShot, SaveManager.instance.volume);
     }
 
     public void PlayPistolShot()
     {
-        audioSource.PlayOneShot(pistolShot);
+        audioSource.PlayOneShot(pistolShot, SaveManager.instance.volume);
     }
 
     public void PlayHitSound()
     {
-        audioSource.PlayOneShot(hitsound);
+        audioSource.PlayOneShot(hitsound, SaveManager.instance.volume);
     }
 }

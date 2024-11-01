@@ -1,7 +1,8 @@
-Wave Count: 1
+Wave Count: 0
 Display Mode Index: 0
 FPS Display: False
 FPS Cap: 60
 Resolution Index: 0
 VSync: False
-Mouse Sensitivity: 2
+Mouse Sensitivity: 2.19833
+Volume: 1
