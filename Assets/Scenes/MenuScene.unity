@@ -14149,8 +14149,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCurrency: 0
-  pistolSkinIndex: 0
-  shotgunSkinIndex: 0
   unlockedPistolSkins: 0101010101010101
   unlockedShotgunSkins: 0101010101010101
 --- !u!4 &1152731934
@@ -21405,6 +21403,8 @@ MonoBehaviour:
   vsync: 0
   mouseSensitivity: 0
   volume: 0
+  pistolSkin: 0
+  shotgunSkin: 0
 --- !u!4 &1818211844
 Transform:
   m_ObjectHideFlags: 0

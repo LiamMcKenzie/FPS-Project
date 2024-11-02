@@ -6,8 +6,8 @@ public class PlayerData : MonoBehaviour
 {
     public static PlayerData instance;
     public int playerCurrency;
-    public int pistolSkinIndex;
-    public int shotgunSkinIndex;
+    //public int pistolSkinIndex;
+    //public int shotgunSkinIndex;
 
     public List<bool> unlockedPistolSkins = new List<bool>();
     public List<bool> unlockedShotgunSkins = new List<bool>();
