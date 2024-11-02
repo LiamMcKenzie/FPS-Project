@@ -25,8 +25,8 @@ public class WeaponSway : MonoBehaviour
 
     void Sway()
     {
-        float movementX = -Input.GetAxis("Mouse X") * amount;
-        float movementY = -Input.GetAxis("Mouse Y") * amount;
+        float movementX = -Input.GetAxis("Mouse X") * amount * (SaveManager.instance.mouseSensitivity / 2);
+        float movementY = -Input.GetAxis("Mouse Y") * amount * (SaveManager.instance.mouseSensitivity / 2);
         movementX = Mathf.Clamp(movementX, -maxAmount, maxAmount);
         movementY = Mathf.Clamp(movementY, -maxAmount, maxAmount);
 

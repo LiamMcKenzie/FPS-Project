@@ -156,6 +156,7 @@ GameObject:
   - component: {fileID: 5880324322173279945}
   - component: {fileID: 3117341934841576272}
   - component: {fileID: 2622749398721375997}
+  - component: {fileID: 8154540446149408048}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -278,6 +279,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 8154540446149408048}
+        m_TargetAssemblyTypeName: PlayClickSound, Assembly-CSharp
+        m_MethodName: PlayTick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &8154540446149408048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5207159111480859718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a06b818ad9e12ad4aad3f421f3fc83e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5885807398801034697
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48bc9ec0f9670ba4297ed07cf6b097ec, type: 3}
+  m_Name: Shotgun_Purple
+  m_EditorClassIdentifier: 
+  skinImage: {fileID: 0}
+  materialGroup1:
+  - {fileID: 2100000, guid: e9f96ca8cd180a1479ffeb3b80aec791, type: 2}
+  - {fileID: 2100000, guid: e9f96ca8cd180a1479ffeb3b80aec791, type: 2}
+  - {fileID: 2100000, guid: cde6afa618854d24183d42d1ca6c247e, type: 2}
+  - {fileID: 2100000, guid: 62747c035b90b494486a9bca0f09a66d, type: 2}
+  materialGroup2:
+  - {fileID: 2100000, guid: 5de5b3892d04e25429a312a22a643efa, type: 2}
+  - {fileID: 2100000, guid: e9f96ca8cd180a1479ffeb3b80aec791, type: 2}

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48bc9ec0f9670ba4297ed07cf6b097ec, type: 3}
+  m_Name: Pistol_White
+  m_EditorClassIdentifier: 
+  skinImage: {fileID: 0}
+  materialGroup1:
+  - {fileID: 2100000, guid: 87615998263d9ee4ba4a84d95dc73a5d, type: 2}
+  materialGroup2:
+  - {fileID: 2100000, guid: 7904c5c4f11f2d04e88835e092e4c376, type: 2}
+  - {fileID: 2100000, guid: 200e10d466e6100459c53405d7e8a084, type: 2}
+  - {fileID: 2100000, guid: 7904c5c4f11f2d04e88835e092e4c376, type: 2}

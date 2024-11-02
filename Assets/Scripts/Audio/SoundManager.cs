@@ -7,6 +7,7 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager instance;
     private AudioSource audioSource;
+    public AudioClip buttonTick;
     public AudioClip buttonClick;
     public AudioClip shotgunShot;
     public AudioClip pistolShot;
@@ -24,13 +25,14 @@ public class SoundManager : MonoBehaviour
         }
         audioSource = GetComponent<AudioSource>();
         CheckMissingSounds();
+        DontDestroyOnLoad(gameObject);
     }
 
     public void CheckMissingSounds()
     {
-        if(buttonClick == null)
+        if(buttonTick == null)
         {
-            Debug.LogError("Button Click sound is not assigned in the inspector");
+            Debug.LogError("Button Tick sound is not assigned in the inspector");
         }
         if(shotgunShot == null)
         {
@@ -44,25 +46,34 @@ public class SoundManager : MonoBehaviour
         {
             Debug.LogError("Hit sound is not assigned in the inspector");
         }
+        if(buttonClick == null)
+        {
+            Debug.LogError("Button Click sound is not assigned in the inspector");
+        }
     }
 
-    public void PlayButtonClick()
+    public void PlayButtonTick()
     {
-        audioSource.PlayOneShot(buttonClick);
+        audioSource.PlayOneShot(buttonTick, SaveManager.instance.volume);
     }
 
     public void PlayShotgunShot()
     {
-        audioSource.PlayOneShot(shotgunShot);
+        audioSource.PlayOneShot(shotgunShot, SaveManager.instance.volume);
     }
 
     public void PlayPistolShot()
     {
-        audioSource.PlayOneShot(pistolShot);
+        audioSource.PlayOneShot(pistolShot, SaveManager.instance.volume);
     }
 
     public void PlayHitSound()
     {
-        audioSource.PlayOneShot(hitsound);
+        audioSource.PlayOneShot(hitsound, SaveManager.instance.volume);
+    }
+
+    public void PlayButtonClick()
+    {
+        audioSource.PlayOneShot(buttonClick, SaveManager.instance.volume);
     }
 }
