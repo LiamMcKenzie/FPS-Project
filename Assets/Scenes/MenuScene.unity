@@ -1582,7 +1582,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 142615881}
         m_TargetAssemblyTypeName: PlayClickSound, Assembly-CSharp
-        m_MethodName: PlayClick
+        m_MethodName: PlayTick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1912,7 +1912,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 163659021}
         m_TargetAssemblyTypeName: PlayClickSound, Assembly-CSharp
-        m_MethodName: PlayClick
+        m_MethodName: PlayTick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8203,7 +8203,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 607677446}
         m_TargetAssemblyTypeName: PlayClickSound, Assembly-CSharp
-        m_MethodName: PlayClick
+        m_MethodName: PlayTick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8775,7 +8775,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 674669046}
         m_TargetAssemblyTypeName: PlayClickSound, Assembly-CSharp
-        m_MethodName: PlayClick
+        m_MethodName: PlayTick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9703,7 +9703,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 742011006}
         m_TargetAssemblyTypeName: PlayClickSound, Assembly-CSharp
-        m_MethodName: PlayClick
+        m_MethodName: PlayTick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12481,7 +12481,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 674669046}
         m_TargetAssemblyTypeName: PlayClickSound, Assembly-CSharp
-        m_MethodName: PlayClick
+        m_MethodName: PlayTick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13441,7 +13441,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1068619787}
         m_TargetAssemblyTypeName: PlayClickSound, Assembly-CSharp
-        m_MethodName: PlayClick
+        m_MethodName: PlayTick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -14621,7 +14621,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1189561755}
         m_TargetAssemblyTypeName: PlayClickSound, Assembly-CSharp
-        m_MethodName: PlayClick
+        m_MethodName: PlayTick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -16534,7 +16534,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1189561755}
         m_TargetAssemblyTypeName: PlayClickSound, Assembly-CSharp
-        m_MethodName: PlayClick
+        m_MethodName: PlayTick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -17014,7 +17014,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1446582478}
         m_TargetAssemblyTypeName: PlayClickSound, Assembly-CSharp
-        m_MethodName: PlayClick
+        m_MethodName: PlayTick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -18357,7 +18357,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1565366832}
         m_TargetAssemblyTypeName: PlayClickSound, Assembly-CSharp
-        m_MethodName: PlayClick
+        m_MethodName: PlayTick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -19897,7 +19897,7 @@ GameObject:
   - component: {fileID: 1693844572}
   - component: {fileID: 1693844571}
   m_Layer: 0
-  m_Name: SoundManager
+  m_Name: Sound Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19930,10 +19930,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4db6faff4bf3894ea0853a06938f981, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonClick: {fileID: 8300000, guid: 2a46ed175849cf845948dea58924adca, type: 3}
-  shotgunShot: {fileID: 0}
-  pistolShot: {fileID: 0}
-  hitsound: {fileID: 0}
+  buttonTick: {fileID: 8300000, guid: 2a46ed175849cf845948dea58924adca, type: 3}
+  buttonClick: {fileID: 8300000, guid: 0561acfd38cd67240a255291517944d7, type: 3}
+  shotgunShot: {fileID: 8300000, guid: 815c31d7aa8b6114f83149fc2dc4af59, type: 3}
+  pistolShot: {fileID: 8300000, guid: 33a749c6705d501438fecae9a4800d0a, type: 3}
+  hitsound: {fileID: 8300000, guid: 77732d2723199db4aae5099078bf3c8f, type: 3}
 --- !u!82 &1693844572
 AudioSource:
   m_ObjectHideFlags: 0
@@ -19943,8 +19944,7 @@ AudioSource:
   m_GameObject: {fileID: 1693844569}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 5d5241aaa431c1a48bac47e5dfe2bd1d,
-    type: 2}
+  OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 0.25
@@ -20912,7 +20912,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1778076396}
         m_TargetAssemblyTypeName: PlayClickSound, Assembly-CSharp
-        m_MethodName: PlayClick
+        m_MethodName: PlayTick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
