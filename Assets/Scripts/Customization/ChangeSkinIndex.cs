@@ -12,15 +12,16 @@ public class ChangeSkinIndex : MonoBehaviour
         switch (weaponType)
         {
             case WeaponType.Pistol:
-                SaveManager.instance.pistolSkin = skinIndex;
+                PlayerData.instance.pistolSkinIndex = skinIndex;
                 break;
 
             case WeaponType.Shotgun:
-                SaveManager.instance.shotgunSkin = skinIndex;
+                PlayerData.instance.shotgunSkinIndex = skinIndex;
                 break;
 
             default:
                 break;
         }
+        PlayerData.instance.SaveToFile();
     }
 }

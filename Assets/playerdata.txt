@@ -1,0 +1,5 @@
+Player Currency: 0
+Pistol Skin: 4
+Shotgun Skin: 0
+Unlocked Pistol Skins: True,False,False,False,True,False,False,False
+Unlocked Shotgun Skins: True,False,False,False,False,False,False,False
