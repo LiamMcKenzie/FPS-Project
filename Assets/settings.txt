@@ -1,4 +1,4 @@
-Wave Count: 1
+Wave Count: 0
 Display Mode Index: 0
 FPS Display: False
 FPS Cap: 60
