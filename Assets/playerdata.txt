@@ -1,5 +1,0 @@
-Player Currency: 200
-Pistol Skin: 7
-Shotgun Skin: 7
-Unlocked Pistol Skins: True,False,False,False,False,False,False,True
-Unlocked Shotgun Skins: True,False,False,False,False,False,False,True
