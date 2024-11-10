@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.IO;
+using System.Collections.Generic;
 
 public class SaveManager : MonoBehaviour
 {
@@ -13,8 +14,9 @@ public class SaveManager : MonoBehaviour
     public bool vsync;
     public float mouseSensitivity;
     public float volume;
-    public int pistolSkin;
-    public int shotgunSkin;
+    //public int pistolSkin;
+    //public int shotgunSkin;
+    //public List<bool> unlockedPistolSkins = new List<bool>() { true, false, false, false, false, false, false, false, false, false };
 
     void Awake()
     {
@@ -41,8 +43,6 @@ public class SaveManager : MonoBehaviour
         vsync = false;
         mouseSensitivity = 2f;
         volume = 0.5f;
-        pistolSkin = 0;
-        shotgunSkin = 0;
     }
 
    
@@ -60,8 +60,6 @@ public class SaveManager : MonoBehaviour
         writer.WriteLine("VSync: " + vsync);
         writer.WriteLine("Mouse Sensitivity: " + mouseSensitivity);
         writer.WriteLine("Volume: " + volume);
-        writer.WriteLine("Pistol Skin: " + pistolSkin);
-        writer.WriteLine("Shotgun Skin: " + shotgunSkin);
         writer.Close();
 
         Debug.Log("Settings saved to " + path);
@@ -83,8 +81,6 @@ public class SaveManager : MonoBehaviour
             vsync = bool.Parse(reader.ReadLine().Split(':')[1].Trim());
             mouseSensitivity = float.Parse(reader.ReadLine().Split(':')[1].Trim());
             volume = float.Parse(reader.ReadLine().Split(':')[1].Trim());
-            pistolSkin = int.Parse(reader.ReadLine().Split(':')[1].Trim());
-            shotgunSkin = int.Parse(reader.ReadLine().Split(':')[1].Trim());
 
             reader.Close();
             Debug.Log("Settings loaded from " + path);
@@ -96,6 +92,4 @@ public class SaveManager : MonoBehaviour
             Debug.LogWarning("No save file found, default settings loaded");
         }
     }
-
-    
 }

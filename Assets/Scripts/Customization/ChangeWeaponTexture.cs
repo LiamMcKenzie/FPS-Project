@@ -32,11 +32,11 @@ public class ChangeWeaponTexture : MonoBehaviour
         switch (weaponType) //sets dataindex to either pistol or shotgun skin index
         {
             case WeaponType.Pistol:
-                dataIndex = SaveManager.instance.pistolSkin;
+                dataIndex = PlayerData.instance.pistolSkinIndex;
                 break;
 
             case WeaponType.Shotgun:
-                dataIndex = SaveManager.instance.shotgunSkin;
+                dataIndex = PlayerData.instance.shotgunSkinIndex;
                 break;
 
             default:
