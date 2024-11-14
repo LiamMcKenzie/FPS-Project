@@ -97,7 +97,7 @@ Material:
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
-    - _Exposure: 2.25
+    - _Exposure: 1.65
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
@@ -113,7 +113,7 @@ Material:
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
     - _SunDisk: 1
-    - _SunSize: 0.573
+    - _SunSize: 0.037
     - _SunSizeConvergence: 9.52
     - _Surface: 0
     - _WorkflowMode: 1
